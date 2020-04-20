@@ -14,6 +14,7 @@ import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatSliderModule } from '@angular/material/slider';
 
 // const MATERIAL_MODULES = [
@@ -28,6 +29,7 @@ import { NgbdModalContent } from './modal/modal.component';
         NouisliderModule,
         RouterModule,
         JwBootstrapSwitchNg2Module,
+        BrowserAnimationsModule,
         // MATERIAL_MODULES,
     ],
     declarations: [
