@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Renderer, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
 
 @Component({
     selector: 'app-nucleoicons',
