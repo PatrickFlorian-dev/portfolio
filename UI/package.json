@@ -16,6 +16,7 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@angular/animations": "9.1.2",
     "@angular/cdk": "^9.2.1",
     "@angular/common": "9.1.2",
@@ -38,6 +39,28 @@
     "rxjs": "6.5.5",
     "rxjs-compat": "6.5.5",
     "zone.js": "0.10.3"
+=======
+    "@angular/animations": "7.2.0",
+    "@angular/common": "7.2.0",
+    "@angular/compiler": "7.2.0",
+    "@angular/core": "7.2.0",
+    "@angular/forms": "7.2.0",
+    "@angular/http": "7.2.0",
+    "@angular/platform-browser": "7.2.0",
+    "@angular/platform-browser-dynamic": "7.2.0",
+    "@angular/router": "7.2.0",
+    "@ng-bootstrap/ng-bootstrap": "4.1.0",
+    "bootstrap": "4.1.2",
+    "core-js": "2.4.1",
+    "jquery": "3.2.1",
+    "jw-bootstrap-switch-ng2": "2.0.1",
+    "ng2-nouislider": "1.7.12",
+    "nouislider": "9.2.0",
+    "popper.js": "1.14.4",
+    "rxjs": "6.2.2",
+    "rxjs-compat": "6.2.2",
+    "zone.js": "0.8.26"
+>>>>>>> parent of eb0b882... this commit is a mess LOL
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.1",

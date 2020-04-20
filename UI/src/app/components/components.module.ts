@@ -14,12 +14,15 @@ import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
+<<<<<<< HEAD
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatSliderModule } from '@angular/material/slider';
 
 // const MATERIAL_MODULES = [
 //     MatSliderModule,
 // ]
+=======
+>>>>>>> parent of eb0b882... this commit is a mess LOL
 
 @NgModule({
     imports: [
@@ -28,9 +31,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         NgbModule,
         NouisliderModule,
         RouterModule,
+<<<<<<< HEAD
         JwBootstrapSwitchNg2Module,
         BrowserAnimationsModule,
         // MATERIAL_MODULES,
+=======
+        JwBootstrapSwitchNg2Module
+>>>>>>> parent of eb0b882... this commit is a mess LOL
     ],
     declarations: [
         ComponentsComponent,
