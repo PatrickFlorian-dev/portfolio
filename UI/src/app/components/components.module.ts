@@ -14,6 +14,11 @@ import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
+// import { MatSliderModule } from '@angular/material/slider';
+
+// const MATERIAL_MODULES = [
+//     MatSliderModule,
+// ]
 
 @NgModule({
     imports: [
@@ -22,7 +27,8 @@ import { NgbdModalContent } from './modal/modal.component';
         NgbModule,
         NouisliderModule,
         RouterModule,
-        JwBootstrapSwitchNg2Module
+        JwBootstrapSwitchNg2Module,
+        // MATERIAL_MODULES,
     ],
     declarations: [
         ComponentsComponent,
