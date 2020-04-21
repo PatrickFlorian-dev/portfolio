@@ -44,3 +44,21 @@
   10% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(15px); opacity: 0;}
 }
+
+// Parralax BGS
+
+.parallax {
+
+  /* Set a specific height */
+  height: 400px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-1 {
+  background-image: url("assets/img/bgs/paralaxglassesbg.jpg");
+}
