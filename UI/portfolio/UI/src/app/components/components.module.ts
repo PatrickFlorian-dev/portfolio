@@ -9,10 +9,15 @@ import { ComponentsComponent } from './components.component';
 import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { BtnHoverClassDirective } from 'app/shared/directives/btn-hover-class.directive';
 
 const components = [
     PortfolioComponent,
     ComponentsComponent,
+]
+
+const directives = [
+    BtnHoverClassDirective,
 ]
 
 @NgModule({
@@ -25,6 +30,7 @@ const components = [
         JwBootstrapSwitchNg2Module
     ],
     declarations: [
+        directives,
         components,
         NgbdModalComponent,
         NgbdModalContent
