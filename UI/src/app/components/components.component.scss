@@ -1,0 +1,64 @@
+// Typewriter animation
+
+.typewriter {
+  position: absolute;
+  top: 150px;
+  color: #fff;
+  font-size: 50px;
+  font-family: 'Libre Barcode 128 Text', cursive;
+}
+
+// Mouse animation
+
+.scroll-downs {
+  position: absolute;
+  top: 150px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width :34px;
+  height: 55px;
+}
+.mousey {
+  width: 3px;
+  padding: 10px 15px;
+  height: 35px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  opacity: 0.75;
+  box-sizing: content-box;
+}
+.scroller {
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: #fff;
+  animation-name: scroll;
+  animation-duration: 1.6s;
+  animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+  animation-iteration-count: infinite;
+}
+@keyframes scroll {
+  0% { opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0;}
+}
+
+// Parralax BGS
+
+.parallax {
+
+  /* Set a specific height */
+  height: 400px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-1 {
+  background-image: url("assets/img/bgs/paralaxsign1.jpg");
+}
