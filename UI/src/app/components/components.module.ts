@@ -10,9 +10,11 @@ import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { BtnHoverClassDirective } from 'app/shared/directives/btn-hover-class.directive';
+import { AboutMeComponent } from './about-me/about-me.component';
 
 const components = [
     PortfolioComponent,
+    AboutMeComponent,
     ComponentsComponent,
 ]
 

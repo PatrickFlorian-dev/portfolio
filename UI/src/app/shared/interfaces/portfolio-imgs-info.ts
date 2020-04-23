@@ -7,4 +7,6 @@ export interface PortfolioImgsInfo {
     imgDescription: string;
     link: string;
     show: boolean;
+    modalImgOneLink: string;
+    modalImgTwoLink: string;
 }
