@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" id="top-section">
     <div class="page-header section-dark" style="background-image: url('assets/img/bgs/meandbeans.jpg')">
 
         <h1 class="typewriter">I am
@@ -10,7 +10,7 @@
             </span>
         
                <div class="scroll-downs">
-                <div class="mousey">
+                <div style="cursor: pointer;" class="mousey" (click)="scrollDownOneSection()">
                   <div class="scroller"></div>
                 </div>
               </div>
@@ -31,6 +31,27 @@
 
         <!-- About Me -->
         <app-about-me></app-about-me>
+
+        <!-- First parralax -->
+        <div class="parallax parallax-2"></div>
+
+        <!-- My Skills -->
+        <app-my-skills></app-my-skills>
+
+        <!-- First parralax -->
+        <div class="parallax parallax-3"></div>
+
+        <!-- Contact Me -->
+        <app-contact-me></app-contact-me>
+
+        <!-- First parralax -->
+        <div class="parallax parallax-4"></div>
+
+        <!-- Blog Showcase -->
+        <app-blog-showcase></app-blog-showcase>
+
+        <!-- First parralax -->
+        <div class="parallax parallax-5"></div>
 
     </div>
 

@@ -49,6 +49,8 @@
 
 .parallax {
 
+  position: relative;
+
   /* Set a specific height */
   height: 400px; 
 
@@ -59,6 +61,30 @@
   background-size: cover;
 }
 
+.parallax:before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  background: rgba(9, 132, 227,0.4);
+}
+
 .parallax-1 {
-  background-image: url("assets/img/bgs/paralaxsign1.jpg");
+  background-image: url("/assets/img/bgs/paralaxsign1.jpg");
+}
+
+.parallax-2 {
+  background-image: url("/assets/img/bgs/paralaxsign2.jpeg");
+}
+
+.parallax-3 {
+  background-image: url("/assets/img/bgs/paralaxsign3.jpg");
+}
+
+.parallax-4 {
+  background-image: url("/assets/img/bgs/paralaxsign4.jpg");
+}
+
+.parallax-5 {
+  background-image: url("/assets/img/bgs/paralaxsign5.jpg");
 }

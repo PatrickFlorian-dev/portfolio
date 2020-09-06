@@ -1,0 +1,50 @@
+.moving-bg-cont {
+    overflow: hidden;
+}
+
+.sliding-background {
+    background: url("/assets/img/bgs/mountainrange.png") repeat-x;
+    width: 8000px;
+    height: 655px;
+    animation: slide 50s linear infinite;
+    // -webkit-animation: range_animation 60s linear infinite;
+}
+
+  @keyframes slide{
+    0%{
+      transform: translate3d(0, 0, 0);
+    }
+    100%{
+      transform: translate3d(-1692px, 0, 0);
+    }
+  }
+
+// @-webkit-keyframes range_animation {
+//     from {background-position: 0 0;}
+//     to {background-position: -8000px 0;}
+// }
+
+.footer-text-cont-right {
+    right: 10px;
+}
+
+.footer-text-cont-left {
+    left: 10px;
+}
+
+.footer-text-cont {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+}
+
+.footer-text-cont * {
+    color: #ffffff;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.footer-text-cont a:hover {
+    color: #ffffff;
+    font-weight: bold;
+}

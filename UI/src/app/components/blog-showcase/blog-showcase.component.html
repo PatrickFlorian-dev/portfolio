@@ -1,0 +1,67 @@
+<div class="section" id="blog-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 nopadding">
+                <p class="text-center section-header">Blogs</p>
+                <toaster-with-progressbar [percentage]=[percentage]></toaster-with-progressbar>
+            </div>
+
+            <div class="main-cont">
+                <div class="left">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="checklist">
+                                <p class="checklist-heading">Categories</p>
+        
+                                <section id="checklist-items" *ngFor="let category of categories">
+                                    
+                                    <input (click)="filterList(category.id)" class="hover-item" id="0{{ category.id }}" type="checkbox" name="" value="{{ category.id }}">
+                                    <label class="hover-item-label" for="0{{ category.id }}">{{ category.name }}</label>
+                                    
+                                </section>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="row cards-row">
+
+                        <div class="cards-for-row" *ngFor="let blog of blogs; let i = index; let last = last;">
+                            
+                            <div class="col-md-6 nopadding" *ngIf="blog.visible">
+        
+                                <a class="main-card-cont">
+                                <figure [style.backgroundImage]="'url('+ blog.bgUrl +')'">
+                                    <div class="card-overlay"></div>
+                                    <div class="date"><span class="card-date-day">{{ blog.createdAtDate }}</span><span class="card-date-month">{{ blog.createdAtMonth }}</span></div>
+                                    <i class="{{ blog.faIcon }} top-right-icon"></i>
+                                    <figcaption class="fig-caption-cont">
+                                        <p class="card-header">{{ blog.title }}</p>
+                                        <p class="card-body text-center">{{ blog.description }}</p>
+                                    </figcaption>
+                                    <img class="flag" [src]="blog.flagUrl" alt="Whoops!" /> 
+                                </figure></a>
+                
+                            </div>
+
+                            <div class="col-md-12" *ngIf="last">
+                                <div id="btn-container">
+                                    <button class="learn-more">
+                                        <span class="circle" aria-hidden="true">
+                                        <span class="icon arrow"></span>
+                                        </span>
+                                        <span class="button-text">See All Blogs</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div> 
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

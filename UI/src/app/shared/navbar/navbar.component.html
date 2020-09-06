@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+<nav [class.navbar-pos-abs]="!stickyFooter" class="navbar navbar-expand-lg fixed-top navbar-transparent nav-index" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="#">Patrick Logan Florian</a>
@@ -9,35 +9,69 @@
             </button>
         </div>
         <div class="navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item" *ngIf="!isDocumentation()">
+            
+            <ul class="navbar-nav ml-auto non-mobile-menu">
+                <!-- <li class="nav-item" *ngIf="!isDocumentation()">
                     <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
                         <i class="fa fa-twitter"></i>
                         <p class="d-lg-none">Twitter</p>
                     </a>
-                </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
+                </li> -->
+                <!-- <li class="nav-item" *ngIf="!isDocumentation()">
                     <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
                         <i class="fa fa-facebook-square"></i>
                         <p class="d-lg-none">Facebook</p>
                     </a>
-                </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
+                </li> -->
+                <!-- <li class="nav-item" *ngIf="!isDocumentation()">
                     <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
                         <i class="fa fa-instagram"></i>
                         <p class="d-lg-none">Instagram</p>
                     </a>
-                </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
+                </li> -->
+                <!-- <li class="nav-item" *ngIf="!isDocumentation()">
                     <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/paper-kit-2-angular" target="_blank">
                         <i class="fa fa-github"></i>
                         <p class="d-lg-none">GitHub</p>
                     </a>
-                </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
+                </li> -->
+                <!-- <li class="nav-item" *ngIf="!isDocumentation()">
                     <a href="http://pk2-angular.creative-tim.com/documentation/tutorial" class="nav-link" target="_blank"><i class="nc-icon nc-book-bookmark"></i> Documentation</a>
+                </li> -->
+
+                <li class="nav-item">
+                    <div ngbDropdown class="d-inline-block dropdown">
+                      <a class="nav-link" (click)="toggleSidebar()">
+                        <i class="fas fa-bars mobile-icon"></i>
+                      </a>
+                      <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+                        <a class="dropdown-item" (click)="scrollToSection('#portfolio-section')">Portfolio</a>
+                        <a class="dropdown-item" (click)="scrollToSection('#about-me-section')">About</a>
+                        <a class="dropdown-item" (click)="scrollToSection('#my-skills-section')">Stats & Skills</a>
+                        <a class="dropdown-item" (click)="scrollToSection('#contact-me-section')">Contact Me</a>
+                        <a class="dropdown-item" (click)="scrollToSection('#blog-section')">Blog</a>
+                      </div> -->
+                    </div>
                 </li>
-                <li class="nav-item" *ngIf="isHome()">
+
+                <li class="nav-item">
+                    <div ngbDropdown class="d-inline-block dropdown">
+                      <a class="nav-link" id="dropdownBasic2" ngbDropdownToggle>
+                        <i *ngIf="!userLoggedIn" class="fas fa-user-circle mobile-icon"></i>
+                        <img *ngIf="userLoggedIn" src="./assets/img/general/button-user.png" alt="..." class="user-icon-profile-login">
+                      </a>
+                      <div *ngIf="!userLoggedIn" ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+                        <a class="dropdown-item" (click)="toggleUserModal('login')">Login</a>
+                        <a class="dropdown-item" (click)="toggleUserModal('register')">Register</a>
+                      </div>
+                      <div *ngIf="userLoggedIn" ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+                        <a class="dropdown-item" (click)="logout()">Logout</a>
+                        <a class="dropdown-item" (click)="toggleUserModal('profile')">Profile</a>
+                      </div>
+                    </div>
+                </li>
+                
+                <!-- <li class="nav-item" *ngIf="isHome()">
                     <a href="https://www.creative-tim.com/product/paper-kit-2-pro-angular?ref=pk2-angular-free-local" target="_blank" class="btn btn-danger btn-round">Upgrade to Pro</a>
                 </li>
                 <li class="nav-item" *ngIf="!isHome()">
@@ -46,8 +80,38 @@
                 </li>
                 <li class="nav-item" *ngIf="isDocumentation()">
                     <a href="https://github.com/creativetimofficial/paper-kit-2-angular/issues?ref=pk2-free-local" target="_blank" class="nav-link">Have an issue</a>
+                </li> -->
+            </ul>
+
+            <ul class="navbar-nav ml-auto mobile-menu">
+                <p class="mobile-menu-header">Jump to</p>
+                <li class="nav-item">
+                    <p class="mobile-nav-item close-mobile-nav" (click)="closeMobileMenu()">Close</p>
+                </li>
+                <li class="nav-item">
+                    <p class="mobile-nav-item" (click)="scrollToSection('#top-section')">Top</p>
+                </li>
+                <li class="nav-item">
+                    <p class="mobile-nav-item" (click)="scrollToSection('#portfolio-section')">Portfolio</p>
+                </li>
+                <li class="nav-item">
+                    <p class="mobile-nav-item" (click)="scrollToSection('#about-me-section')">About</p>
+                </li>
+                <li class="nav-item">
+                    <p class="mobile-nav-item" (click)="scrollToSection('#my-skills-section')">Stats & Skills</p>
+                </li>
+                <li class="nav-item">
+                    <p class="mobile-nav-item" (click)="scrollToSection('#contact-me-section')">Contact</p>
+                </li>
+                <li class="nav-item">
+                    <p class="mobile-nav-item" (click)="scrollToSection('#blog-section')">Blog</p>
+                </li>
+                <p class="mobile-menu-header">User Actions</p>
+                <li class="nav-item">
+                    <p class="mobile-nav-item" (click)="toggleUserModal('login')">Login</p>
                 </li>
             </ul>
+
         </div>
     </div>
 </nav>

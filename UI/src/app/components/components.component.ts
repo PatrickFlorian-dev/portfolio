@@ -100,4 +100,14 @@ export class ComponentsComponent implements OnInit {
           };
     }
 
+    scrollDownOneSection() {
+
+      let firstSection = <HTMLElement> document.querySelector("#portfolio-section");
+
+      firstSection.scrollIntoView({
+        behavior: 'smooth',
+      });
+
+    }
+
 }
