@@ -12,8 +12,6 @@ export class BlogShowcaseComponent implements OnInit {
 
     contents: string = 'contents';
 
-    percentage: string = '80%';
-
     imgUrl = 'https://images.pexels.com/photos/3153207/pexels-photo-3153207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
 
     categories: ListCategoriesInfo[] = [

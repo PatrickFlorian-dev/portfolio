@@ -18,7 +18,6 @@ import { BlogShowcaseComponent } from './blog-showcase/blog-showcase.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
-import { AngularToasterWithProgressbarModule } from 'angular-toaster-with-progressbar';
 
 const components = [
     PortfolioComponent,
@@ -46,7 +45,6 @@ const directives = [
         HttpClientModule,
         HttpModule,
         ReactiveFormsModule,
-        AngularToasterWithProgressbarModule,
     ],
     declarations: [
         directives,

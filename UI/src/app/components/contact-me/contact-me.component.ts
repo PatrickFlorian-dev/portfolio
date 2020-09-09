@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 // import * as L from 'leaflet';
 // import { tileLayer } from 'leaflet';
 // import { latLng } from 'leaflet';
@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import * as $ from "jquery";
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { AuthService } from 'app/shared/services/auth.service';
+import { ContactFormInfo } from 'app/shared/interfaces/contact-form-info';
+import { DataService } from 'app/shared/services/data.service';
 
 @Component({
     selector: 'app-contact-me',
@@ -41,7 +42,9 @@ export class ContactMeComponent implements OnInit {
     //     }
     // }
     
-    submitted = false;
+    submitted: boolean = false;
+
+    submittedWithinLast24Hours: boolean = false;
 
     nameValue: string;
     nameTouched: boolean = false;
@@ -51,53 +54,106 @@ export class ContactMeComponent implements OnInit {
     phoneTouched: boolean = false;
     messageValue: string;
 
-    constructor(private authService: AuthService) {
+    constructor(
+      private dataService: DataService,
+      private el: ElementRef,
+      ) {
         this.nameValue = '';
         this.emailValue = '';
         this.phoneValue = '';
         this.messageValue = '';
     }
 
+    email_check( email ) {    
+      var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+      return (email != '' && email != 'undefined' && regex.test(email)); 
+    }
+
     touchInput( inputName: string ) {
 
-        switch (inputName) {
-            case 'name':
-              this.nameTouched = true;
-              break;
-            case 'email':
-              this.emailTouched = true;
-              break;
-            case 'phone':
-              this.phoneTouched = true;
-              break;
-            default:
-              console.log(`Could not determine the input field.`);
-          }
+      switch (inputName) {
+          case 'name':
+            this.nameTouched = true;
+            if(this.nameValue.length == 0) {
+              document.getElementById("name-label").innerHTML = "Name is required"
+            } else {
+              document.getElementById("name-label").innerHTML = "Name"
+            }
+            break;
+          case 'email':
+            this.emailTouched = true;
+
+            if(this.emailValue.length == 0) {
+              document.getElementById("email-label").innerHTML = "Email is required"
+            } else {
+              if(this.email_check(this.emailValue)) {
+                document.getElementById("email-label").innerHTML = "Email"
+              } else {
+                document.getElementById("email-label").innerHTML = "Email is invalid"
+              }
+            }
+
+            break;
+          case 'phone':
+            this.phoneTouched = true;
+            break;
+          default:
+            console.log(`Could not determine the input field.`);
+      }
         
     }
 
     ngOnInit() {
 
-      this.authService.sendGetRequest().subscribe(
-        data => { console.log(data);},
-        err => console.log(err),
-        () => console.log('done loading hellow world test'),
-      );
+      // TESTING ONLY
+      // this.authService.sendGetRequest().subscribe(
+      //   data => { console.log(data);},
+      //   err => console.log(err),
+      //   () => console.log('done loading hellow world test'),
+      // );
 
     }
 
     onSubmit() { 
 
-      console.log(this.emailValue)
+      const contactInformation : ContactFormInfo = {
+        "name": this.nameValue,
+        "email": this.emailValue,
+        "phone": this.phoneValue,
+        "message": this.messageValue,
+      }
 
-        $( ".input-effect , .greetings-cont , .submit-btn-container" ).fadeOut( "linear", function() {
-            setTimeout(()=>{
-              $(".thank-you-cont").fadeIn(400 , "linear")
-          }, 800);
-  
-        });
+      this.dataService.submitContactForm( contactInformation ).subscribe(
+        data => { 
+          if(data.success) {
 
-        this.submitted = true; 
+            this.submittedWithinLast24Hours = false;
+
+            $( ".input-effect , .greetings-cont , .submit-btn-container" ).fadeOut( "linear", function() {
+              setTimeout(()=>{
+                $(".thank-you-cont").fadeIn(400 , "linear")
+              }, 800);
+            });
+
+            this.submitted = true; 
+
+          } else {
+
+            this.submittedWithinLast24Hours = true;
+
+            // Angular remove class
+            // let submitBtn = this.el.nativeElement.querySelector("#button");
+            // submitBtn.classList.remove('.onclic'); 
+
+            // Vanilla JS remove class
+            var submitBtn = document.getElementById("button");
+            submitBtn.classList.remove("onclic");
+
+          }
+        },
+        err => console.log(err),
+        () => console.log('done loading hello world test'),
+      );
 
     }
 

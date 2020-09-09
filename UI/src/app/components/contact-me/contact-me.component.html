@@ -23,10 +23,21 @@
               
               <div class="row" style="margin: 0 auto;">
 
-                <div class="col-12 text-center greetings-cont">
-                  <i class="fas fa-paper-plane fa-icon-cont-plane"></i>
-                  <p class="form-header-text">Say hi and I'll be in touch soon!</p>
+                <div class="col-12 text-center greetings-cont" [style.margin-bottom]="submittedWithinLast24Hours ? '30px' : null">
+
+                  <div *ngIf="!submittedWithinLast24Hours else _submittedWithinLast24Hours">
+                    <i class="fas fa-paper-plane fa-icon-cont-plane"></i>
+                    <p class="form-header-text">Say hi and I'll be in touch soon!</p>
+                  </div>
+
+                  <ng-template #_submittedWithinLast24Hours>
+                    <i style="color:#e74c3c;" class="fas fa-exclamation-triangle fa-icon-cont-plane"></i>
+                    <p style="color:#e74c3c;" class="form-header-text">You have already submitted a contact request within the last 24 hours!</p>
+                  </ng-template>
+                  
                 </div>
+
+
 
                 <div class="col-12 text-center greetings-cont thank-you-cont">
                   <i class="fas fa-check-circle fa-icon-cont-plane"></i>
@@ -40,7 +51,7 @@
                   (blur)="touchInput('name')"
                   class="effect-19 error-bg" type="text" [value]="nameValue" 
                   (input)="nameValue = $event.target.value;">
-                    <label>* Name</label>
+                    <label id="name-label">* Name</label>
                     <span class="focus-border">
                       <i></i>
                     </span>
@@ -50,11 +61,11 @@
                   <div class="input-field-margin-top">
                     <input 
                     [class.has-content]="emailValue.length != 0" 
-                    [class.error-bg]="emailValue.length == 0 && emailTouched"
+                    [class.error-bg]="emailValue.length == 0 && emailTouched && !email_check(emailValue)"
                     (blur)="touchInput('email')"
                     class="effect-19" type="text" [value]="emailValue" 
                     (input)="emailValue = $event.target.value;">
-                    <label>* Email</label>
+                    <label id="email-label">* Email</label>
                     <span class="focus-border">
                       <i></i>
                     </span>
@@ -69,7 +80,7 @@
                     (blur)="touchInput('phone')"
                     class="effect-19" type="text" [value]="phoneValue" 
                     (input)="phoneValue = $event.target.value;">
-                    <label>* Phone</label>
+                    <label id="phone-label">* Phone</label>
                     <span class="focus-border">
                       <i></i>
                     </span>
@@ -79,7 +90,7 @@
                 <div class="col-12 nopadding input-effect">
                   
                   <div class="input-field-margin-top">
-                    <textarea [class.has-content]="nameValue.length != 0" rows="7" style="width: 100%;" class="effect-19" type="text" [value]="messageValue" (input)="MessageValue = $event.target.value;">
+                    <textarea [class.has-content]="nameValue.length != 0" rows="7" style="width: 100%;" class="effect-19" type="text" [value]="messageValue" (input)="messageValue = $event.target.value;">
                     </textarea>
                       <label>Message</label>
                       <span class="focus-border">
@@ -94,12 +105,13 @@
                       <button (click)="onSubmit()" 
                       [attr.disabled] = "nameValue.length == 0 || emailValue.length == 0 || phoneValue.length == 0 ? 'disabled' : null"
                       id="button">
-                      <span *ngIf="nameValue.length == 0 || emailValue.length == 0 || phoneValue.length == 0 else readyToSubmit">
-                        Please fill out
-                      </span>
-                      <ng-template #readyToSubmit>
-                        SUBMIT
-                      </ng-template></button>
+                        <span *ngIf="nameValue.length == 0 || emailValue.length == 0 || phoneValue.length == 0 || !email_check(emailValue) else readyToSubmit">
+                          Please fill out
+                        </span>
+                        <ng-template #readyToSubmit>
+                          SUBMIT
+                        </ng-template>
+                      </button>
                     </div>
                 </div>
                 

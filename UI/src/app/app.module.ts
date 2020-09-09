@@ -16,9 +16,6 @@ import { BtnHoverClassDirective } from './shared/directives/btn-hover-class.dire
 
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
-import { AngularToasterWithProgressbarModule } from 'angular-toaster-with-progressbar';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +32,6 @@ import { AngularToasterWithProgressbarModule } from 'angular-toaster-with-progre
     AppRoutingModule,
     BrowserAnimationsModule,
     LeafletModule,
-    AngularToasterWithProgressbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

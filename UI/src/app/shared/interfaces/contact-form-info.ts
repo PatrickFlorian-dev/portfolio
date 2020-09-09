@@ -1,7 +1,7 @@
 export interface ContactFormInfo {
-    id: number,
+    id?: number,
     name: string;
     email: string;
     phone: string;
-    Message: string;
+    message?: string;
 }
