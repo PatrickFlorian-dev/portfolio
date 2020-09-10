@@ -3,6 +3,7 @@
     <div id="main-content" [@openCloseLeftCont]="isOpen ? 'open' : 'closed'">
         
         <app-navbar 
+        *ngIf="showNavbar"
         (openModalOutputEvent)=toggleUserModal($event)
         (toggleSidebarEvent)=toggleSidebar($event)
         [loginInputEvent]="loginInputEvent">
@@ -10,30 +11,32 @@
 
         <router-outlet></router-outlet>
 
-        <app-footer *ngIf="removeFooter()"></app-footer>
+        <app-footer *ngIf="showFooter"></app-footer>
 
     </div>
     
-    <div id="sidebar-cont" [@openClose]="isOpen ? 'open' : 'closed'">
+    <div *ngIf="showSidebar">
+        <div id="sidebar-cont" [@openClose]="isOpen ? 'open' : 'closed'">
         
-        <i 
-        class="fas fa-arrows-alt-h sub-icon-pos" 
-        (click)="toggleSidebar();"
-        [@triggerToggleSidebar]="showSidebarButton ? 'shown' : 'hidden'"></i>
-        
-        <div class="settings-header-cont">
-
-            <p class="settings-header">Sections </p>
-
-            <p class="settings-list-text" (click)="scrollToSection('#top-section')">Top</p>
-            <p class="settings-list-text" (click)="scrollToSection('#portfolio-section')">Portfolio</p>
-            <p class="settings-list-text" (click)="scrollToSection('#about-me-section')">About</p>
-            <p class="settings-list-text" (click)="scrollToSection('#my-skills-section')">Stats & Skills</p>
-            <p class="settings-list-text" (click)="scrollToSection('#contact-me-section')">Contact Me</p>
-            <p class="settings-list-text" (click)="scrollToSection('#blog-section')">Blog</p>
+            <i 
+            class="fas fa-arrows-alt-h sub-icon-pos" 
+            (click)="toggleSidebar();"
+            [@triggerToggleSidebar]="showSidebarButton ? 'shown' : 'hidden'"></i>
             
+            <div class="settings-header-cont">
+    
+                <p class="settings-header">Sections </p>
+    
+                <p class="settings-list-text" (click)="scrollToSection('#top-section')">Top</p>
+                <p class="settings-list-text" (click)="scrollToSection('#portfolio-section')">Portfolio</p>
+                <p class="settings-list-text" (click)="scrollToSection('#about-me-section')">About</p>
+                <p class="settings-list-text" (click)="scrollToSection('#my-skills-section')">Stats & Skills</p>
+                <p class="settings-list-text" (click)="scrollToSection('#contact-me-section')">Contact Me</p>
+                <p class="settings-list-text" (click)="scrollToSection('#blog-section')">Blog</p>
+                
+            </div>
+    
         </div>
-
     </div>
 
 </div>

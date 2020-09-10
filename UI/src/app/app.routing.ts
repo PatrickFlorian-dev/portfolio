@@ -12,6 +12,7 @@ import {
   AuthGuardService as AuthGuard 
 } from './auth/auth-guard.service';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { PortfolioPageBlogComponent } from './components/portfolio-page-blog/portfolio-page-blog.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes =[
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'signup',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent,},
-    { path: 'password-reset',          component: PasswordResetComponent,},
+    { path: 'password-reset',   component: PasswordResetComponent,},
+    { path: 'portfolio-blog',   component: PortfolioPageBlogComponent,},
 ];
 
 @NgModule({

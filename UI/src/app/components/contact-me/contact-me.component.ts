@@ -125,7 +125,10 @@ export class ContactMeComponent implements OnInit {
 
       this.dataService.submitContactForm( contactInformation ).subscribe(
         data => { 
-          if(data.success) {
+          
+          let _data: any = data;
+          
+          if(_data.success) {
 
             this.submittedWithinLast24Hours = false;
 

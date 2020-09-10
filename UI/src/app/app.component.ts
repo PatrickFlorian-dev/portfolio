@@ -139,7 +139,12 @@ export class AppComponent implements OnInit {
 
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-    constructor( 
+    showFooter: boolean = false;
+    showNavbar: boolean = false;
+    showSidebar: boolean = false;
+
+    constructor(
+
         private renderer : Renderer, 
         private router: Router, @Inject(DOCUMENT,)
         private document: any, 
@@ -148,6 +153,18 @@ export class AppComponent implements OnInit {
         private authService: AuthService) {}
     
     ngOnInit() {
+
+        // let currentUrl = this.router.url;
+        var pathArray = window.location.pathname.split('/');
+        if(pathArray[1] === 'home' || pathArray[1].length === 0) {
+            this.showFooter = true;
+            this.showNavbar = true;
+            this.showSidebar = true;
+        } else {
+            this.showFooter = false;
+            this.showNavbar = false;
+            this.showSidebar = false;
+        }
 
         var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
 
@@ -165,7 +182,9 @@ export class AppComponent implements OnInit {
             }else{
                 window.document.activeElement.scrollTop = 0;
             }
-            this.navbar.sidebarClose();
+            if(pathArray[1] === 'home' || pathArray[1].length === 0) {
+                this.navbar.sidebarClose();
+            }
         });
         this.renderer.listenGlobal('window', 'scroll', (event) => {
             const number = window.scrollY;
@@ -215,16 +234,18 @@ export class AppComponent implements OnInit {
         this.curUserModalToRender = action;
     }
 
-    removeFooter() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
-        titlee = titlee.slice( 1 );
-        if(titlee === 'signup' || titlee === 'nucleoicons'){
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
+    // removeFooter() {
+
+
+    //     var titlee = this.location.prepareExternalUrl(this.location.path());
+    //     titlee = titlee.slice( 1 );
+    //     if(titlee === 'signup' || titlee === 'nucleoicons'){
+    //         return false;
+    //     }
+    //     else {
+    //         return true;
+    //     }
+    // }
 
     toggleSidebar() {
         this.isOpen = !this.isOpen;

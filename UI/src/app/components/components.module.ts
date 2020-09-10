@@ -13,11 +13,12 @@ import { BtnHoverClassDirective } from 'app/shared/directives/btn-hover-class.di
 import { AboutMeComponent } from './about-me/about-me.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
 import { MySkillsComponent } from './my-skills/my-skills.component';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+// import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { BlogShowcaseComponent } from './blog-showcase/blog-showcase.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { PortfolioPageBlogComponent } from './portfolio-page-blog/portfolio-page-blog.component';
 
 const components = [
     PortfolioComponent,
@@ -27,6 +28,7 @@ const components = [
     MySkillsComponent,
     BlogShowcaseComponent,
     PasswordResetComponent,
+    PortfolioPageBlogComponent,
 ]
 
 const directives = [
@@ -41,7 +43,7 @@ const directives = [
         NouisliderModule,
         RouterModule,
         JwBootstrapSwitchNg2Module,
-        LeafletModule,
+        // LeafletModule,
         HttpClientModule,
         HttpModule,
         ReactiveFormsModule,
