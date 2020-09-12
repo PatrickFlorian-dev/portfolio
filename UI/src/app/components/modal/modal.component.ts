@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-modal-content',
@@ -14,11 +15,11 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 nopadding">
+            <div *ngIf="!textOnly" class="col-md-6 nopadding">
                 <img class="modal-img img-one-left" src="{{ pageImgOneLink }}">
             </div>
-            <div class="col-md-6 nopadding">
-            <img class="modal-img img-two-left" src="{{ pageImgTwoLink }}">
+            <div *ngIf="!textOnly" class="col-md-6 nopadding">
+                <img class="modal-img img-two-left" src="{{ pageImgTwoLink }}">
             </div>
 
             <div class="body-text col-md-12">
@@ -30,7 +31,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     </div>
     <div class="modal-footer">
         <div class="left-side">
-            <button type="button" class="btn btn-default btn-link" (click)="navigateToUrl()">Visit Page</button>
+            <button type="button" class="btn btn-default btn-link" (click)="navigateToUrl()">{{ btnText }}</button>
         </div>
         <div class="divider"></div>
         <div class="right-side">
@@ -47,11 +48,14 @@ export class NgbdModalContent {
     @Input() bodyText;
     @Input() pageImgOneLink;
     @Input() pageImgTwoLink;
+    @Input() btnText;
+    @Input() textOnly: boolean;
 
-    constructor(public activeModal: NgbActiveModal) {}
+    constructor(public activeModal: NgbActiveModal , private router: Router) {}
 
     navigateToUrl() {
-        console.log('Navigate to link passed in here!' , this.link)
+        this.router.navigateByUrl(this.link)
+        this.activeModal.close()
     }
 
 }

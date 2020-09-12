@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { PortfolioPageBlogComponent } from './portfolio-page-blog/portfolio-page-blog.component';
+import { MusicPlayerComponent } from './music-player/music-player.component';
 
 const components = [
     PortfolioComponent,
@@ -29,6 +30,7 @@ const components = [
     BlogShowcaseComponent,
     PasswordResetComponent,
     PortfolioPageBlogComponent,
+    MusicPlayerComponent,
 ]
 
 const directives = [

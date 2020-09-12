@@ -65,11 +65,13 @@ export class PortfolioComponent implements OnInit {
 
     openModal(img: PortfolioImgsInfo) {
         const modalRef = this.modalService.open(NgbdModalContent);
+        modalRef.componentInstance.textOnly = false;
         modalRef.componentInstance.title = img.imgTitle;
         modalRef.componentInstance.link = img.link;
         modalRef.componentInstance.bodyText = img.imgDescription;
         modalRef.componentInstance.pageImgOneLink = img.modalImgOneLink;
         modalRef.componentInstance.pageImgTwoLink = img.modalImgTwoLink;
+        modalRef.componentInstance.btnText = 'Visit page';
     }
 
 }
