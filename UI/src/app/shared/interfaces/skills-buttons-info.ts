@@ -9,5 +9,6 @@ export interface SkillsButtonsInfo {
     prctAmtBar?: string,
     prctRatingTxt: string,
     xl: boolean,
-    active: boolean
+    active: boolean,
+    descText: string,
 }
