@@ -14,18 +14,38 @@ import { Router } from '@angular/router';
     <div class="modal-body nopadding"> 
     
     <div class="container-fluid">
-        <div class="row">
+
+        <div class="row modal-body-row-cont">
+
             <div *ngIf="!textOnly" class="col-md-6 nopadding">
-                <img class="modal-img img-one-left" src="{{ pageImgOneLink }}">
+                <div class="loading-animation-cont" [ngStyle]="{'display': img1Loaded ? 'none' : null }">
+                    <div class="sk-folding-cube">
+                        <div class="sk-cube1 sk-cube"></div>
+                        <div class="sk-cube2 sk-cube"></div>
+                        <div class="sk-cube4 sk-cube"></div>
+                        <div class="sk-cube3 sk-cube"></div>
+                    </div>
+                </div>
+                <img class="modal-img img-one-left" src="{{ pageImgOneLink }}" (load)="imageLoaded('img1')">
             </div>
             <div *ngIf="!textOnly" class="col-md-6 nopadding">
-                <img class="modal-img img-two-left" src="{{ pageImgTwoLink }}">
+                <div class="loading-animation-cont" [ngStyle]="{'display': img2Loaded ? 'none' : null }">
+                    <div class="sk-folding-cube">
+                        <div class="sk-cube1 sk-cube"></div>
+                        <div class="sk-cube2 sk-cube"></div>
+                        <div class="sk-cube4 sk-cube"></div>
+                        <div class="sk-cube3 sk-cube"></div>
+                    </div>
+                </div>
+                <img class="modal-img img-two-left" src="{{ pageImgTwoLink }}" (load)="imageLoaded('img2')">
             </div>
 
             <div class="body-text col-md-12">
                 <p class="text-center">{{ bodyText }}</p>
             </div>
+ 
         </div>
+
     </div>
 
     </div>
@@ -50,12 +70,31 @@ export class NgbdModalContent {
     @Input() pageImgTwoLink;
     @Input() btnText;
     @Input() textOnly: boolean;
+    @Input() externalLink: boolean;
+
+    img1Loaded: boolean = false;
+    img2Loaded: boolean = false;
 
     constructor(public activeModal: NgbActiveModal , private router: Router) {}
 
     navigateToUrl() {
-        this.router.navigateByUrl(this.link)
+
+        if(this.externalLink) {
+            window.open(
+                this.link,
+                '_blank' // <- This is what makes it open in a new window.
+            );
+        } else {
+            this.router.navigateByUrl(this.link)
+        }
+
         this.activeModal.close()
+
+    }
+
+    imageLoaded( img : string ) {
+        img === 'img1' ? this.img1Loaded = true : null;
+        img === 'img2' ? this.img2Loaded = true : null;
     }
 
 }

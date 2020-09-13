@@ -5,17 +5,17 @@
                 <p class="text-center section-header">About Me</p>
             </div>
 
-            <div class="col-md-12 nopadding">
+            <div class="col-md-9 nopadding" id="timeline-div">
 
               <section class="cd-horizontal-timeline" id="timeline">
                 <div class="timeline">
                   <div class="events-wrapper">
                     <div class="events">
                       <ol>
-                        <li><a href="#0" data-date="16/12/2013" class="selected">Early Days</a></li>
-                        <li><a href="#0" data-date="16/02/2014">Devloper</a></li>
-                        <li><a href="#0" data-date="16/04/2014">Senior Engineer</a></li>
-                        <li><a href="#0" data-date="20/06/2014">Now</a></li>
+                        <li><a (click)="stateHandler(1)" href="#0" data-date="16/12/2013" class="selected">Early Days</a></li>
+                        <li><a (click)="stateHandler(2)" href="#0" data-date="16/02/2014">Devloper</a></li>
+                        <li><a (click)="stateHandler(3)" href="#0" data-date="16/04/2014">Senior Engineer</a></li>
+                        <li><a (click)="stateHandler(4)" href="#0" data-date="20/06/2014">Now</a></li>
                         <li style="display: none;"><a href="#0" data-date="09/07/2014">Now</a></li>
                       </ol>
               
@@ -24,8 +24,8 @@
                   </div> <!-- .events-wrapper -->
                     
                   <ul class="cd-timeline-navigation">
-                    <li><a href="#0" class="prev inactive">Prev</a></li>
-                    <li><a href="#0" class="next">Next</a></li>
+                    <li><a href="#0" class="prev inactive">Prev</a><i class="fas fa-chevron-left previous-icon"></i></li>
+                    <li><a href="#0" class="next">Next</a><i class="fas fa-chevron-right next-icon"></i></li>
                   </ul> <!-- .cd-timeline-navigation -->
                 </div> <!-- .timeline -->
               
@@ -67,6 +67,13 @@
                 </div> <!-- .events-content -->
               </section>
                 
+            </div>
+
+            <div class="col-md-3 nopadding" id="timeline-img-right-cont">
+              <img class="timeline-img-right" id="1" src="./assets/img/bgs/statue-of-liberty.png" alt="...">
+              <img style="display: none" class="timeline-img-right" id="2" src="./assets/img/bgs/hiker.png" alt="...">
+              <img style="display: none" class="timeline-img-right" id="3" src="./assets/img/bgs/superhero.png" alt="...">
+              <img style="display: none" class="timeline-img-right" id="4" src="./assets/img/bgs/business-man.png" alt="...">
             </div>
 
         </div>

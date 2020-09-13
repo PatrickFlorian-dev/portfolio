@@ -2,7 +2,7 @@
 
 .section {
     padding-top: 20px;
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
 }
 
 .section-header {
@@ -16,6 +16,11 @@
     margin: 0 !important;
 }
 
+.timeline-img-right {
+  position: relative !important;
+  height: 625px !important;
+}
+
 // Time line custom css
 
 .hdr-slct-btn {
@@ -23,6 +28,14 @@
   width: 100%;
   height: 100px;
   
+}
+
+@media screen and (max-width: 767px) {
+
+  #timeline-img-right-cont {
+    display: none;
+  }
+
 }
 
 /* -------------------------------- 
@@ -33,6 +46,20 @@ Timeline Main Components
 
 ul , ol {
   list-style: none;
+}
+
+.next-icon {
+  position: absolute;
+  left: 97.4%;
+  bottom: 43%;
+  color: #0984e3;
+}
+
+.previous-icon {
+  position: absolute;
+  left: 1.6%;
+  bottom: 43%;
+  color: #0984e3;
 }
 
 .tl-header {
@@ -210,7 +237,7 @@ ul , ol {
   height: 34px;
   width: 34px;
   border-radius: 50%;
-  border: 2px solid #dfdfdf;
+  border: 2px solid #0984e3;
   /* replace text with an icon */
   overflow: hidden;
   color: transparent;

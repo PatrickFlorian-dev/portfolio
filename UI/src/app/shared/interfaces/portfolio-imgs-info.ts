@@ -1,5 +1,6 @@
 export interface PortfolioImgsInfo {
     portfolioID: number;
+    externalLink: boolean;
     imgSrc: string;
     imgTitle: string;
     imgCategoryName: string;
