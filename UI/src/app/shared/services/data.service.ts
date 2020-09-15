@@ -48,4 +48,8 @@ export class DataService {
     return this.httpClient.post(this.REST_API_SERVER + '/api/contact-me/', contactInfo ).pipe(retry(0), catchError(this.handleError));
   }
 
+  public subscribeForm(contactInfo: ContactFormInfo) {
+    return this.httpClient.post(this.REST_API_SERVER + '/api/subscribe/', contactInfo ).pipe(retry(0), catchError(this.handleError));
+  }
+
 }

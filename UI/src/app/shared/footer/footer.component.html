@@ -2,6 +2,43 @@
     <div class="container-fluid">
         <div class="row">
 
+            <div class="button">
+                <button><span>Subscribe</span></button>
+            </div>
+
+            <div class="pop-up open">
+
+                <img id="bus-gif" src="./assets/img/bgs/vangif.gif" />
+
+                <div class="content">
+                  <div class="container">
+                    <div class="dots">
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
+                    
+                    <span class="close">🗙 close</span>
+                    
+                    <div class="title">
+                      <h1>subscribe</h1>
+                    </div>
+                    
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/256492/cXsiNryL.png" alt="Car">
+                    
+                    <div class="subscribe">
+                      <h1>Subscribe to get the latest <span>news &amp; updates</span>.</h1>
+                      <form>
+                        <input id="subscribe-email" type="email" placeholder="Your email address" (input)="emailValue = $event.target.value;" (blur)="touchInput('email')">
+                        <input id="subscribe-submit" type="submit" value="Subscribe" (click)="subscribe()">
+                        <br/> <br/> <br/>
+                        <p id="error-text"> <i class="fas fa-exclamation-circle"></i> &nbsp; <span id="error-text-span"></span> </p>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
             <div class="moving-bg-cont">
 
                 <div class="sliding-background"></div>

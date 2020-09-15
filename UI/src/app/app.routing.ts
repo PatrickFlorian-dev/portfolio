@@ -14,6 +14,7 @@ import {
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { PortfolioPageBlogComponent } from './components/portfolio-page-blog/portfolio-page-blog.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AdminDemoComponent } from './components/admin-demo/admin-demo.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes =[
     { path: 'landing',          component: LandingComponent,},
     { path: 'password-reset',   component: PasswordResetComponent,},
     { path: 'portfolio-blog',   component: PortfolioPageBlogComponent,},
+    { path: 'admin-demo',   component: AdminDemoComponent,},
 
     // Catch alls
     {path: '404', component: NotFoundComponent},

@@ -21,6 +21,9 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { PortfolioPageBlogComponent } from './portfolio-page-blog/portfolio-page-blog.component';
 import { MusicPlayerComponent } from './music-player/music-player.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MyResourcesComponent } from './my-resources/my-resources.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminDemoComponent } from './admin-demo/admin-demo.component';
 
 const components = [
     PortfolioComponent,
@@ -33,6 +36,8 @@ const components = [
     PortfolioPageBlogComponent,
     MusicPlayerComponent,
     NotFoundComponent,
+    MyResourcesComponent,
+    AdminDemoComponent,
 ]
 
 const directives = [
@@ -51,6 +56,7 @@ const directives = [
         HttpClientModule,
         HttpModule,
         ReactiveFormsModule,
+        BrowserAnimationsModule,
     ],
     declarations: [
         directives,
