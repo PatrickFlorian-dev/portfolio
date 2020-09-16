@@ -7,7 +7,7 @@
               <h4 style="background-color: #fff;" class="text-center">Grab a copy of my resume or check out my GitHub repositories</h4>
           </div>
 
-          <div class="col-md-3 text-center">
+          <div class="col-md-3 col-sm-6 text-center">
             <a>
               <!-- <div class="black-overlay"></div> -->
               <figure id="resource-figure-1">
@@ -19,7 +19,7 @@
               </figure></a>
           </div>
 
-          <div class="col-md-3 text-center">
+          <div class="col-md-3 col-sm-6 text-center">
             <a>
               <!-- <div class="black-overlay"></div> -->
               <figure id="resource-figure-2">
@@ -31,7 +31,7 @@
               </figure></a>
           </div>
 
-          <div class="col-md-3 text-center">
+          <div class="col-md-3 col-sm-6 text-center">
             <a>
               <!-- <div class="black-overlay"></div> -->
               <figure id="resource-figure-3">
@@ -43,7 +43,7 @@
               </figure></a>
           </div>
 
-          <div class="col-md-3 text-center">
+          <div class="col-md-3 col-sm-6 text-center">
             <a>
               <!-- <div class="black-overlay"></div> -->
               <figure id="resource-figure-4">
@@ -134,7 +134,52 @@
         </div>
 
         <div class="col-md-6">
-            
+          
+          <!-- <ngx-prism
+            [language] = "language"
+            [hooks] = "hooks"
+            [code] = "content"
+            [interpolation] = "interpolate"
+          ></ngx-prism> -->
+
+          <p class="text-center">How to grab a copy of one of a repo locally</p>
+
+          <div class="code-editor-cont">
+
+            <div class="code-editor-topbar">
+              <div class="dot-cont" style="text-align:center">
+                <span class="dot d-1"></span>
+                <span class="dot d-2"></span>
+                <span class="dot d-3"></span>
+              </div>
+            </div>
+
+            <div class="code-editor-left-side-numbers-cont">
+              <p class="left-side-number">1</p>
+              <p class="left-side-number">2</p>
+              <p class="left-side-number">3</p>
+              <p class="left-side-number">4</p>
+              <p class="left-side-number">5</p>
+              <p class="left-side-number">6</p>
+              <p class="left-side-number">7</p>
+              <p class="left-side-number">8</p>
+              <p class="left-side-number">9</p>
+              <p class="left-side-number">10</p>
+              <p class="left-side-number">11</p>
+            </div>
+
+            <div class="code-container-text">
+              <p><span style="color:#74b9ff">cd</span> &nbsp; <span style="color:#FDD835">[ Path ]</span></p>
+              <p><span style="color:#a29bfe">mkdir</span> &nbsp; <span style="color:#2ecc71">–m777</span> &nbsp; <span style="color:#FDD835">[ Folder name ]</span> &nbsp; <span style="color: #8e8e8e;">// Mostly optional depending on the project, the -m777 is regarding read, write, execute permissions if you are on a unix based system</span></p>
+              <p><span style="color:#74b9ff">ls</span> &nbsp; <span style="color: #8e8e8e;">// Just to verify the contents you created</span></p>
+  
+              <p><span style="color:#e74c3c">git</span> &nbsp; <span style="color:#e67e22">clone</span> &nbsp; <span style="color:#ff9ff3">https://github.com/</span> <span style="color:#FDD835">[ The Repo You Want to Clone Locally ]</span></p>
+  
+              <p><span style="color: #8e8e8e;">// The project is now cloned, depending on the language some additonal steps will be needed</span></p>
+            </div>
+
+          </div>
+
         </div>
 
       </div>

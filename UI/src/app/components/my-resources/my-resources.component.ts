@@ -19,6 +19,20 @@ export class MyResourcesComponent implements OnInit {
   public gitUsername: string = 'patrickflorian-dev';
   public noResultsFound: boolean = false; 
 
+  // Prism
+  // content = `<p>test {{language}}</p>`;
+  // hooks = {
+  //   'before-sanity-check': (env) => { console.log(`before-sanity-check`, env); },
+  //   'before-highlight': (env) => { console.log(`before-highlight`, env); },
+  //   'after-highlight': (env) => { console.log(`after-highlight`, env); },
+  //   'complete': (env) => { console.log(`complete`, env); },
+  //   'before-insert': (env) => { console.log(`before-insert`, env); }
+  // };
+  // interpolate = {
+  //   language: 'language interpolated'
+  // };
+  // language = 'html';
+
   ngOnInit() {
 
     // Initialize with my repos first
