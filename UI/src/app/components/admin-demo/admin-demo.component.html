@@ -1,74 +1,336 @@
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
 <div class="header">
-  <a href="#" id="menu-action">
+  <a id="menu-action">
     <i class="fa fa-bars"></i>
-    <span>Close</span>
+    <span class="oswald-font">Close</span>
   </a>
   <div class="logo">
-    Simple Admin
+    <span class="oswald-font navbar-brand-text">Patrick's Awesome Admin Template</span>
   </div>
 </div>
 
 <div class="sidebar">
   <ul>
-    <li><a href="#"><i class="fa fa-desktop"></i><span>Desktop</span></a></li>
-    <li><a href="#"><i class="fa fa-server"></i><span>Server</span></a></li>
-    <li><a href="#"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
-    <li><a href="#"><i class="fa fa-envelope-o"></i><span>Messages</span></a></li>
-    <li><a href="#"><i class="fa fa-table"></i><span>Data Table</span></a></li>
+    <li><a class="side-menu-items"><i class="fa fa-desktop"></i><span>Desktop</span></a></li>
+    <li><a class="side-menu-items"><i class="fa fa-server"></i><span>Server</span></a></li>
+    <li><a class="side-menu-items"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
+    <li><a class="side-menu-items"><i class="fa fa-envelope-o"></i><span>Messages</span></a></li>
+    <li><a class="side-menu-items"><i class="fa fa-table"></i><span>Data Table</span></a></li>
   </ul>
 </div>
 
 <!-- Content -->
-<div class="main">
-  <div class="hipsum">
-    <div class="jumbotron">
-      <h1 id="hello,-world!">Hello, world!<a class="anchorjs-link" href="#hello,-world!"><span class="anchorjs-icon"></span></a></h1>
-      <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <p><a class="btn btn-primary" href="#" role="button">Learn more</a></p>
-    </div>
-    <p>Keffiyeh banjo keytar selfies. Actually plaid PBR&amp;B, High Life dreamcatcher kale chips master cleanse craft beer messenger bag locavore Brooklyn Blue Bottle. Freegan literally brunch kale chips small batch. Etsy iPhone gentrify photo booth. Lomo
-      keffiyeh vinyl, distillery pop-up messenger bag kale chips post-ironic DIY 90's keytar. Intelligentsia next level Pitchfork forage vinyl Marfa, normcore heirloom. Drinking vinegar asymmetrical roof party, yr artisan Carles mixtape jean shorts.</p>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Slow-carb fanny pack yr Brooklyn gentrify. Fanny pack keffiyeh taxidermy, ugh viral polaroid craft beer. +1 distillery Truffaut typewriter tousled crucifix, lo-fi butcher normcore skateboard. Drinking vinegar ugh whatever sriracha. Synth tofu viral
-      butcher flexitarian. 3 wolf moon Schlitz plaid small batch kale chips blog. Fingerstache selfies freegan, Helvetica Neutra Brooklyn semiotics cred narwhal beard tousled leggings.</p>
+
+<div class="container-fluid">
+
+  <div class="main">
+
     <div class="row">
-      <div class="col-sm-6">
-        <p>Slow-carb fanny pack yr Brooklyn gentrify. Fanny pack keffiyeh taxidermy, ugh viral polaroid craft beer. +1 distillery Truffaut typewriter tousled crucifix, lo-fi butcher normcore skateboard. Drinking vinegar ugh whatever sriracha. Synth tofu
-          viral butcher flexitarian. 3 wolf moon Schlitz plaid small batch kale chips blog. Fingerstache selfies freegan, Helvetica Neutra Brooklyn semiotics cred narwhal beard tousled leggings.</p>
+        
+      <div class="col-md-12">
+
+        <div class="jumbotron">
+          <h1 id="hello,-world!">Welcome back,<a class="anchorjs-link"><span class="anchorjs-icon"></span></a></h1>
+          <p>This is just one of the many templates I personally built from scratch that I use for my clients backend administrative views. This one is by far my favorite but I have many others.</p>
+          <p><a class="btn btn-primary btn-custom-blue" role="button">Go Home</a></p>
+        </div>
+
       </div>
-      <div class="col-sm-6">
-        <p>Slow-carb fanny pack yr Brooklyn gentrify. Fanny pack keffiyeh taxidermy, ugh viral polaroid craft beer. +1 distillery Truffaut typewriter tousled crucifix, lo-fi butcher normcore skateboard. Drinking vinegar ugh whatever sriracha. Synth tofu
-          viral butcher flexitarian. 3 wolf moon Schlitz plaid small batch kale chips blog. Fingerstache selfies freegan, Helvetica Neutra Brooklyn semiotics cred narwhal beard tousled leggings.</p>
+
+      <div class="col-md-6">
+        <body class="cal-cont" onload="startTime()">
+          <div class="cal-sub-container">
+            <div class="card">
+              <div class="front">
+                <div class="contentfront">
+                  <div class="month">
+                    <table>
+                      <tr class="orangeTr">
+                        <th>M</th>
+                        <th>T</th>
+                        <th>W</th>
+                        <th>T</th>
+                        <th>F</th>
+                        <th>S</th>
+                        <th>S</th>
+                      </tr>
+                      <tr class="whiteTr">
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                      </tr>
+                      <tr class="whiteTr">
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>11</th>
+                        <th>12</th>
+                        <th>13</th>
+                      </tr>
+                      <tr class="whiteTr">
+                        <th>14</th>
+                        <th>15</th>
+                        <th>16</th>
+                        <th>17</th>
+                        <th>18</th>
+                        <th>19</th>
+                        <th>20</th>
+                      </tr>
+                      <tr class="whiteTr">
+                        <th>21</th>
+                        <th>22</th>
+                        <th>23</th>
+                        <th>24</th>
+                        <th>25</th>
+                        <th>26</th>
+                        <th>27</th>
+                      </tr>
+                      <tr class="whiteTr">
+                        <th>28</th>
+                        <th>29</th>
+                        <th>30</th>
+                        <th>31</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="date">
+                    <div class="datecont">
+                      <div id="date">15</div>
+                      <div id="day">Tuesday</div>
+                      <div id="month">September</div>
+                      <i class="fa fa-pencil edit" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="back">
+                <div class="contentback">
+                  <div class="backcontainer">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
       </div>
+
+      <!-- WAVE -->
+      <div class="col-md-6 col-padding-fix-graph">
+        <div style="display: block;">
+          <canvas baseChart width="250" height="250"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            [plugins]="lineChartPlugins">
+          </canvas>
+        </div>
+      </div>
+
+      <!-- PIE -->
+      <div class="col-md-6 col-padding-fix-graph">
+        <div style="display: block;">
+          <canvas baseChart width="200" height="200"
+            [data]="pieChartData" 
+            [labels]="pieChartLabels" 
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [colors]="pieChartColors"
+            [plugins]="pieChartPlugins"
+            [legend]="pieChartLegend">
+          </canvas>
+        </div>
+      </div>
+
+      <!-- Bar -->
+      <div class="col-md-6 col-padding-fix-graph">
+        <div style="display: block;">
+          <canvas baseChart 
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [colors]="barChartColors"
+            [chartType]="barChartType">
+          </canvas>
+        </div>        
+      </div>
+
+      <div class="col-md-6 col-padding-fix-graph">
+        <div style="display: block;">
+          <canvas baseChart
+            [datasets]="radarChartData"
+            [options]="radarChartOptions"
+            [labels]="radarChartLabels"
+            [colors]="radarChartColors"
+            [chartType]="radarChartType">
+          </canvas>
+        </div>        
+      </div>
+
+      <div class="col-md-6 col-padding-fix-graph">
+        <div style="display: block;">
+          <canvas baseChart
+            [data]="polarAreaChartData"
+            [labels]="polarAreaChartLabels"
+            [colors]="polarChartColors"
+            [legend]="polarAreaLegend"
+            [chartType]="polarAreaChartType">
+          </canvas>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-padding-fix-graph">
+        <div style="display: block;">
+          <canvas baseChart
+            [datasets]="scatterChartData"
+            [options]="scatterChartOptions"
+            [colors]="scatterChartColors"
+            [chartType]="scatterChartType">
+          </canvas>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-padding-fix-graph">
+        <p class="text-center header-text">👑 Top 3 Leaderboard</p>
+        <table class="table table-striped">
+          <thead>
+            <tr class="bg-blue">
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6 clock-in-cont">
+
+        <div class="back"></div>
+        <div class="registration-form">
+          <header>
+            <h1>🕑 Clock In</h1>
+            <p>Fill in all informations</p>
+          </header>
+          <form>
+            <div class="input-section email-section">
+              <input class="email" type="email" placeholder="Employee ID" autocomplete="off"/>
+              <div class="animated-button"><span class="icon-paper-plane"><i class="fa fa-envelope-o"></i></span><span class="next-button email"><i class="fa fa-arrow-up"></i></span></div>
+            </div>
+            <div class="input-section password-section folded">
+              <input class="password" type="password" placeholder="Password"/>
+              <div class="animated-button"><span class="icon-lock"><i class="fa fa-lock"></i></span><span class="next-button password"><i class="fa fa-arrow-up"></i></span></div>
+            </div>
+            <div class="input-section repeat-password-section folded">
+              <input class="repeat-password" type="password" placeholder="Password"/>
+              <div class="animated-button"><span class="icon-repeat-lock"><i class="fa fa-lock"></i></span><span class="next-button repeat-password"><i class="fa fa-paper-plane"></i></span></div>
+            </div>
+            <div class="success"> 
+              <p>Clocked In!</p>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+        
+        <p class="palette-header text-center header-text">Color Palette</p>
+        
+        <div class="row palette-row">
+        
+          <div class="col-md-3" style="display: flex;">
+
+            <div class="left-palette l-1"></div>
+            <div class="right-palette r-1"></div>
+            <div class="palette-desc">
+              <p class="palette-header">Electric Blue</p>
+              <p class="palette-text">Left: #0984e3</p>
+              <p class="palette-text">Right: #74b9ff</p>
+            </div>
+
+          </div>
+
+          <div class="col-md-3" style="display: flex;">
+            
+            <div class="left-palette l-2"></div>
+            <div class="right-palette r-2"></div>
+            <div class="palette-desc">
+              <p class="palette-header">Steal The Teal</p>
+              <p class="palette-text">Left: #00cec9</p>
+              <p class="palette-text">Right: #81ecec</p>
+            </div>
+
+          </div>
+
+          <div class="col-md-3" style="display: flex;">
+            
+            <div class="left-palette l-3"></div>
+            <div class="right-palette r-3"></div>
+            <div class="palette-desc">
+              <p class="palette-header">Mintee</p>
+              <p class="palette-text">Left: #00b894</p>
+              <p class="palette-text">Right: #55efc4</p>
+            </div>
+
+          </div>
+
+          <div class="col-md-3" style="display: flex;">
+            
+            <div class="left-palette l-4"></div>
+            <div class="right-palette r-4"></div>
+            <div class="palette-desc">
+              <p class="palette-header">Darkula</p>
+              <p class="palette-text">Left: #2d3436</p>
+              <p class="palette-text">Right: #636e72</p>
+            </div>
+
+
+          </div>
+
+        </div>
+        
+      </div>
+
+      <div class="col-md-12 bottom-spacer">
+        <!-- BOTTOM PAGE OFFSET -->
+      </div>
+
     </div>
+
   </div>
+
 </div>

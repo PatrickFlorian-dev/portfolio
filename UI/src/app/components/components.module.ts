@@ -24,6 +24,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MyResourcesComponent } from './my-resources/my-resources.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminDemoComponent } from './admin-demo/admin-demo.component';
+import { ChartsModule } from 'ng2-charts';
 
 const components = [
     PortfolioComponent,
@@ -57,6 +58,7 @@ const directives = [
         HttpModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
+        ChartsModule,
     ],
     declarations: [
         directives,
