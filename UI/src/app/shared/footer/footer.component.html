@@ -1,18 +1,73 @@
 <footer class="footer">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <nav class="footer-nav">
+
+            <div class="button">
+                <button><span>Subscribe</span></button>
+            </div>
+
+            <div class="pop-up open">
+
+                <img id="bus-gif" src="./assets/img/bgs/vangif.gif" />
+
+                <div class="content">
+                  <div class="container">
+                    <div class="dots">
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
+                    
+                    <span class="close">🗙 close</span>
+                    
+                    <div class="title">
+                      <h1>subscribe</h1>
+                    </div>
+                    
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/256492/cXsiNryL.png" alt="Car">
+                    
+                    <div class="subscribe">
+                      <h1>Subscribe to get the latest <span>news &amp; updates</span>.</h1>
+                      <form>
+                        <input id="subscribe-email" type="email" placeholder="Your email address" (input)="emailValue = $event.target.value;" (blur)="touchInput('email')">
+                        <input id="subscribe-submit" type="submit" value="Subscribe" (click)="subscribe()">
+                        <br/> <br/> <br/>
+                        <p id="error-text"> <i class="fas fa-exclamation-circle"></i> &nbsp; <span id="error-text-span"></span> </p>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="moving-bg-cont">
+
+                <div class="sliding-background"></div>
+
+                <div class="footer-text-cont footer-text-cont-left">
+                    <a>Blog &nbsp;</a>
+                    <a>Github &nbsp;</a>
+                </div>
+
+                <div class="footer-text-cont footer-text-cont-right">
+                    <a>© {{test | date: 'yyyy'}} | Patrick Florian <i style="color: #ffffff;" class="fa fa-heart heart"></i></a>
+                </div>
+
+            </div>
+
+            <!-- <nav class="footer-nav">
                 <ul>
-                    <li><a href="https://www.creative-tim.com">Creative Tim</a></li>
+                    <li><a href="https://www.creative-tim.com">Patrick Florian</a></li>
                     <li><a href="http://blog.creative-tim.com">Blog</a></li>
                     <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
                 </ul>
             </nav>
+
             <div class="credits ml-auto">
                 <span class="copyright">
-                    © {{test | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                    © {{test | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by Patrick Florian
                 </span>
-            </div>
+            </div> -->
+
         </div>
     </div>
 </footer>

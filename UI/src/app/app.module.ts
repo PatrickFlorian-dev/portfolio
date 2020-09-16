@@ -11,7 +11,10 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BtnHoverClassDirective } from './shared/directives/btn-hover-class.directive';
 
+// import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import { ExamplesModule } from './examples/examples.module';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    // LeafletModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,142 @@
+<div class="section" id="my-skills-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center section-header">My Stats & Skills</p>
+                <h4 class="text-center">Click on a card below to see more details</h4>
+            </div>
+
+<div class="col-md-8 nopadding">
+
+<div class="grey-bg container-fluid">
+
+<section id="my-skills-technical">
+
+<!-- <div class="row">
+    <div class="col-12 mt-3 mb-1">
+    <h4 class="text-uppercase">Minimal Statistics Cards</h4>
+    <p>Statistics on minimal cards.</p>
+    </div>
+</div> -->
+
+    <div class="row">
+
+        <div class="col-xl-3 col-sm-6 col-12" *ngFor="let card of cardsToRender">
+            <div class="card">
+                <div class="card-content" (click)="changePercentage(card)">
+                    <div class="card-body" [class.selected-card]="card.active">
+                        <div class="media d-flex">
+                            
+                            <div class="align-self-center">
+                                <i class="elec-blue font-large-2 float-left fa-font-fix {{ card.icon }}"></i>
+                            </div>
+
+                            <div class="media-body text-right">
+                                <h3>{{ card.subTitle }}</h3>
+                                <span>{{ card.title }}</span>
+                            </div>
+
+                        </div>
+
+                        <div class="progress mt-1 mb-0" style="height: 7px;">
+                            <div class="progress-bar" role="progressbar" style.width="{{ card.prctAmtBar }}" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+  
+<section id="my-skills-non-technical">
+    
+    <div class="row">
+      <div class="col-12 mt-3 mb-1">
+        <h4 class="text-uppercase">Non Technical Skills</h4>
+        <p>The business skills I picked up along the way.</p>
+      </div>
+    </div>
+  
+    <div class="row">
+
+        <div class="col-xl-6 col-md-12" *ngFor="let cardXL of cardsToRenderXL">
+            <div class="card overflow-hidden">
+                <div class="card-content" (click)="changePercentage(cardXL)">
+                    <div class="card-body cleartfix" [class.selected-card]="cardXL.active">
+                        <div class="media align-items-stretch">
+
+                            <div class="align-self-center">
+                                <i class="elec-blue font-large-2 mr-2 fa-font-fix {{ cardXL.icon }}"></i>
+                            </div>
+
+                            <div class="media-body content-body-fix">
+                                <h4 class="title-text">{{ cardXL.title }}</h4>
+                                <span class="subtitle-text">{{ cardXL.subTitle }}</span>
+                            </div>
+
+                            <div class="align-self-center">
+                                <h1>{{ cardXL.subTitle2 }}</h1>
+                            </div>
+                            
+                        </div>
+
+                        <div class="progress mt-1 mb-0" style="height: 7px;">
+                            <div class="progress-bar" role="progressbar" style.width="{{ cardXL.prctAmtBar }}" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+  
+</div>
+</div>
+
+<div class="col-md-4 details-col">
+    
+    <div *ngIf="curPercentText">
+
+        <div class="editor-indicator" data-state="EMPTY">
+
+            <svg viewBox="0 0 36 36" class="circular-chart">
+                <path class="circle animate-circular" id="circular-chart"
+                attr.stroke-dasharray="{{ graphAmount }}, 100"
+                  
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <animate id="dash" 
+                attributeName="stroke-dashoffset"
+                from="30" to="0"
+                dur="0.5s" 
+                fill="freeze" />
+                <text class="prcnt-text" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+                    {{ curPercentText }}
+                </text>
+            </svg>
+
+        </div>
+        
+    </div>
+    
+    <div *ngIf="!curPercentText">
+        <img class="starting-gif" src="./assets/img/gifs/webdevs.gif" alt="Whoops!" />
+    </div>
+
+    <div class="card-detail-cont">
+        <p class="text-body-main">{{ curSelectedBodyText }}</p>
+    </div>
+
+</div>
+
+        </div>
+    </div>
+</div>

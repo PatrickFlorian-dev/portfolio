@@ -1,0 +1,39 @@
+<div class="section" id="portfolio-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center section-header">Portfolio</p>
+
+                <div class="btn-cont text-center">
+                    <button *ngFor="let btn of btns" (click)="changeBtnActiveState(btn.btnID)"  (click)="filterImages(btn)"
+                    type="button" class="btn btn-idle" [class.btn-blue]="btn.btnActiveState == true">
+                    {{ btn.btnDisplayName }}
+                    </button>
+                </div>
+
+                <div class="row portfolio-img-row">
+                    <div class="col-md-3 nopadding portfolio-img-container" *ngFor="let img of filterImagesArray()" (click)="openModal(img)">
+                        <img class="portfolio-img" src="{{ img.imgSrc }}">
+                        <div class="portfolio-text-cont text-center">
+                            <p class="portfolio-title">{{ img.imgTitle }}</p>
+                            <p class="portfolio-category">{{ img.imgCategoryName }}</p>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div id="btn-container">
+                        <button class="learn-more">
+                            <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">See All Links</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,3 +1,269 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
-<app-footer *ngIf="removeFooter()"></app-footer>
+<div id="website-cont">
+
+    <div id="main-content" [@openCloseLeftCont]="isOpen ? 'open' : 'closed'">
+        
+        <app-navbar 
+        *ngIf="showNavbar"
+        (openModalOutputEvent)=toggleUserModal($event)
+        (toggleSidebarEvent)=toggleSidebar($event)
+        [loginInputEvent]="loginInputEvent">
+        </app-navbar>
+
+        <router-outlet></router-outlet>
+
+        <app-footer *ngIf="showFooter"></app-footer>
+
+    </div>
+    
+    <div *ngIf="showSidebar">
+        <div id="sidebar-cont" [@openClose]="isOpen ? 'open' : 'closed'">
+        
+            <i 
+            class="fas fa-arrows-alt-h sub-icon-pos" 
+            (click)="toggleSidebar();"
+            [@triggerToggleSidebar]="showSidebarButton ? 'shown' : 'hidden'"></i>
+            
+            <div class="settings-header-cont">
+    
+                <p class="settings-header">Sections </p>
+    
+                <p class="settings-list-text" (click)="scrollToSection('#top-section')">Top</p>
+                <p class="settings-list-text" (click)="scrollToSection('#portfolio-section')">Portfolio</p>
+                <p class="settings-list-text" (click)="scrollToSection('#about-me-section')">About</p>
+                <p class="settings-list-text" (click)="scrollToSection('#my-skills-section')">Stats & Skills</p>
+                <p class="settings-list-text" (click)="scrollToSection('#resources-section')">Resources</p>
+                <p class="settings-list-text" (click)="scrollToSection('#contact-me-section')">Contact Me</p>
+                <p class="settings-list-text" (click)="scrollToSection('#blog-section')">Blog</p>
+                
+            </div>
+    
+        </div>
+    </div>
+
+</div>
+
+<div class="modal is-open" [class.is-open]="!userModalOpen">
+  <div class="modal-container">
+
+    <div class="modal-left">
+
+        <div *ngIf="!loginLoading && curUserModalToRender == 'login'">
+
+            <h1 class="modal-title">Welcome!</h1>
+
+            <p class="modal-desc">Hey there! Login or create a new account to see some additional cool things!</p>
+            
+            <div class="input-block" [class.error-bg-cont]="emailValue.length == 0 && emailTouched">
+                <i class="fas fa-exclamation-circle input-error-icon" *ngIf="emailValue.length == 0 && emailTouched"></i>
+                <label for="email" class="input-label" [class.error-bg]="emailValue.length == 0 && emailTouched">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" (input)="emailValue = $event.target.value;" [value]="emailValue" (blur)="touchInput('email')">
+            </div>
+
+            <div class="input-block" [class.error-bg-cont]="passwordValue.length == 0 && passwordTouched">
+                <i class="fas fa-exclamation-circle input-error-icon" *ngIf="passwordValue.length == 0 && passwordTouched"></i>
+                <label for="password" class="input-label" [class.error-bg]="passwordValue.length == 0 && passwordTouched">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" (input)="passwordValue = $event.target.value;" [value]="passwordValue" (blur)="touchInput('password')">
+            </div>
+
+            <div class="modal-buttons">
+                <a style="cursor: pointer;" (click)="switchUserModal('passwordReset')" class=""><i class="fas fa-key"></i> Forgot your password?</a>
+                <button class="input-button" (click)="login()">Login</button>
+            </div>
+
+            <p *ngIf="curModalError" class="modal-error"><i class="fas fa-exclamation-circle"></i> {{ curModalError }}</p>
+
+            <p class="sign-up">Don't have an account? <a style="cursor: pointer;" (click)="switchUserModal('register')">Sign up now</a></p>
+
+        </div>
+
+        <div *ngIf="!loginLoading && curUserModalToRender == 'register'">
+
+            <h1 class="modal-title">Sign Up!</h1>
+
+            <p class="modal-desc">Register to see some cool content exclusives! Don't worry I promise not to spam you with emails.</p>
+            
+            <div class="input-block" [class.error-bg-cont]="firstNameValue.length == 0 && firstNameTouched">
+                <i class="fas fa-exclamation-circle input-error-icon" *ngIf="firstNameValue.length == 0 && firstNameTouched"></i>
+                <label for="firstName" class="input-label" [class.error-bg]="firstNameValue.length == 0 && firstNameTouched">First Name</label>
+                <input type="text" name="firstName" id="first-name" placeholder="First Name" (input)="firstNameValue = $event.target.value;" [value]="firstNameValue" (blur)="touchInput('firstName')">
+            </div>
+
+            <div class="input-block" [class.error-bg-cont]="lastNameValue.length == 0 && lastNameTouched">
+                <i class="fas fa-exclamation-circle input-error-icon" *ngIf="lastNameValue.length == 0 && lastNameTouched"></i>
+                <label for="lastName" class="input-label" [class.error-bg]="lastNameValue.length == 0 && lastNameTouched">Last Name</label>
+                <input type="text" name="lastName" id="last-name" placeholder="Last Name" (input)="lastNameValue = $event.target.value;" [value]="lastNameValue" (blur)="touchInput('lastName')">
+            </div>
+
+            <div class="input-block" [class.error-bg-cont]="registerEmailValue.length == 0 && registerEmailTouched">
+                <i class="fas fa-exclamation-circle input-error-icon" *ngIf="registerEmailValue.length == 0 && registerEmailTouched"></i>
+                <label for="registerEmail" class="input-label" [class.error-bg]="registerEmailValue.length == 0 && registerEmailTouched">Email (This is also your username)</label>
+                <input type="email" name="registerEmail" id="register-email" placeholder="Email (This is also your username)" (input)="registerEmailValue = $event.target.value;" [value]="registerEmailValue" (blur)="touchInput('registerEmail')">
+            </div>
+
+            <div class="input-block" [class.error-bg-cont]="registerPasswordValue.length == 0 && registerPasswordTouched">
+                <i class="fas fa-exclamation-circle input-error-icon" *ngIf="registerPasswordValue.length == 0 && registerPasswordTouched"></i>
+                <label for="registerPassword" class="input-label" [class.error-bg]="registerPasswordValue.length == 0 && registerPasswordTouched">Password</label>
+                <input type="password" name="registerPassword" id="register-password" placeholder="Password" (input)="registerPasswordValue = $event.target.value;" [value]="registerPasswordValue" (blur)="touchInput('registerPassword')">
+            </div>
+
+            <div class="input-block" [class.error-bg-cont]="registerPasswordConfirmValue.length == 0 && registerPasswordConfirmTouched">
+                <i class="fas fa-exclamation-circle input-error-icon" *ngIf="registerPasswordConfirmValue.length == 0 && registerPasswordConfirmTouched"></i>
+                <label for="registerPasswordConfirm" class="input-label" [class.error-bg]="registerPasswordConfirmValue.length == 0 && registerPasswordConfirmTouched">Confirm Password</label>
+                <input type="password" name="registerPasswordConfirm" id="register-password-confirm" placeholder="Confirm Password" (input)="registerPasswordConfirmValue = $event.target.value;" [value]="registerPasswordConfirmValue" (blur)="touchInput('registerPasswordConfirm')">
+            </div>
+
+            <div class="modal-buttons">
+                <button class="input-button" (click)="register()">Register</button>
+            </div>
+
+            <p *ngIf="curModalError" class="modal-error"><i class="fas fa-exclamation-circle"></i> {{ curModalError }}</p>
+
+            <p class="sign-up">Already have an account? <a style="cursor: pointer;" (click)="switchUserModal('login')">Login now</a></p>
+
+        </div>
+
+        <div *ngIf="!loginLoading && curUserModalToRender == 'passwordReset' && !passwordResetSent">
+
+            <h1 class="modal-title">Password Reset</h1>
+
+            <p class="modal-desc">Forgot your password? No worries I got you, just enter your email below and we'll get you all setup.</p>
+            
+            <div class="input-block" [class.error-bg-cont]="passwordResetEmailValue.length == 0 && passwordResetEmailTouched">
+                <i class="fas fa-exclamation-circle input-error-icon" *ngIf="passwordResetEmailValue.length == 0 && passwordResetEmailTouched"></i>
+                <label for="passwordResetEmail" class="input-label" [class.error-bg]="passwordResetEmailValue.length == 0 && passwordResetEmailTouched">Email</label>
+                <input type="email" name="passwordResetEmail" id="register-email" placeholder="Email" (input)="passwordResetEmailValue = $event.target.value;" [value]="passwordResetEmailValue" (blur)="touchInput('passwordResetEmail')">
+            </div>
+
+            <div class="modal-buttons">
+                <button class="input-button" (click)="passwordReset()">Send reset email</button>
+            </div>
+
+            <p *ngIf="curModalError" class="modal-error"><i class="fas fa-exclamation-circle"></i> {{ curModalError }}</p>
+
+            <p class="sign-up">Remembered your password? <br/> <a style="cursor: pointer;" (click)="switchUserModal('login')">Login now</a></p>
+
+        </div>
+
+        <div *ngIf="!loginLoading && curUserModalToRender == 'passwordReset' && passwordResetSent">
+
+            <h1 class="modal-title">Password Reset Sent!</h1>
+
+            <p class="modal-desc">Please check your email including your spam folder for a password reset email. If you do not see it right away, please give it up to 5 minutes.</p>
+            
+            <p class="sign-up">Remembered your password? <br/> <a style="cursor: pointer;" (click)="switchUserModal('login')">Login now</a></p>
+
+        </div>
+
+        <div *ngIf="!loginLoading && curUserModalToRender == 'profile'">
+
+            <h1 class="modal-title">Welcome back, {{ loggedInUser.first_name }} {{ loggedInUser.last_name }}</h1>
+
+            <p class="modal-desc">How's it hanging? Nice to see you here again.</p>
+
+            <p><span class="modal-item-label">Username / Email: </span> {{ loggedInUser.username}} </p>
+            
+            <p><span class="modal-item-label">Member since: </span> {{ loggedInUser.date_joined | date: 'MM/dd/yyyy' }}</p>
+
+        </div>
+
+        <div class="loading-ani-cont" *ngIf="loginLoading">
+
+            <p>Loading ...</p>
+            <div class="boxes">
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="box">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+        </div>
+      
+    </div>
+
+    <div class="modal-right">
+      <img src="https://images.pexels.com/photos/297303/pexels-photo-297303.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+    </div>
+
+    <button class="icon-button close-button" (click)="toggleUserModal('close')">
+        <i class="fas fa-times-circle close-window-icon"></i>
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+            <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
+        </svg> -->
+    </button>
+
+  </div>
+  
+</div>
+
+<!-- <div [@triggerUserModal]="userModalOpen ? 'close' : 'open'" id='user-modal'>
+    
+    <div id="user-modal-contents-cont">
+
+        <div class="row" id="user-modal-contents-row">
+            <div class="col-md-6 nopadding" id="user-modal-contents-left">
+                <button (click)="test()">TEST</button>
+            </div>
+            <div class="col-md-6 nopadding" id="user-modal-contents-right">
+                <p>IMG HERE</p>
+            </div>
+        </div>
+
+    </div>
+
+</div> -->
+
+<div id="loading-screen">
+    
+    <div class="loading-ani-cont">
+
+        <p>Loading ...</p>
+        <div class="boxes">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

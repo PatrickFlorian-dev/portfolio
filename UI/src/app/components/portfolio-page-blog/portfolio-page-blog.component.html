@@ -1,0 +1,325 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+<body class="is-preload">
+
+  <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Header -->
+        <header id="header">
+          <h1><a (click)="openModal()">PBJ</a></h1>
+          <nav class="links">
+            <ul>
+              <li><a routerLink="/">My Portfolio Site</a></li>
+              <li><a (click)="openModal()">Latest Blogs</a></li>
+              <li><a (click)="openModal()">Fresh Jams</a></li>
+              <li><a (click)="openModal()">About</a></li>
+              <li><a (click)="openModal()">Upcoming Events</a></li>
+            </ul>
+          </nav>
+          <nav class="main">
+            <ul>
+              <li class="search">
+                <a class="fa-search" (click)="openModal()">Search</a>
+                <form id="search" method="get" action="#">
+                  <input type="text" name="query" placeholder="Search" />
+                </form>
+              </li>
+              <li class="menu">
+                <a class="fa-bars" (click)="openModal()">Menu</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+      <!-- Menu -->
+        <section id="menu">
+
+          <!-- Search -->
+            <section>
+              <form class="search" method="get" action="#">
+                <input type="text" name="query" placeholder="Search" />
+              </form>
+            </section>
+
+          <!-- Links -->
+            <section>
+              <ul class="links">
+                <li>
+                  <a (click)="openModal()">
+                    <h3>Lorem ipsum</h3>
+                    <p>Feugiat tempus veroeros dolor</p>
+                  </a>
+                </li>
+                <li>
+                  <a (click)="openModal()">
+                    <h3>Dolor sit amet</h3>
+                    <p>Sed vitae justo condimentum</p>
+                  </a>
+                </li>
+                <li>
+                  <a (click)="openModal()">
+                    <h3>Feugiat veroeros</h3>
+                    <p>Phasellus sed ultricies mi congue</p>
+                  </a>
+                </li>
+                <li>
+                  <a (click)="openModal()">
+                    <h3>Etiam sed consequat</h3>
+                    <p>Porta lectus amet ultricies</p>
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+          <!-- Actions -->
+            <section>
+              <ul class="actions stacked">
+                <li><a (click)="openModal()" class="button large fit">Log In</a></li>
+              </ul>
+            </section>
+
+        </section>
+
+      <!-- Main -->
+        <div id="main">
+
+          <section class="mobile-intro" id="intro">
+            <!-- <a href="#" class="logo"><img src="./assets/img/templates/blog/avatar.png" alt="" /></a> -->
+            <a (click)="openModal()" class="logo-mobile"><img src="./assets/img/templates/blog/pbj-hex-shadow.png" loading="lazy" alt="" /></a>
+            <header>
+              <h2>Patrick's Blogs & Jams</h2>
+              <p>PBJ bringing the latest news and the grooviest jams</p>
+            </header>
+          </section>
+
+          <!-- Post -->
+            <article class="post">
+              <header>
+                <div class="title">
+                  <h2><a (click)="openModal()">Tired of city living?</a></h2>
+                  <p>City life can get old quick, here's some sugguestions.</p>
+                </div>
+                <div class="meta">
+                  <time class="published" datetime="2015-11-01">November 1, 2020</time>
+                  <a (click)="openModal()" class="author"><span class="name">Patrick Florian</span><img src="./assets/img/templates/blog/avatar.png" loading="lazy" alt="" /></a>
+                </div>
+              </header>
+              <a (click)="openModal()" class="image featured"><img src="./assets/img/templates/blog/city-bg-1-min.jpg" loading="lazy" alt="" /></a>
+              <p>Let's face it, most of us all have those days where we just don't want to interact with anyone and exist in our bubble. Unfortunately if you live in a big city that bubble will likely be invaded by someone. Saving up to leave the city can be challenging but here are some tips to help you save while living the expensive city life so you can move somewhere more manageable.</p>
+              <footer>
+                <ul class="actions">
+                  <li><a (click)="openModal()" class="button large">Continue Reading</a></li>
+                </ul>
+                <ul class="stats">
+                  <li><a (click)="openModal()">General</a></li>
+                  <li><a (click)="openModal()" class="icon solid fa-heart">28</a></li>
+                  <li><a (click)="openModal()" class="icon solid fa-comment">128</a></li>
+                </ul>
+              </footer>
+            </article>
+
+          <!-- Post -->
+            <article class="post">
+              <header>
+                <div class="title">
+                  <h2><a (click)="openModal()">Want to learn how to restore classics?</a></h2>
+                  <p>Got an old rusty muscle care that doesn't go boom? Let's make it go boom!</p>
+                </div>
+                <div class="meta">
+                  <time class="published" datetime="2015-10-25">October 25, 2020</time>
+                  <a (click)="openModal()" class="author"><span class="name">Patrick Florian</span><img src="./assets/img/templates/blog/avatar.png" loading="lazy" alt="" /></a>
+                </div>
+              </header>
+              <a (click)="openModal()" class="image featured"><img src="./assets/img/templates/blog/muscle-car-bg-min.jpg" loading="lazy" alt="" /></a>
+              <p>If you're like me then you love cars, especially those old classic hot rods from the 70's and 80's. Not only can you pickup some handy mechanic skills but you can also make some pretty serious dough if you want to resell your newly resotred beauty-mobile.</p>
+              <footer>
+                <ul class="actions">
+                  <li><a (click)="openModal()" class="button large">Continue Reading</a></li>
+                </ul>
+                <ul class="stats">
+                  <li><a (click)="openModal()">General</a></li>
+                  <li><a (click)="openModal()" class="icon solid fa-heart">31</a></li>
+                  <li><a (click)="openModal()" class="icon solid fa-comment">10</a></li>
+                </ul>
+              </footer>
+            </article>
+
+          <!-- Post -->
+            <article class="post">
+              <header>
+                <div class="title">
+                  <h2><a (click)="openModal()">Want to travel on the cheap?</a></h2>
+                  <p>Being frugal not only applies to your daily life but in the activities you love!</p>
+                </div>
+                <div class="meta">
+                  <time class="published" datetime="2015-10-22">July 22, 2020</time>
+                  <a (click)="openModal()" class="author"><span class="name">Patrick Florian</span><img src="./assets/img/templates/blog/avatar.png" loading="lazy" alt="" /></a>
+                </div>
+              </header>
+              <a (click)="openModal()" class="image featured"><img src="./assets/img/templates/blog/travel-bg-1-min.jpg" loading="lazy" alt="" /></a>
+              <p>Everyone thinks traveling is super expensive so they don't do it and in most cases don't even bother to figiure out how to travel within their budget. Well don't I have some good news for you! Travel on the cheap and plan in advance.</p>
+              <footer>
+                <ul class="actions">
+                  <li><a (click)="openModal()" class="button large">Continue Reading</a></li>
+                </ul>
+                <ul class="stats">
+                  <li><a (click)="openModal()">General</a></li>
+                  <li><a (click)="openModal()" class="icon solid fa-heart">58</a></li>
+                  <li><a (click)="openModal()" class="icon solid fa-comment">346</a></li>
+                </ul>
+              </footer>
+            </article>
+
+          <!-- Pagination -->
+            <ul class="actions pagination">
+              <li><a (click)="openModal()" class="disabled button large previous">Previous Page</a></li>
+              <li><a (click)="openModal()" class="button large next">Next Page</a></li>
+            </ul>
+
+        </div>
+
+      <!-- Sidebar -->
+        <section id="sidebar">
+
+          <!-- Intro -->
+            <section class="intro-desktop" id="intro">
+              <!-- <a href="#" class="logo"><img src="./assets/img/templates/blog/avatar.png" alt="" /></a> -->
+              <a (click)="openModal()" class=""><img src="./assets/img/templates/blog/pbj-hex-shadow.png" loading="lazy" alt="" /></a>
+              <header>
+                <h2>Patrick's Blogs & Jams</h2>
+                <p>PBJ bringing the latest news and the grooviest jams</p>
+              </header>
+            </section>
+
+          <!-- Mini Posts -->
+            <section>
+              <div class="mini-posts">
+
+                <!-- Mini Post -->
+                  <article class="mini-post">
+                    <header>
+                      <h3><a (click)="openModal()">The food truck diaries</a></h3>
+                      <time class="published" datetime="2015-10-20">March 6, 2020</time>
+                      <a (click)="openModal()" class="author"><img src="./assets/img/templates/blog/avatar.png" loading="lazy" alt="" /></a>
+                    </header>
+                    <a (click)="openModal()" class="image"><img src="./assets/img/templates/blog/food-truck-bg-1-min.jpg" loading="lazy" alt="" /></a>
+                  </article>
+
+                <!-- Mini Post -->
+                  <article class="mini-post">
+                    <header>
+                      <h3><a (click)="openModal()">How to upgrade your desktop</a></h3>
+                      <time class="published" datetime="2015-10-19">Feburary 1, 2020</time>
+                      <a (click)="openModal()" class="author"><img src="./assets/img/templates/blog/avatar.png" loading="lazy" alt="" /></a>
+                    </header>
+                    <a (click)="openModal()" class="image"><img src="./assets/img/templates/blog/gaming-pc-bg-1-min.jpg" loading="lazy" alt="" /></a>
+                  </article>
+
+                <!-- Mini Post -->
+                  <article class="mini-post">
+                    <header>
+                      <h3><a (click)="openModal()">Find that perfect book</a></h3>
+                      <time class="published" datetime="2015-10-18">December 18, 2019</time>
+                      <a (click)="openModal()" class="author"><img src="./assets/img/templates/blog/avatar.png" loading="lazy" alt="" /></a>
+                    </header>
+                    <a (click)="openModal()" class="image"><img src="./assets/img/templates/blog/bookcase-bg-1-min.jpg" loading="lazy" alt="" /></a>
+                  </article>
+
+                <!-- Mini Post -->
+                  <article class="mini-post">
+                    <header>
+                      <h3><a (click)="openModal()">Learn these quick tips to lose weight</a></h3>
+                      <time class="published" datetime="2015-10-17">September 3, 2019</time>
+                      <a (click)="openModal()" class="author"><img src="./assets/img/templates/blog/avatar.png" loading="lazy" alt="" /></a>
+                    </header>
+                    <a (click)="openModal()" class="image"><img src="./assets/img/templates/blog/gym-bg-1-min.jpg" loading="lazy" alt="" /></a>
+                  </article>
+
+              </div>
+            </section>
+
+          <!-- Posts List -->
+            <section>
+              <ul class="posts">
+                <li>
+                  <article>
+                    <header>
+                      <h3><a (click)="openModal()">Monday, bloody Monday!</a></h3>
+                      <time class="published" datetime="2015-10-20">October 20, 2019</time>
+                    </header>
+                    <a (click)="openModal()" class="image"><img src="./assets/img/templates/blog/red-bg-1-min.jpg" loading="lazy" alt="" /></a>
+                  </article>
+                </li>
+                <li>
+                  <article>
+                    <header>
+                      <h3><a (click)="openModal()">When's the last time you been to the zoo?</a></h3>
+                      <time class="published" datetime="2015-10-15">September 15, 2019</time>
+                    </header>
+                    <a (click)="openModal()" class="image"><img src="./assets/img/templates/blog/zoo-bg-1-min.jpg" loading="lazy" alt="" /></a>
+                  </article>
+                </li>
+                <li>
+                  <article>
+                    <header>
+                      <h3><a (click)="openModal()">Is your pet depressed?</a></h3>
+                      <time class="published" datetime="2015-10-10">April 10, 2019</time>
+                    </header>
+                    <a (click)="openModal()" class="image"><img src="./assets/img/templates/blog/pet-bg-1-min.jpg" loading="lazy" alt="" /></a>
+                  </article>
+                </li>
+                <li>
+                  <article>
+                    <header>
+                      <h3><a (click)="openModal()">Read 3 books in 7 days</a></h3>
+                      <time class="published" datetime="2015-10-08">January 8, 2019</time>
+                    </header>
+                    <a (click)="openModal()" class="image"><img src="./assets/img/templates/blog/bookcase-bg-1-min.jpg" loading="lazy" alt="" /></a>
+                  </article>
+                </li>
+                <li>
+                  <article>
+                    <header>
+                      <h3><a (click)="openModal()">Why arcades are making a comeback in this decade</a></h3>
+                      <time class="published" datetime="2015-10-06">October 7, 2015</time>
+                    </header>
+                    <a (click)="openModal()" class="image"><img src="./assets/img/templates/blog/arcade-bg-1-min.jpg" loading="lazy" alt="" /></a>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+          <!-- About -->
+            <section class="blurb">
+              <h2>About</h2>
+              <p>PBJ is a site created by me, Patrick. PBJ stands for Patrick's Blogs & Jams, a website where you can see some cool blogs about a variety of topics and explore new music and old classics. Enjoy and feel free to drop me an email about it here patrickflorian2@gmail.com 🙃 </p>
+              <ul class="actions">
+                <li><a (click)="openModal()" class="button">Learn More</a></li>
+              </ul>
+            </section>
+
+          <!-- Footer -->
+            <section id="footer">
+              <ul class="icons">
+                <li><a (click)="openModal()" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a (click)="openModal()" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a (click)="openModal()" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a (click)="openModal()" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+                <li><a (click)="openModal()" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+              </ul>
+              <p class="copyright">&copy; Patrick Florian </p>
+            </section>
+
+        </section>
+
+    </div>
+
+  <!-- Scripts -->
+    <!-- <script src="assets/js/jquery.min.js"></script> -->
+    <!-- <script src="assets/js/browser.min.js"></script> -->
+    <!-- <script src="assets/js/breakpoints.min.js"></script> -->
+    <!-- <script src="assets/js/util.js"></script> -->
+    <!-- <script src="assets/js/main.js"></script> -->
+
+</body>
