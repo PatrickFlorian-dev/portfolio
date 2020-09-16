@@ -56,5 +56,88 @@
           </div>
 
       </div>
+
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <h4 style="background-color: #fff;" class="text-center github-text-padding">This is a <span class="blue-text-highlight">LIVE GitHub API</span> that defaults to listing my public repositories. Feel free to change the username below to any username you want for the content to be dynamically changed!</h4>
+          <h4 style="background-color: #fff;" class="text-center">Please note this will only show public repositories not private ones. <span class="blue-text-highlight">Limit 10 latest repos.</span></h4>
+        </div>
+      </div>
+
+      <div class="row" style="background: #edf2f7;">
+
+        <div class="col-md-6">
+
+          <div class="git-items-loading" style="padding-top: 10px;" *ngIf="reposLoading">
+            <p style="color: rgba(9, 132, 227, 1)" class="text-center">Loading GitHub Repos , please wait ....</p>
+            <div class="sk-folding-cube">
+              <div class="sk-cube1 sk-cube"></div>
+              <div class="sk-cube2 sk-cube"></div>
+              <div class="sk-cube4 sk-cube"></div>
+              <div class="sk-cube3 sk-cube"></div>
+            </div>
+          </div>
+
+          <div class="main-git-repo-content" *ngIf="!reposLoading">
+
+            <div *ngIf="noResultsFound">
+              <p class="no-results-text">No results found for {{ gitUsername }}, please try again.</p>
+            </div>
+
+            <div class="git-input-name-cont" style="display: flex; background: #E5E9EE;">
+              
+              <label for="inp" class="inp">
+                <input type="text" id="inp" placeholder="&nbsp;" value="patrickflorian-dev" (input)="gitUsername = $event.target.value;">
+                <span class="label">Git Username</span>
+                <span class="focus-bg"></span>
+              </label>
+
+              <div class="git-submit-btn" (click)="updateRepos()">
+                <img src="./assets/img/icons/right-arrow-icon.jpg" class="git-submit-icon">
+              </div>
+
+            </div>
+          
+            <div *ngFor="let repo of repos; let i = index" [attr.data-index]="i">
+
+              <details [ngStyle]="{'margin-top': i === 0  ? '100px' : '12px' }">
+
+                <summary>
+
+                  <div class="repo-index-badge">
+                    {{ i + 1 }} / {{ totalRepoCount }} 
+                  </div>
+
+                  <span class="summary-title"> <img src="./assets/img/icons/git-icon-1.jpg" class="git-main-icon"> &nbsp; {{ repo.repoName }}</span>
+                  <div class="summary-chevron-up">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </div>
+                </summary>
+              
+                <div class="summary-content"><span style="color: #0984e3;">ID:</span> {{ repo.gitId }} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Owner:</span> {{ repo.ownerName }} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Url:</span> {{ repo.repoUrl }} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Updated At:</span> {{ repo.updatedAt | date :'MMM/dd/yyyy @ h:mm:ss a z'}} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Psuhed At:</span> {{ repo.pushedAt | date :'MMM/dd/yyyy @ h:mm:ss a z'}} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Created At:</span> {{ repo.createdAt | date :'MMM/dd/yyyy @ h:mm:ss a z'}} </div>
+
+                <div class="summary-chevron-down">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                </div>
+
+              </details>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+            
+        </div>
+
+      </div>
+
   </div>
 </div>

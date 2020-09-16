@@ -4,6 +4,7 @@ import { throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { UserInfo } from '../interfaces/user-info';
 import { ContactFormInfo } from '../interfaces/contact-form-info';
+import { GitCredentailsInfo } from '../interfaces/git-credentials-info';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,18 @@ export class DataService {
 
   public subscribeForm(contactInfo: ContactFormInfo) {
     return this.httpClient.post(this.REST_API_SERVER + '/api/subscribe/', contactInfo ).pipe(retry(0), catchError(this.handleError));
+  }
+
+  public getGitRepos(username: string) {
+    return this.httpClient.get(`https://api.github.com/users/${username}/repos`).pipe(retry(0), catchError(this.handleError));
+  }
+
+  public getGitBranchesByRepoAndOwner(gitCreds: GitCredentailsInfo) {
+    return this.httpClient.get(`https://api.github.com/repos/${gitCreds.gitUsername}/${gitCreds.repoName}/branches`).pipe(retry(0), catchError(this.handleError));
+  }
+
+  public getGitCommitsByRepoAndOwner(gitCreds: GitCredentailsInfo) {
+    return this.httpClient.get(`https://api.github.com/repos/${gitCreds.gitUsername}/${gitCreds.repoName}/commits`).pipe(retry(0), catchError(this.handleError));
   }
 
 }
