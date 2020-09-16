@@ -22,6 +22,13 @@ export class FooterComponent implements OnInit {
 
     ngOnInit() {
 
+        var pathArray = window.location.pathname.split('/');
+        if(pathArray[1] === 'home' || pathArray[1].length === 0) {
+            setTimeout(()=>{
+                $('.footer').show();
+            }, 3000);
+        }
+
         $('button').click(function(){
             $('.pop-up').addClass('open');
         });
