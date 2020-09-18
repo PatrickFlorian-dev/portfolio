@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare var $: any;
-import { ChartDataSets, ChartOptions, ChartType, RadialChartOptions } from 'chart.js';
+import { ChartDataSets, ChartOptions, ChartType, RadialChartOptions, ChartTitleOptions } from 'chart.js';
 import { Color, Label , SingleDataSet, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
 
 @Component({
@@ -16,9 +16,19 @@ export class AdminDemoComponent implements OnInit {
     { data: [70, 60, 71, 55, 56, 62, 75], label: 'Series B' },
   ];
   public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions: any = {
+  public lineChartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    legend: {
+      labels: {
+        fontFamily: '"Dosis", serif',
+        fontSize: 15,
+      }
+    },
+    title: {
+      fontFamily: '"Dosis", serif',
+      fontSize: 15,
+    }
   };
   public lineChartColors: Color[] = [
     {

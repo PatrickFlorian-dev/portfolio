@@ -14,7 +14,7 @@
                     [leafletLayersControl]="layersControl">
                 </div> -->
 
-                <div id="map" style="min-width:100px;width:100%;height:493px;">
+                <div id="map" style="min-width:100px;width:100%;height:493px;min-height:493px;">
                 </div>
 
             </div>
@@ -49,7 +49,7 @@
                   (blur)="touchInput('name')"
                   class="effect-19 error-bg" type="text" [value]="nameValue" 
                   (input)="nameValue = $event.target.value;">
-                    <label id="name-label">* Name</label>
+                    <label class="dosis" id="name-label">* Name</label>
                     <span class="focus-border">
                       <i></i>
                     </span>
@@ -63,7 +63,7 @@
                     (blur)="touchInput('email')"
                     class="effect-19" type="text" [value]="emailValue" 
                     (input)="emailValue = $event.target.value;">
-                    <label id="email-label">* Email</label>
+                    <label class="dosis" id="email-label">* Email</label>
                     <span class="focus-border">
                       <i></i>
                     </span>
@@ -78,7 +78,7 @@
                     (blur)="touchInput('phone')"
                     class="effect-19" type="text" [value]="phoneValue" 
                     (input)="phoneValue = $event.target.value;">
-                    <label id="phone-label">* Phone</label>
+                    <label class="dosis" id="phone-label">* Phone</label>
                     <span class="focus-border">
                       <i></i>
                     </span>
@@ -90,7 +90,7 @@
                   <div class="input-field-margin-top">
                     <textarea [class.has-content]="nameValue.length != 0" rows="7" style="width: 100%;" class="effect-19" type="text" [value]="messageValue" (input)="messageValue = $event.target.value;">
                     </textarea>
-                      <label>Message</label>
+                      <label class="dosis">Message</label>
                       <span class="focus-border">
                         <i></i>
                       </span>
