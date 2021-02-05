@@ -1,3 +1,4 @@
+import { ExploreMoreComponent } from './explore-more/explore-more.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -41,6 +42,7 @@ const components = [
     NotFoundComponent,
     MyResourcesComponent,
     AdminDemoComponent,
+    ExploreMoreComponent,
 ]
 
 const directives = [

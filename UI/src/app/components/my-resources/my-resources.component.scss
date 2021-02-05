@@ -469,8 +469,8 @@ details summary::-webkit-details-marker {
 
 .git-input-name-cont {
   position: absolute;
-  left: 34%;
-  top: 26px;
+  transform: translate(50%, 0);
+  top: 15px;
   border: 1px solid #0984e3;
 }
 
@@ -566,3 +566,27 @@ details summary::-webkit-details-marker {
     opacity: 0; 
   }
 }
+
+/* Media queries */
+
+@media only screen and (max-width: 600px) {
+  .git-input-name-cont {
+    transform: translate(35%, 0);
+  }
+  .code-editor-left-side-numbers-cont {
+    padding-bottom: 115px;
+  }
+  .code-editor-cont {
+    width: 90%;
+    height: 366px;
+    left: 5%;
+  }
+  .code-container-text {
+    width: 88%;
+  }
+  .accordion-expandable-cont {
+    width: 340px;
+    margin-bottom: 20px;
+  }
+}
+

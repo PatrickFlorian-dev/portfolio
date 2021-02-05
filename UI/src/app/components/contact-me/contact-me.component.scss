@@ -435,3 +435,14 @@ button:after {
             transform: rotate(360deg);
   }
 }
+
+/* Media queries */
+
+@media only screen and (max-width: 600px) {
+  .greetings-cont {
+    margin-top: 25px;
+  }
+  #contact-me-section {
+    margin-bottom: 17px;
+  }
+}

@@ -214,3 +214,10 @@ button {
     }
   }
   
+/* Media queries */
+
+@media only screen and (max-width: 600px) {
+  #portfolio-section {
+    padding-bottom: 100px;
+  }
+}

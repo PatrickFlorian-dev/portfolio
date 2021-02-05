@@ -100,7 +100,7 @@
           
             <div *ngFor="let repo of repos; let i = index" [attr.data-index]="i">
 
-              <details [ngStyle]="{'margin-top': i === 0  ? '100px' : '12px' }">
+              <details class="accordion-expandable-cont" [ngStyle]="{'margin-top': i === 0  ? '100px' : '12px' }">
 
                 <summary>
 

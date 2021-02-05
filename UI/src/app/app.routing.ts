@@ -1,3 +1,4 @@
+import { ExploreMoreComponent } from './components/explore-more/explore-more.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
@@ -16,7 +17,7 @@ import { PortfolioPageBlogComponent } from './components/portfolio-page-blog/por
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminDemoComponent } from './components/admin-demo/admin-demo.component';
 
-const routes: Routes =[
+const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home',             component: ComponentsComponent},
     { path: 'user-profile',     component: ProfileComponent },
@@ -24,6 +25,7 @@ const routes: Routes =[
     { path: 'landing',          component: LandingComponent,},
     { path: 'password-reset',   component: PasswordResetComponent,},
     { path: 'portfolio-blog',   component: PortfolioPageBlogComponent,},
+    { path: 'explore-more',   component: ExploreMoreComponent,},
     { path: 'admin-demo',   component: AdminDemoComponent,},
 
     // Catch alls
