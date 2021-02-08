@@ -10,12 +10,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div id="checklist">
-                                <p class="checklist-heading">Categories</p>
+                                <p class="checklist-heading" (click)="openBlog()">Categories</p>
         
                                 <section id="checklist-items" *ngFor="let category of categories">
                                     
                                     <input (click)="filterList(category.id)" class="hover-item" id="0{{ category.id }}" type="checkbox" name="" value="{{ category.id }}">
-                                    <label class="hover-item-label" for="0{{ category.id }}">{{ category.name }}</label>
+                                    <label class="hover-item-label dosis" style="font-size: 18px;" for="0{{ category.id }}">{{ category.name }}</label>
                                     
                                 </section>
         
@@ -24,13 +24,496 @@
                     </div>
                 </div>
                 <div class="right">
+                    
+                    <div class="row individual-blog-container" style="display: none;">
+                        
+                        <div class="image-container">
+                            <img class="blog-header-img" [src]="expandedBlog.bgUrl" />
+                            <div class="after">
+                                <p class="blog-header-text dosis-font">{{ expandedBlog.title }}</p>
+                                <p class="blog-author-name dosis-font">✏️ - Sally Sue</p>
+                                <p class="blog-created-at dosis-font">📅 &nbsp; - {{ expandedBlog.createdAtObj | date :'MMM/dd/yyyy'}}</p>
+                                <p class="back-icon" (click)="closeBlog()"><i class="fas fa-arrow-left"></i></p>
+                                <p class="blog-category dosis-font">Category - {{ expandedBlog.categoryName }} <span> 📣 Featured ⭐</span> </p>
+                                <div class="profile-pic-cont">
+                                    <img class="profile-pic-blog" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80" />
+                                </div>
+                                <div class="blog-text-body-cont">
+                                    <div class="blog-body">
+
+                                        <span *ngIf="expandedBlog.blogBody === 1">
+
+                                            <blockquote class="blockquote"><p>Travel makes one modest. You see what a tiny place you occupy in the world. – <strong>Gustave Flaubert</strong></p></blockquote>
+                                            
+                                            <br/>
+
+                                            <p class="first-letter dosis-font">If you are looking for software developer jobs in Germany, you’re lucky. Germany is not only a great place to work, but we have also gathered some useful information for you, regarding the software developing job market.. IT jobs are here to stay and Germany has plenty of opportunities for developers. Whether you are more of an expert in Java or C/C++, companies are looking for you. In fact, you will find that 1 out of 10 jobs in Germany are for software developers/engineers.
+                                                A study by the Federal Employment Agency found that vacancies for programmers and software developers stay open on for around 167 days before a suitable candidate is hired.</p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">“Are you a Java master? Then Munich is the perfect place for you to be. There are more than 1400 open Java positions at the moment. In contrast to Berlin, developers will find more positions with large corporations and medium-sized businesses in Munich rather than startups. Additionally, if you feel most comfortable in your business clothes or suit and like to be surrounded by high-society, then you will fit in perfectly.
+                                                Moreover, Berlin shows the highest rate of Ruby developer jobs. This can be explained perfectly with the city’s notorious and intense startup scene. Young and innovative enterprises particularly like to work with this programming language and therefore, it is no surprise that there are a lot of open positions in that field.</p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">Berlin is also the perfect place for you if you prefer a multicultural city with a pulsating night-life and community.
+                                                Nationwide, the number one language is Java with about 11.000 open positions, followed by SQL – 8.000 positions – and JavaScript – about 6.500 positions. After experiencing a rise over the past years, Python now ranks 5th within the most demanded programming languages in Germany.</p>
+                                            
+                                            <div class="share-btn-bg">
+                                           
+                                                <div class="share-button">
+                                                    <div class="share-button__back">
+                                                        <a class="share__link" href="#" title="twitter">
+                                                        <svg class="share__icon share__icon--twitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M35.901,19.144c0.011,0.246,0.017,0.494,0.017,0.742c0,7.551-5.746,16.255-16.259,16.255    c-3.227,0-6.231-0.943-8.759-2.565c0.447,0.053,0.902,0.08,1.363,0.08c2.678,0,5.141-0.914,7.097-2.446    c-2.5-0.046-4.611-1.698-5.338-3.969c0.348,0.066,0.707,0.103,1.074,0.103c0.521,0,1.027-0.068,1.506-0.199    c-2.614-0.524-4.583-2.833-4.583-5.603c0-0.024,0-0.049,0.001-0.072c0.77,0.427,1.651,0.685,2.587,0.714    c-1.532-1.023-2.541-2.773-2.541-4.755c0-1.048,0.281-2.03,0.773-2.874c2.817,3.458,7.029,5.732,11.777,5.972    c-0.098-0.419-0.147-0.854-0.147-1.303c0-3.155,2.558-5.714,5.713-5.714c1.644,0,3.127,0.694,4.171,1.804    c1.303-0.256,2.523-0.73,3.63-1.387c-0.43,1.335-1.333,2.454-2.516,3.162c1.157-0.138,2.261-0.444,3.282-0.899    C37.987,17.334,37.018,18.341,35.901,19.144z"></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link " href="#" title="facebook">
+                                                    <svg class="share__icon share__icon--facebook" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M31,25.7h-4.039c0,6.453,0,14.396,0,14.396h-5.985c0,0,0-7.866,0-14.396h-2.845v-5.088h2.845    v-3.291c0-2.357,1.12-6.04,6.04-6.04l4.435,0.017v4.939c0,0-2.695,0-3.219,0c-0.524,0-1.269,0.262-1.269,1.386v2.99h4.56L31,25.7z    "></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="google plus">
+                                                    <svg class="share__icon share__icon--google" version="1.1"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <g>
+                                                                <path d="M21.5,28.94c-0.161-0.107-0.326-0.223-0.499-0.34c-0.503-0.154-1.037-0.234-1.584-0.241h-0.066     c-2.514,0-4.718,1.521-4.718,3.257c0,1.89,1.889,3.367,4.299,3.367c3.179,0,4.79-1.098,4.79-3.258     c0-0.204-0.024-0.416-0.075-0.629C23.432,30.258,22.663,29.735,21.5,28.94z"></path>
+                                                                <path d="M19.719,22.352c0.002,0,0.002,0,0.002,0c0.601,0,1.108-0.237,1.501-0.687c0.616-0.702,0.889-1.854,0.727-3.077     c-0.285-2.186-1.848-4.006-3.479-4.053l-0.065-0.002c-0.577,0-1.092,0.238-1.483,0.686c-0.607,0.693-0.864,1.791-0.705,3.012     c0.286,2.184,1.882,4.071,3.479,4.121H19.719L19.719,22.352z"></path>
+                                                                <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826     C49.652,11.137,38.516,0,24.826,0z M21.964,36.915c-0.938,0.271-1.953,0.408-3.018,0.408c-1.186,0-2.326-0.136-3.389-0.405     c-2.057-0.519-3.577-1.503-4.287-2.771c-0.306-0.548-0.461-1.132-0.461-1.737c0-0.623,0.149-1.255,0.443-1.881     c1.127-2.402,4.098-4.018,7.389-4.018c0.033,0,0.064,0,0.094,0c-0.267-0.471-0.396-0.959-0.396-1.472     c0-0.255,0.034-0.515,0.102-0.78c-3.452-0.078-6.035-2.606-6.035-5.939c0-2.353,1.881-4.646,4.571-5.572     c0.805-0.278,1.626-0.42,2.433-0.42h7.382c0.251,0,0.474,0.163,0.552,0.402c0.078,0.238-0.008,0.5-0.211,0.647l-1.651,1.195     c-0.099,0.07-0.218,0.108-0.341,0.108H24.55c0.763,0.915,1.21,2.22,1.21,3.685c0,1.617-0.818,3.146-2.307,4.311     c-1.15,0.896-1.195,1.143-1.195,1.654c0.014,0.281,0.815,1.198,1.699,1.823c2.059,1.456,2.825,2.885,2.825,5.269     C26.781,33.913,24.89,36.065,21.964,36.915z M38.635,24.253c0,0.32-0.261,0.58-0.58,0.58H33.86v4.197     c0,0.32-0.261,0.58-0.578,0.58h-1.195c-0.322,0-0.582-0.26-0.582-0.58v-4.197h-4.192c-0.32,0-0.58-0.258-0.58-0.58V23.06     c0-0.32,0.26-0.582,0.58-0.582h4.192v-4.193c0-0.321,0.26-0.58,0.582-0.58h1.195c0.317,0,0.578,0.259,0.578,0.58v4.193h4.194     c0.319,0,0.58,0.26,0.58,0.58V24.253z"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="dribbble">
+                                                    <svg class="share__icon share__icon--dribbble" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 96 96" style="enable-background:new 0 0 96 96;" xml:space="preserve">
+                                                    <g>
+                                                        <path  d="M49.297,47.914c0.172-0.054,0.343-0.106,0.515-0.157c-0.414-0.928-0.873-1.886-1.395-2.915   c-9.4,2.776-18.399,2.812-20.008,2.784c-0.004,0.124-0.008,0.249-0.008,0.374c0,4.728,1.698,9.271,4.79,12.835   C34.223,59.173,39.68,51.025,49.297,47.914z M60.775,33.144c-3.554-3.059-8.081-4.741-12.775-4.741   c-1.419,0-2.846,0.156-4.248,0.466c1.024,1.381,4.161,5.736,7.106,11.112C57.267,37.526,60.166,33.97,60.775,33.144z    M36.118,63.567C39.567,66.206,43.672,67.6,48,67.6c2.584,0,5.096-0.496,7.469-1.475c-0.331-1.903-1.474-7.7-4.107-14.605   C40.754,55.269,36.754,62.325,36.118,63.567z M46.524,41.325c-3.039-5.36-6.203-9.775-7.071-10.962   c-5.337,2.592-9.262,7.533-10.567,13.298h0.081C30.999,43.661,38.213,43.491,46.524,41.325z M55.566,50.487   c2.324,6.457,3.396,11.832,3.703,13.548c4.257-2.998,7.172-7.602,8.045-12.712c-0.868-0.26-4.006-1.107-7.955-1.107   C58.063,50.216,56.789,50.307,55.566,50.487z M48,0C21.489,0,0,21.49,0,48c0,26.511,21.489,48,48,48s48-21.489,48-48   C96,21.49,74.511,0,48,0z M48,71.492c-12.954,0-23.492-10.538-23.492-23.492S35.046,24.508,48,24.508S71.492,35.046,71.492,48   S60.954,71.492,48,71.492z M52.611,43.378c0.433,0.893,0.839,1.783,1.209,2.651c0.121,0.283,0.24,0.568,0.356,0.852   c1.387-0.166,2.87-0.25,4.41-0.25c4.265,0,7.818,0.627,9.001,0.862c-0.11-4.251-1.612-8.381-4.253-11.694   C62.53,36.825,59.238,40.612,52.611,43.378z"></path>
+                                                    </g>
+                                                    </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="share-button__front">
+                                                        <p class="share-button__text">Share</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            
+                                        </span>
+
+                                        <span *ngIf="expandedBlog.blogBody === 2">
+                                            
+                                            <blockquote class="blockquote"><p>Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible. – <strong>Francis of Assisi</strong></p></blockquote>
+                                            
+                                            <br/>
+
+                                            <p class="first-letter dosis-font">In the past few weeks the coronavirus pandemic has taken hold in the United States, and the disease will continue to have a massive impact around the world for the foreseeable future. But even in the midst of panic and uncertainty, communities are coming together to do what they can. People are 3D printing face shields and sewing masks for healthcare workers, offering to buy groceries and household supplies for the elderly or immunocompromised, and even donating their computer’s GPU power to the cause. </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">And developers aren’t absent from this list of people trying to do whatever they can to help. A quick glance into the trending section of GitHub shows that a good portion are COVID-19-related, and there are a number more than that living on GitHub.  While medical professionals are on the front lines of the COVID-19 fight, developers are fighting the disease from their computers. </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">IBM is offering starter kits for each of these three areas. The crisis communication and community cooperation starter kits both provide access to Watson Assistant, which can be used to “build, train, and deploy conversational integrations into any application, device, or channel.” The remote education starter kit includes a set of open-source tools that will allow educators to make content more readily available for their students. 
+
+                                                “The goal is, and as it always has been for IBM’s role in Call for Code, is to take those really important pressing issues that have been identified by our partners, like the United Nations, and give people the tools they can use today to immediately start building solutions,” said Krook.
+                                                
+                                                Like previous Call for Code events, the winning project teams will get support from IBM in deploying their projects. According to Krook, the timeline of Call for Code will be accelerated this year. Deadlines will not change, but any projects submitted before the initial submission deadline will be judged and have the potential for mentorship from IBM prior to the deadline.</p>
+                                            
+                                            <div class="share-btn-bg">
+                                           
+                                                <div class="share-button">
+                                                    <div class="share-button__back">
+                                                        <a class="share__link" href="#" title="twitter">
+                                                        <svg class="share__icon share__icon--twitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M35.901,19.144c0.011,0.246,0.017,0.494,0.017,0.742c0,7.551-5.746,16.255-16.259,16.255    c-3.227,0-6.231-0.943-8.759-2.565c0.447,0.053,0.902,0.08,1.363,0.08c2.678,0,5.141-0.914,7.097-2.446    c-2.5-0.046-4.611-1.698-5.338-3.969c0.348,0.066,0.707,0.103,1.074,0.103c0.521,0,1.027-0.068,1.506-0.199    c-2.614-0.524-4.583-2.833-4.583-5.603c0-0.024,0-0.049,0.001-0.072c0.77,0.427,1.651,0.685,2.587,0.714    c-1.532-1.023-2.541-2.773-2.541-4.755c0-1.048,0.281-2.03,0.773-2.874c2.817,3.458,7.029,5.732,11.777,5.972    c-0.098-0.419-0.147-0.854-0.147-1.303c0-3.155,2.558-5.714,5.713-5.714c1.644,0,3.127,0.694,4.171,1.804    c1.303-0.256,2.523-0.73,3.63-1.387c-0.43,1.335-1.333,2.454-2.516,3.162c1.157-0.138,2.261-0.444,3.282-0.899    C37.987,17.334,37.018,18.341,35.901,19.144z"></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link " href="#" title="facebook">
+                                                    <svg class="share__icon share__icon--facebook" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M31,25.7h-4.039c0,6.453,0,14.396,0,14.396h-5.985c0,0,0-7.866,0-14.396h-2.845v-5.088h2.845    v-3.291c0-2.357,1.12-6.04,6.04-6.04l4.435,0.017v4.939c0,0-2.695,0-3.219,0c-0.524,0-1.269,0.262-1.269,1.386v2.99h4.56L31,25.7z    "></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="google plus">
+                                                    <svg class="share__icon share__icon--google" version="1.1"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <g>
+                                                                <path d="M21.5,28.94c-0.161-0.107-0.326-0.223-0.499-0.34c-0.503-0.154-1.037-0.234-1.584-0.241h-0.066     c-2.514,0-4.718,1.521-4.718,3.257c0,1.89,1.889,3.367,4.299,3.367c3.179,0,4.79-1.098,4.79-3.258     c0-0.204-0.024-0.416-0.075-0.629C23.432,30.258,22.663,29.735,21.5,28.94z"></path>
+                                                                <path d="M19.719,22.352c0.002,0,0.002,0,0.002,0c0.601,0,1.108-0.237,1.501-0.687c0.616-0.702,0.889-1.854,0.727-3.077     c-0.285-2.186-1.848-4.006-3.479-4.053l-0.065-0.002c-0.577,0-1.092,0.238-1.483,0.686c-0.607,0.693-0.864,1.791-0.705,3.012     c0.286,2.184,1.882,4.071,3.479,4.121H19.719L19.719,22.352z"></path>
+                                                                <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826     C49.652,11.137,38.516,0,24.826,0z M21.964,36.915c-0.938,0.271-1.953,0.408-3.018,0.408c-1.186,0-2.326-0.136-3.389-0.405     c-2.057-0.519-3.577-1.503-4.287-2.771c-0.306-0.548-0.461-1.132-0.461-1.737c0-0.623,0.149-1.255,0.443-1.881     c1.127-2.402,4.098-4.018,7.389-4.018c0.033,0,0.064,0,0.094,0c-0.267-0.471-0.396-0.959-0.396-1.472     c0-0.255,0.034-0.515,0.102-0.78c-3.452-0.078-6.035-2.606-6.035-5.939c0-2.353,1.881-4.646,4.571-5.572     c0.805-0.278,1.626-0.42,2.433-0.42h7.382c0.251,0,0.474,0.163,0.552,0.402c0.078,0.238-0.008,0.5-0.211,0.647l-1.651,1.195     c-0.099,0.07-0.218,0.108-0.341,0.108H24.55c0.763,0.915,1.21,2.22,1.21,3.685c0,1.617-0.818,3.146-2.307,4.311     c-1.15,0.896-1.195,1.143-1.195,1.654c0.014,0.281,0.815,1.198,1.699,1.823c2.059,1.456,2.825,2.885,2.825,5.269     C26.781,33.913,24.89,36.065,21.964,36.915z M38.635,24.253c0,0.32-0.261,0.58-0.58,0.58H33.86v4.197     c0,0.32-0.261,0.58-0.578,0.58h-1.195c-0.322,0-0.582-0.26-0.582-0.58v-4.197h-4.192c-0.32,0-0.58-0.258-0.58-0.58V23.06     c0-0.32,0.26-0.582,0.58-0.582h4.192v-4.193c0-0.321,0.26-0.58,0.582-0.58h1.195c0.317,0,0.578,0.259,0.578,0.58v4.193h4.194     c0.319,0,0.58,0.26,0.58,0.58V24.253z"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="dribbble">
+                                                    <svg class="share__icon share__icon--dribbble" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 96 96" style="enable-background:new 0 0 96 96;" xml:space="preserve">
+                                                    <g>
+                                                        <path  d="M49.297,47.914c0.172-0.054,0.343-0.106,0.515-0.157c-0.414-0.928-0.873-1.886-1.395-2.915   c-9.4,2.776-18.399,2.812-20.008,2.784c-0.004,0.124-0.008,0.249-0.008,0.374c0,4.728,1.698,9.271,4.79,12.835   C34.223,59.173,39.68,51.025,49.297,47.914z M60.775,33.144c-3.554-3.059-8.081-4.741-12.775-4.741   c-1.419,0-2.846,0.156-4.248,0.466c1.024,1.381,4.161,5.736,7.106,11.112C57.267,37.526,60.166,33.97,60.775,33.144z    M36.118,63.567C39.567,66.206,43.672,67.6,48,67.6c2.584,0,5.096-0.496,7.469-1.475c-0.331-1.903-1.474-7.7-4.107-14.605   C40.754,55.269,36.754,62.325,36.118,63.567z M46.524,41.325c-3.039-5.36-6.203-9.775-7.071-10.962   c-5.337,2.592-9.262,7.533-10.567,13.298h0.081C30.999,43.661,38.213,43.491,46.524,41.325z M55.566,50.487   c2.324,6.457,3.396,11.832,3.703,13.548c4.257-2.998,7.172-7.602,8.045-12.712c-0.868-0.26-4.006-1.107-7.955-1.107   C58.063,50.216,56.789,50.307,55.566,50.487z M48,0C21.489,0,0,21.49,0,48c0,26.511,21.489,48,48,48s48-21.489,48-48   C96,21.49,74.511,0,48,0z M48,71.492c-12.954,0-23.492-10.538-23.492-23.492S35.046,24.508,48,24.508S71.492,35.046,71.492,48   S60.954,71.492,48,71.492z M52.611,43.378c0.433,0.893,0.839,1.783,1.209,2.651c0.121,0.283,0.24,0.568,0.356,0.852   c1.387-0.166,2.87-0.25,4.41-0.25c4.265,0,7.818,0.627,9.001,0.862c-0.11-4.251-1.612-8.381-4.253-11.694   C62.53,36.825,59.238,40.612,52.611,43.378z"></path>
+                                                    </g>
+                                                    </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="share-button__front">
+                                                        <p class="share-button__text">Share</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </span>
+
+                                        <span *ngIf="expandedBlog.blogBody === 3">
+                                            
+                                            <blockquote class="blockquote"><p>I can't change the direction of the wind, but I can adjust my sails to always reach my destination. – <strong>Jimmy Dean</strong></p></blockquote>
+                                            
+                                            <br/>
+
+                                            <p class="first-letter dosis-font">A few days before Italy is set to lift restrictions across much of the country after being locked down since March 10, the streets of Venice are starting to spring back to life.
+                                                There are no tourists here just yet. Instead the noise is from vacuum cleaners and sanitation crews inside stores that are getting ready for the grand reopening on May 18.
+                                                But even as shop owners prepare for whatever post-lockdown Venice looks like, everyone here in this deserted tourist town is asking the same question: who are they reopening for?
+                                                Every year, as many as 30 million tourists from all over the world descend on Venice, pumping up to $2.5 billion into the local economy, according to the Italian Tourism Ministry.
+                                                But few are Italians, who have never been as enamored with the lagoon city as the rest of the world, according to Matteo Secchi, head of the tourist group Venessia, who says Venice has always attracted far more international tourists than national ones.
+                                                "When the city reopens next week, it will still be much like it looks today," he told CNN in an eerily empty Venice this week. "Tourists won't really start coming back until the borders are reopened and international travel is allowed." </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">Not everyone wants things to go back to business as usual.
+                                                Jane da Mosto, who heads non-profit group We Are Here Venice, has been fighting to get policy makers to understand the advantages of sustainable tourism for the city by launching campaigns to keep massive cruise ships out of the historical harbor and studying the options for preventing flooding like the city endured last fall.
+                                                She sees the pandemic as a turning point for the city, and envisions a new Venice emerging in the post-pandemic world. </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">"The new Venice I dream of after this is like it is now, just with more residents," she told CNN in an interview in Venice. "The problem for Venice isn't the lack of tourists, it's the lack of permanent residents. And with more residents, the city will reflect more the Venetian culture and the wonderful lifestyle that this extraordinary city offers and future visitors to the city will be able to enjoy Venice more."</p>
+                                            
+                                            <div class="share-btn-bg">
+                                           
+                                                <div class="share-button">
+                                                    <div class="share-button__back">
+                                                        <a class="share__link" href="#" title="twitter">
+                                                        <svg class="share__icon share__icon--twitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M35.901,19.144c0.011,0.246,0.017,0.494,0.017,0.742c0,7.551-5.746,16.255-16.259,16.255    c-3.227,0-6.231-0.943-8.759-2.565c0.447,0.053,0.902,0.08,1.363,0.08c2.678,0,5.141-0.914,7.097-2.446    c-2.5-0.046-4.611-1.698-5.338-3.969c0.348,0.066,0.707,0.103,1.074,0.103c0.521,0,1.027-0.068,1.506-0.199    c-2.614-0.524-4.583-2.833-4.583-5.603c0-0.024,0-0.049,0.001-0.072c0.77,0.427,1.651,0.685,2.587,0.714    c-1.532-1.023-2.541-2.773-2.541-4.755c0-1.048,0.281-2.03,0.773-2.874c2.817,3.458,7.029,5.732,11.777,5.972    c-0.098-0.419-0.147-0.854-0.147-1.303c0-3.155,2.558-5.714,5.713-5.714c1.644,0,3.127,0.694,4.171,1.804    c1.303-0.256,2.523-0.73,3.63-1.387c-0.43,1.335-1.333,2.454-2.516,3.162c1.157-0.138,2.261-0.444,3.282-0.899    C37.987,17.334,37.018,18.341,35.901,19.144z"></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link " href="#" title="facebook">
+                                                    <svg class="share__icon share__icon--facebook" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M31,25.7h-4.039c0,6.453,0,14.396,0,14.396h-5.985c0,0,0-7.866,0-14.396h-2.845v-5.088h2.845    v-3.291c0-2.357,1.12-6.04,6.04-6.04l4.435,0.017v4.939c0,0-2.695,0-3.219,0c-0.524,0-1.269,0.262-1.269,1.386v2.99h4.56L31,25.7z    "></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="google plus">
+                                                    <svg class="share__icon share__icon--google" version="1.1"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <g>
+                                                                <path d="M21.5,28.94c-0.161-0.107-0.326-0.223-0.499-0.34c-0.503-0.154-1.037-0.234-1.584-0.241h-0.066     c-2.514,0-4.718,1.521-4.718,3.257c0,1.89,1.889,3.367,4.299,3.367c3.179,0,4.79-1.098,4.79-3.258     c0-0.204-0.024-0.416-0.075-0.629C23.432,30.258,22.663,29.735,21.5,28.94z"></path>
+                                                                <path d="M19.719,22.352c0.002,0,0.002,0,0.002,0c0.601,0,1.108-0.237,1.501-0.687c0.616-0.702,0.889-1.854,0.727-3.077     c-0.285-2.186-1.848-4.006-3.479-4.053l-0.065-0.002c-0.577,0-1.092,0.238-1.483,0.686c-0.607,0.693-0.864,1.791-0.705,3.012     c0.286,2.184,1.882,4.071,3.479,4.121H19.719L19.719,22.352z"></path>
+                                                                <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826     C49.652,11.137,38.516,0,24.826,0z M21.964,36.915c-0.938,0.271-1.953,0.408-3.018,0.408c-1.186,0-2.326-0.136-3.389-0.405     c-2.057-0.519-3.577-1.503-4.287-2.771c-0.306-0.548-0.461-1.132-0.461-1.737c0-0.623,0.149-1.255,0.443-1.881     c1.127-2.402,4.098-4.018,7.389-4.018c0.033,0,0.064,0,0.094,0c-0.267-0.471-0.396-0.959-0.396-1.472     c0-0.255,0.034-0.515,0.102-0.78c-3.452-0.078-6.035-2.606-6.035-5.939c0-2.353,1.881-4.646,4.571-5.572     c0.805-0.278,1.626-0.42,2.433-0.42h7.382c0.251,0,0.474,0.163,0.552,0.402c0.078,0.238-0.008,0.5-0.211,0.647l-1.651,1.195     c-0.099,0.07-0.218,0.108-0.341,0.108H24.55c0.763,0.915,1.21,2.22,1.21,3.685c0,1.617-0.818,3.146-2.307,4.311     c-1.15,0.896-1.195,1.143-1.195,1.654c0.014,0.281,0.815,1.198,1.699,1.823c2.059,1.456,2.825,2.885,2.825,5.269     C26.781,33.913,24.89,36.065,21.964,36.915z M38.635,24.253c0,0.32-0.261,0.58-0.58,0.58H33.86v4.197     c0,0.32-0.261,0.58-0.578,0.58h-1.195c-0.322,0-0.582-0.26-0.582-0.58v-4.197h-4.192c-0.32,0-0.58-0.258-0.58-0.58V23.06     c0-0.32,0.26-0.582,0.58-0.582h4.192v-4.193c0-0.321,0.26-0.58,0.582-0.58h1.195c0.317,0,0.578,0.259,0.578,0.58v4.193h4.194     c0.319,0,0.58,0.26,0.58,0.58V24.253z"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="dribbble">
+                                                    <svg class="share__icon share__icon--dribbble" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 96 96" style="enable-background:new 0 0 96 96;" xml:space="preserve">
+                                                    <g>
+                                                        <path  d="M49.297,47.914c0.172-0.054,0.343-0.106,0.515-0.157c-0.414-0.928-0.873-1.886-1.395-2.915   c-9.4,2.776-18.399,2.812-20.008,2.784c-0.004,0.124-0.008,0.249-0.008,0.374c0,4.728,1.698,9.271,4.79,12.835   C34.223,59.173,39.68,51.025,49.297,47.914z M60.775,33.144c-3.554-3.059-8.081-4.741-12.775-4.741   c-1.419,0-2.846,0.156-4.248,0.466c1.024,1.381,4.161,5.736,7.106,11.112C57.267,37.526,60.166,33.97,60.775,33.144z    M36.118,63.567C39.567,66.206,43.672,67.6,48,67.6c2.584,0,5.096-0.496,7.469-1.475c-0.331-1.903-1.474-7.7-4.107-14.605   C40.754,55.269,36.754,62.325,36.118,63.567z M46.524,41.325c-3.039-5.36-6.203-9.775-7.071-10.962   c-5.337,2.592-9.262,7.533-10.567,13.298h0.081C30.999,43.661,38.213,43.491,46.524,41.325z M55.566,50.487   c2.324,6.457,3.396,11.832,3.703,13.548c4.257-2.998,7.172-7.602,8.045-12.712c-0.868-0.26-4.006-1.107-7.955-1.107   C58.063,50.216,56.789,50.307,55.566,50.487z M48,0C21.489,0,0,21.49,0,48c0,26.511,21.489,48,48,48s48-21.489,48-48   C96,21.49,74.511,0,48,0z M48,71.492c-12.954,0-23.492-10.538-23.492-23.492S35.046,24.508,48,24.508S71.492,35.046,71.492,48   S60.954,71.492,48,71.492z M52.611,43.378c0.433,0.893,0.839,1.783,1.209,2.651c0.121,0.283,0.24,0.568,0.356,0.852   c1.387-0.166,2.87-0.25,4.41-0.25c4.265,0,7.818,0.627,9.001,0.862c-0.11-4.251-1.612-8.381-4.253-11.694   C62.53,36.825,59.238,40.612,52.611,43.378z"></path>
+                                                    </g>
+                                                    </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="share-button__front">
+                                                        <p class="share-button__text">Share</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </span>
+
+                                        <span *ngIf="expandedBlog.blogBody === 4">
+                                            
+                                            <blockquote class="blockquote"><p>If opportunity doesn't knock, build a door. – <strong>Milton Berle</strong></p></blockquote>
+                                            
+                                            <br/>
+
+                                            <p class="first-letter dosis-font">The impact of COVID-19 on the U.S. economy and Americans' ability to work has been devastating. As the novel coronavirus continues to spread across the U.S., companies of all sizes are being affected as people spend more time at home, and less time shopping, eating out, and spending money as usual. As a result, many companies have had to lay off workers, which has pushed the percentage of unemployed Americans past 10%. </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font"> But despite all of the economic turmoil, some tech stocks are thriving right now. With more people working from home, many tech companies have seen the demand for their products and services surge during this time. Specifically, Apple (NASDAQ:AAPL), Fastly (NYSE:FSLY), and Shopify (NYSE:SHOP) have been growing despite the pandemic. Here's what investors need to know about these three tech stocks. </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">
+                                                <span style="color:#0984e3">#1) Apple , #2) Fastly , #3) Shopify </span>
+                                            </p>
+
+                                            <p class="dosis-font">
+                                                My lesson from all of this is that I realized no matter how bad things get you can always prosper, you can always come out ahead.
+                                            </p>
+                                            
+                                            <div class="share-btn-bg">
+                                           
+                                                <div class="share-button">
+                                                    <div class="share-button__back">
+                                                        <a class="share__link" href="#" title="twitter">
+                                                        <svg class="share__icon share__icon--twitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M35.901,19.144c0.011,0.246,0.017,0.494,0.017,0.742c0,7.551-5.746,16.255-16.259,16.255    c-3.227,0-6.231-0.943-8.759-2.565c0.447,0.053,0.902,0.08,1.363,0.08c2.678,0,5.141-0.914,7.097-2.446    c-2.5-0.046-4.611-1.698-5.338-3.969c0.348,0.066,0.707,0.103,1.074,0.103c0.521,0,1.027-0.068,1.506-0.199    c-2.614-0.524-4.583-2.833-4.583-5.603c0-0.024,0-0.049,0.001-0.072c0.77,0.427,1.651,0.685,2.587,0.714    c-1.532-1.023-2.541-2.773-2.541-4.755c0-1.048,0.281-2.03,0.773-2.874c2.817,3.458,7.029,5.732,11.777,5.972    c-0.098-0.419-0.147-0.854-0.147-1.303c0-3.155,2.558-5.714,5.713-5.714c1.644,0,3.127,0.694,4.171,1.804    c1.303-0.256,2.523-0.73,3.63-1.387c-0.43,1.335-1.333,2.454-2.516,3.162c1.157-0.138,2.261-0.444,3.282-0.899    C37.987,17.334,37.018,18.341,35.901,19.144z"></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link " href="#" title="facebook">
+                                                    <svg class="share__icon share__icon--facebook" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M31,25.7h-4.039c0,6.453,0,14.396,0,14.396h-5.985c0,0,0-7.866,0-14.396h-2.845v-5.088h2.845    v-3.291c0-2.357,1.12-6.04,6.04-6.04l4.435,0.017v4.939c0,0-2.695,0-3.219,0c-0.524,0-1.269,0.262-1.269,1.386v2.99h4.56L31,25.7z    "></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="google plus">
+                                                    <svg class="share__icon share__icon--google" version="1.1"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <g>
+                                                                <path d="M21.5,28.94c-0.161-0.107-0.326-0.223-0.499-0.34c-0.503-0.154-1.037-0.234-1.584-0.241h-0.066     c-2.514,0-4.718,1.521-4.718,3.257c0,1.89,1.889,3.367,4.299,3.367c3.179,0,4.79-1.098,4.79-3.258     c0-0.204-0.024-0.416-0.075-0.629C23.432,30.258,22.663,29.735,21.5,28.94z"></path>
+                                                                <path d="M19.719,22.352c0.002,0,0.002,0,0.002,0c0.601,0,1.108-0.237,1.501-0.687c0.616-0.702,0.889-1.854,0.727-3.077     c-0.285-2.186-1.848-4.006-3.479-4.053l-0.065-0.002c-0.577,0-1.092,0.238-1.483,0.686c-0.607,0.693-0.864,1.791-0.705,3.012     c0.286,2.184,1.882,4.071,3.479,4.121H19.719L19.719,22.352z"></path>
+                                                                <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826     C49.652,11.137,38.516,0,24.826,0z M21.964,36.915c-0.938,0.271-1.953,0.408-3.018,0.408c-1.186,0-2.326-0.136-3.389-0.405     c-2.057-0.519-3.577-1.503-4.287-2.771c-0.306-0.548-0.461-1.132-0.461-1.737c0-0.623,0.149-1.255,0.443-1.881     c1.127-2.402,4.098-4.018,7.389-4.018c0.033,0,0.064,0,0.094,0c-0.267-0.471-0.396-0.959-0.396-1.472     c0-0.255,0.034-0.515,0.102-0.78c-3.452-0.078-6.035-2.606-6.035-5.939c0-2.353,1.881-4.646,4.571-5.572     c0.805-0.278,1.626-0.42,2.433-0.42h7.382c0.251,0,0.474,0.163,0.552,0.402c0.078,0.238-0.008,0.5-0.211,0.647l-1.651,1.195     c-0.099,0.07-0.218,0.108-0.341,0.108H24.55c0.763,0.915,1.21,2.22,1.21,3.685c0,1.617-0.818,3.146-2.307,4.311     c-1.15,0.896-1.195,1.143-1.195,1.654c0.014,0.281,0.815,1.198,1.699,1.823c2.059,1.456,2.825,2.885,2.825,5.269     C26.781,33.913,24.89,36.065,21.964,36.915z M38.635,24.253c0,0.32-0.261,0.58-0.58,0.58H33.86v4.197     c0,0.32-0.261,0.58-0.578,0.58h-1.195c-0.322,0-0.582-0.26-0.582-0.58v-4.197h-4.192c-0.32,0-0.58-0.258-0.58-0.58V23.06     c0-0.32,0.26-0.582,0.58-0.582h4.192v-4.193c0-0.321,0.26-0.58,0.582-0.58h1.195c0.317,0,0.578,0.259,0.578,0.58v4.193h4.194     c0.319,0,0.58,0.26,0.58,0.58V24.253z"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="dribbble">
+                                                    <svg class="share__icon share__icon--dribbble" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 96 96" style="enable-background:new 0 0 96 96;" xml:space="preserve">
+                                                    <g>
+                                                        <path  d="M49.297,47.914c0.172-0.054,0.343-0.106,0.515-0.157c-0.414-0.928-0.873-1.886-1.395-2.915   c-9.4,2.776-18.399,2.812-20.008,2.784c-0.004,0.124-0.008,0.249-0.008,0.374c0,4.728,1.698,9.271,4.79,12.835   C34.223,59.173,39.68,51.025,49.297,47.914z M60.775,33.144c-3.554-3.059-8.081-4.741-12.775-4.741   c-1.419,0-2.846,0.156-4.248,0.466c1.024,1.381,4.161,5.736,7.106,11.112C57.267,37.526,60.166,33.97,60.775,33.144z    M36.118,63.567C39.567,66.206,43.672,67.6,48,67.6c2.584,0,5.096-0.496,7.469-1.475c-0.331-1.903-1.474-7.7-4.107-14.605   C40.754,55.269,36.754,62.325,36.118,63.567z M46.524,41.325c-3.039-5.36-6.203-9.775-7.071-10.962   c-5.337,2.592-9.262,7.533-10.567,13.298h0.081C30.999,43.661,38.213,43.491,46.524,41.325z M55.566,50.487   c2.324,6.457,3.396,11.832,3.703,13.548c4.257-2.998,7.172-7.602,8.045-12.712c-0.868-0.26-4.006-1.107-7.955-1.107   C58.063,50.216,56.789,50.307,55.566,50.487z M48,0C21.489,0,0,21.49,0,48c0,26.511,21.489,48,48,48s48-21.489,48-48   C96,21.49,74.511,0,48,0z M48,71.492c-12.954,0-23.492-10.538-23.492-23.492S35.046,24.508,48,24.508S71.492,35.046,71.492,48   S60.954,71.492,48,71.492z M52.611,43.378c0.433,0.893,0.839,1.783,1.209,2.651c0.121,0.283,0.24,0.568,0.356,0.852   c1.387-0.166,2.87-0.25,4.41-0.25c4.265,0,7.818,0.627,9.001,0.862c-0.11-4.251-1.612-8.381-4.253-11.694   C62.53,36.825,59.238,40.612,52.611,43.378z"></path>
+                                                    </g>
+                                                    </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="share-button__front">
+                                                        <p class="share-button__text">Share</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </span>
+
+                                        <span *ngIf="expandedBlog.blogBody === 5">
+                                            
+                                            <blockquote class="blockquote"><p>That is what learning is. You suddenly understand something you’ve understood all your life, but in a new way. – <strong>Doris Lessing</strong></p></blockquote>
+                                            
+                                            <br/>
+
+                                            <p class="first-letter dosis-font">
+                                                Learn Angular quick: <a href="https://dev.to/evybauer/i-had-to-learn-angular-8-in-24-hours-here-is-how-go1">I had to learn Angular 8 in 24 hours, here is how - DEV</a>    
+                                            </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">
+                                                Best tutorials in 2020: <a href="https://hackr.io/tutorials/learn-angular">Learn Angular - [2020] Best Angular Tutorials | Hackr.io</a>
+                                            </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">
+                                                Code by example and build a project from scratch: <a href="https://www.freecodecamp.org/news/angular-8-tutorial-in-easy-steps/">How to build an Angular 8 app from scratch in 11 easy steps</a>
+                                            </p>
+
+                                            <p class="dosis-font">
+                                                Try a video tutorial: <a href="https://www.youtube.com/watch?v=2OHbjep_WjQ">5 hour tutorial on YouTube with no ads!</a>
+                                            </p>
+                                            
+                                            <div class="share-btn-bg">
+                                           
+                                                <div class="share-button">
+                                                    <div class="share-button__back">
+                                                        <a class="share__link" href="#" title="twitter">
+                                                        <svg class="share__icon share__icon--twitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M35.901,19.144c0.011,0.246,0.017,0.494,0.017,0.742c0,7.551-5.746,16.255-16.259,16.255    c-3.227,0-6.231-0.943-8.759-2.565c0.447,0.053,0.902,0.08,1.363,0.08c2.678,0,5.141-0.914,7.097-2.446    c-2.5-0.046-4.611-1.698-5.338-3.969c0.348,0.066,0.707,0.103,1.074,0.103c0.521,0,1.027-0.068,1.506-0.199    c-2.614-0.524-4.583-2.833-4.583-5.603c0-0.024,0-0.049,0.001-0.072c0.77,0.427,1.651,0.685,2.587,0.714    c-1.532-1.023-2.541-2.773-2.541-4.755c0-1.048,0.281-2.03,0.773-2.874c2.817,3.458,7.029,5.732,11.777,5.972    c-0.098-0.419-0.147-0.854-0.147-1.303c0-3.155,2.558-5.714,5.713-5.714c1.644,0,3.127,0.694,4.171,1.804    c1.303-0.256,2.523-0.73,3.63-1.387c-0.43,1.335-1.333,2.454-2.516,3.162c1.157-0.138,2.261-0.444,3.282-0.899    C37.987,17.334,37.018,18.341,35.901,19.144z"></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link " href="#" title="facebook">
+                                                    <svg class="share__icon share__icon--facebook" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M31,25.7h-4.039c0,6.453,0,14.396,0,14.396h-5.985c0,0,0-7.866,0-14.396h-2.845v-5.088h2.845    v-3.291c0-2.357,1.12-6.04,6.04-6.04l4.435,0.017v4.939c0,0-2.695,0-3.219,0c-0.524,0-1.269,0.262-1.269,1.386v2.99h4.56L31,25.7z    "></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="google plus">
+                                                    <svg class="share__icon share__icon--google" version="1.1"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <g>
+                                                                <path d="M21.5,28.94c-0.161-0.107-0.326-0.223-0.499-0.34c-0.503-0.154-1.037-0.234-1.584-0.241h-0.066     c-2.514,0-4.718,1.521-4.718,3.257c0,1.89,1.889,3.367,4.299,3.367c3.179,0,4.79-1.098,4.79-3.258     c0-0.204-0.024-0.416-0.075-0.629C23.432,30.258,22.663,29.735,21.5,28.94z"></path>
+                                                                <path d="M19.719,22.352c0.002,0,0.002,0,0.002,0c0.601,0,1.108-0.237,1.501-0.687c0.616-0.702,0.889-1.854,0.727-3.077     c-0.285-2.186-1.848-4.006-3.479-4.053l-0.065-0.002c-0.577,0-1.092,0.238-1.483,0.686c-0.607,0.693-0.864,1.791-0.705,3.012     c0.286,2.184,1.882,4.071,3.479,4.121H19.719L19.719,22.352z"></path>
+                                                                <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826     C49.652,11.137,38.516,0,24.826,0z M21.964,36.915c-0.938,0.271-1.953,0.408-3.018,0.408c-1.186,0-2.326-0.136-3.389-0.405     c-2.057-0.519-3.577-1.503-4.287-2.771c-0.306-0.548-0.461-1.132-0.461-1.737c0-0.623,0.149-1.255,0.443-1.881     c1.127-2.402,4.098-4.018,7.389-4.018c0.033,0,0.064,0,0.094,0c-0.267-0.471-0.396-0.959-0.396-1.472     c0-0.255,0.034-0.515,0.102-0.78c-3.452-0.078-6.035-2.606-6.035-5.939c0-2.353,1.881-4.646,4.571-5.572     c0.805-0.278,1.626-0.42,2.433-0.42h7.382c0.251,0,0.474,0.163,0.552,0.402c0.078,0.238-0.008,0.5-0.211,0.647l-1.651,1.195     c-0.099,0.07-0.218,0.108-0.341,0.108H24.55c0.763,0.915,1.21,2.22,1.21,3.685c0,1.617-0.818,3.146-2.307,4.311     c-1.15,0.896-1.195,1.143-1.195,1.654c0.014,0.281,0.815,1.198,1.699,1.823c2.059,1.456,2.825,2.885,2.825,5.269     C26.781,33.913,24.89,36.065,21.964,36.915z M38.635,24.253c0,0.32-0.261,0.58-0.58,0.58H33.86v4.197     c0,0.32-0.261,0.58-0.578,0.58h-1.195c-0.322,0-0.582-0.26-0.582-0.58v-4.197h-4.192c-0.32,0-0.58-0.258-0.58-0.58V23.06     c0-0.32,0.26-0.582,0.58-0.582h4.192v-4.193c0-0.321,0.26-0.58,0.582-0.58h1.195c0.317,0,0.578,0.259,0.578,0.58v4.193h4.194     c0.319,0,0.58,0.26,0.58,0.58V24.253z"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="dribbble">
+                                                    <svg class="share__icon share__icon--dribbble" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 96 96" style="enable-background:new 0 0 96 96;" xml:space="preserve">
+                                                    <g>
+                                                        <path  d="M49.297,47.914c0.172-0.054,0.343-0.106,0.515-0.157c-0.414-0.928-0.873-1.886-1.395-2.915   c-9.4,2.776-18.399,2.812-20.008,2.784c-0.004,0.124-0.008,0.249-0.008,0.374c0,4.728,1.698,9.271,4.79,12.835   C34.223,59.173,39.68,51.025,49.297,47.914z M60.775,33.144c-3.554-3.059-8.081-4.741-12.775-4.741   c-1.419,0-2.846,0.156-4.248,0.466c1.024,1.381,4.161,5.736,7.106,11.112C57.267,37.526,60.166,33.97,60.775,33.144z    M36.118,63.567C39.567,66.206,43.672,67.6,48,67.6c2.584,0,5.096-0.496,7.469-1.475c-0.331-1.903-1.474-7.7-4.107-14.605   C40.754,55.269,36.754,62.325,36.118,63.567z M46.524,41.325c-3.039-5.36-6.203-9.775-7.071-10.962   c-5.337,2.592-9.262,7.533-10.567,13.298h0.081C30.999,43.661,38.213,43.491,46.524,41.325z M55.566,50.487   c2.324,6.457,3.396,11.832,3.703,13.548c4.257-2.998,7.172-7.602,8.045-12.712c-0.868-0.26-4.006-1.107-7.955-1.107   C58.063,50.216,56.789,50.307,55.566,50.487z M48,0C21.489,0,0,21.49,0,48c0,26.511,21.489,48,48,48s48-21.489,48-48   C96,21.49,74.511,0,48,0z M48,71.492c-12.954,0-23.492-10.538-23.492-23.492S35.046,24.508,48,24.508S71.492,35.046,71.492,48   S60.954,71.492,48,71.492z M52.611,43.378c0.433,0.893,0.839,1.783,1.209,2.651c0.121,0.283,0.24,0.568,0.356,0.852   c1.387-0.166,2.87-0.25,4.41-0.25c4.265,0,7.818,0.627,9.001,0.862c-0.11-4.251-1.612-8.381-4.253-11.694   C62.53,36.825,59.238,40.612,52.611,43.378z"></path>
+                                                    </g>
+                                                    </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="share-button__front">
+                                                        <p class="share-button__text">Share</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </span>
+
+                                        <span *ngIf="expandedBlog.blogBody === 6">
+                                            
+                                            <blockquote class="blockquote"><p>Cakes are healthy too, you just eat a small slice. – <strong>Mary Berry</strong></p></blockquote>
+                                            
+                                            <br/>
+
+                                            <p class="first-letter dosis-font">
+                                                An unlikely combination that took a trip to Seville to discover– Spanish spinach and chickpeas (espinacas con garbanzos) is a must-try Andalusian dish that’s easy to make at home. Recipe below!
+
+Espinacas con garbanzos recipe
+
+It’s one of those dishes that you keep thinking about long after you’ve taken the last bite.
+
+I first ordered espinacas con garbanzos in Seville, convinced by a friend that this simple sounding spinach and chickpea stew was a Spanish culinary masterpiece. Served piping hot, it was as comforting as any homemade stew should be, and I immediately understood her obsession.
+                                            </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">
+                                                spinacas con garbanzos are a traditional tapa in Seville, especially popular during the chilly winter months and during lent.
+But the dish’s history goes far beyond Andalusia. Spinach comes from Ancient Persia (modern Iran), where Arab traders got their hands on it and eventually introduced it to the Mediterranean. There are records of spinach being a popular Spanish vegetable by the end of the 12th century, and it was an important ingredient in Moorish and Sephardic Jewish cuisine in Spain.
+                                            </p>
+                                            
+                                            <br/>
+
+                                            <p class="dosis-font">
+                                                Chickpeas (also called garbanzos) originally came from the Middle East as well, and made their way into the Spanish kitchen by way of the Phoenicians. Their importance in Spanish cuisine is paramount, and they are a primary ingredient in many popular Spanish dishes, such as the delicious Cocido Madrileño.
+
+This recipe for espinacas con garbanzos strays a wee bit from the traditional version, but the addition of tomato and almonds enhances the heartiness of the dish in my humble opinion.
+
+The best part? This is easily a 30-minute meal, and a healthy, filling, and delicious one at that.
+                                            </p>
+
+                                            <p class="dosis-font">
+                                                View receipe and print <a href="https://spanishsabores.com/wprm_print/recipe/19871">here</a>
+                                            </p>
+                                            
+                                            <div class="share-btn-bg">
+                                           
+                                                <div class="share-button">
+                                                    <div class="share-button__back">
+                                                        <a class="share__link" href="#" title="twitter">
+                                                        <svg class="share__icon share__icon--twitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M35.901,19.144c0.011,0.246,0.017,0.494,0.017,0.742c0,7.551-5.746,16.255-16.259,16.255    c-3.227,0-6.231-0.943-8.759-2.565c0.447,0.053,0.902,0.08,1.363,0.08c2.678,0,5.141-0.914,7.097-2.446    c-2.5-0.046-4.611-1.698-5.338-3.969c0.348,0.066,0.707,0.103,1.074,0.103c0.521,0,1.027-0.068,1.506-0.199    c-2.614-0.524-4.583-2.833-4.583-5.603c0-0.024,0-0.049,0.001-0.072c0.77,0.427,1.651,0.685,2.587,0.714    c-1.532-1.023-2.541-2.773-2.541-4.755c0-1.048,0.281-2.03,0.773-2.874c2.817,3.458,7.029,5.732,11.777,5.972    c-0.098-0.419-0.147-0.854-0.147-1.303c0-3.155,2.558-5.714,5.713-5.714c1.644,0,3.127,0.694,4.171,1.804    c1.303-0.256,2.523-0.73,3.63-1.387c-0.43,1.335-1.333,2.454-2.516,3.162c1.157-0.138,2.261-0.444,3.282-0.899    C37.987,17.334,37.018,18.341,35.901,19.144z"></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link " href="#" title="facebook">
+                                                    <svg class="share__icon share__icon--facebook" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826    C49.652,11.137,38.516,0,24.826,0z M31,25.7h-4.039c0,6.453,0,14.396,0,14.396h-5.985c0,0,0-7.866,0-14.396h-2.845v-5.088h2.845    v-3.291c0-2.357,1.12-6.04,6.04-6.04l4.435,0.017v4.939c0,0-2.695,0-3.219,0c-0.524,0-1.269,0.262-1.269,1.386v2.99h4.56L31,25.7z    "></path>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="google plus">
+                                                    <svg class="share__icon share__icon--google" version="1.1"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="49.652px" height="49.652px" viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <g>
+                                                                <path d="M21.5,28.94c-0.161-0.107-0.326-0.223-0.499-0.34c-0.503-0.154-1.037-0.234-1.584-0.241h-0.066     c-2.514,0-4.718,1.521-4.718,3.257c0,1.89,1.889,3.367,4.299,3.367c3.179,0,4.79-1.098,4.79-3.258     c0-0.204-0.024-0.416-0.075-0.629C23.432,30.258,22.663,29.735,21.5,28.94z"></path>
+                                                                <path d="M19.719,22.352c0.002,0,0.002,0,0.002,0c0.601,0,1.108-0.237,1.501-0.687c0.616-0.702,0.889-1.854,0.727-3.077     c-0.285-2.186-1.848-4.006-3.479-4.053l-0.065-0.002c-0.577,0-1.092,0.238-1.483,0.686c-0.607,0.693-0.864,1.791-0.705,3.012     c0.286,2.184,1.882,4.071,3.479,4.121H19.719L19.719,22.352z"></path>
+                                                                <path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826     C49.652,11.137,38.516,0,24.826,0z M21.964,36.915c-0.938,0.271-1.953,0.408-3.018,0.408c-1.186,0-2.326-0.136-3.389-0.405     c-2.057-0.519-3.577-1.503-4.287-2.771c-0.306-0.548-0.461-1.132-0.461-1.737c0-0.623,0.149-1.255,0.443-1.881     c1.127-2.402,4.098-4.018,7.389-4.018c0.033,0,0.064,0,0.094,0c-0.267-0.471-0.396-0.959-0.396-1.472     c0-0.255,0.034-0.515,0.102-0.78c-3.452-0.078-6.035-2.606-6.035-5.939c0-2.353,1.881-4.646,4.571-5.572     c0.805-0.278,1.626-0.42,2.433-0.42h7.382c0.251,0,0.474,0.163,0.552,0.402c0.078,0.238-0.008,0.5-0.211,0.647l-1.651,1.195     c-0.099,0.07-0.218,0.108-0.341,0.108H24.55c0.763,0.915,1.21,2.22,1.21,3.685c0,1.617-0.818,3.146-2.307,4.311     c-1.15,0.896-1.195,1.143-1.195,1.654c0.014,0.281,0.815,1.198,1.699,1.823c2.059,1.456,2.825,2.885,2.825,5.269     C26.781,33.913,24.89,36.065,21.964,36.915z M38.635,24.253c0,0.32-0.261,0.58-0.58,0.58H33.86v4.197     c0,0.32-0.261,0.58-0.578,0.58h-1.195c-0.322,0-0.582-0.26-0.582-0.58v-4.197h-4.192c-0.32,0-0.58-0.258-0.58-0.58V23.06     c0-0.32,0.26-0.582,0.58-0.582h4.192v-4.193c0-0.321,0.26-0.58,0.582-0.58h1.195c0.317,0,0.578,0.259,0.578,0.58v4.193h4.194     c0.319,0,0.58,0.26,0.58,0.58V24.253z"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                    </svg>
+                                                    </a>
+                                                    <a class="share__link" href="#" title="dribbble">
+                                                    <svg class="share__icon share__icon--dribbble" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 96 96" style="enable-background:new 0 0 96 96;" xml:space="preserve">
+                                                    <g>
+                                                        <path  d="M49.297,47.914c0.172-0.054,0.343-0.106,0.515-0.157c-0.414-0.928-0.873-1.886-1.395-2.915   c-9.4,2.776-18.399,2.812-20.008,2.784c-0.004,0.124-0.008,0.249-0.008,0.374c0,4.728,1.698,9.271,4.79,12.835   C34.223,59.173,39.68,51.025,49.297,47.914z M60.775,33.144c-3.554-3.059-8.081-4.741-12.775-4.741   c-1.419,0-2.846,0.156-4.248,0.466c1.024,1.381,4.161,5.736,7.106,11.112C57.267,37.526,60.166,33.97,60.775,33.144z    M36.118,63.567C39.567,66.206,43.672,67.6,48,67.6c2.584,0,5.096-0.496,7.469-1.475c-0.331-1.903-1.474-7.7-4.107-14.605   C40.754,55.269,36.754,62.325,36.118,63.567z M46.524,41.325c-3.039-5.36-6.203-9.775-7.071-10.962   c-5.337,2.592-9.262,7.533-10.567,13.298h0.081C30.999,43.661,38.213,43.491,46.524,41.325z M55.566,50.487   c2.324,6.457,3.396,11.832,3.703,13.548c4.257-2.998,7.172-7.602,8.045-12.712c-0.868-0.26-4.006-1.107-7.955-1.107   C58.063,50.216,56.789,50.307,55.566,50.487z M48,0C21.489,0,0,21.49,0,48c0,26.511,21.489,48,48,48s48-21.489,48-48   C96,21.49,74.511,0,48,0z M48,71.492c-12.954,0-23.492-10.538-23.492-23.492S35.046,24.508,48,24.508S71.492,35.046,71.492,48   S60.954,71.492,48,71.492z M52.611,43.378c0.433,0.893,0.839,1.783,1.209,2.651c0.121,0.283,0.24,0.568,0.356,0.852   c1.387-0.166,2.87-0.25,4.41-0.25c4.265,0,7.818,0.627,9.001,0.862c-0.11-4.251-1.612-8.381-4.253-11.694   C62.53,36.825,59.238,40.612,52.611,43.378z"></path>
+                                                    </g>
+                                                    </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="share-button__front">
+                                                        <p class="share-button__text">Share</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <div class="row cards-row">
 
                         <div class="cards-for-row" *ngFor="let blog of blogs; let i = index; let last = last;">
                             
-                            <div class="col-md-6 nopadding" *ngIf="blog.visible">
+                            <div class="col-md-6 nopadding" *ngIf="blog.visible" [id]="'blog-block-' + blog.id">
         
-                                <a class="main-card-cont">
+                                <a class="main-card-cont" (click)="openBlog(blog.id)">
                                 <figure [style.backgroundImage]="'url('+ blog.bgUrl +')'">
                                     <div class="card-overlay"></div>
                                     <div class="date"><span class="card-date-day">{{ blog.createdAtDate }}</span><span class="card-date-month">{{ blog.createdAtMonth }}</span></div>
@@ -58,6 +541,7 @@
                         </div>
 
                     </div> 
+
                 </div>
             </div>
             

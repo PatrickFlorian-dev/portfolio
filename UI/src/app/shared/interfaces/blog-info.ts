@@ -1,4 +1,4 @@
-export interface BlogInfo {
+export class BlogInfo {
     id: number;
     title: string;
     category: number;
@@ -14,4 +14,5 @@ export interface BlogInfo {
     createdAtMonth?: string;
     colSize?: string;
     visible: boolean;
+    blogBody: number;
 }

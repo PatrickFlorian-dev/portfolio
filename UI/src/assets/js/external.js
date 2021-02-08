@@ -49,7 +49,8 @@ function initMap() {}
 	  
 	  });
 
-	  var marker = new google.maps.Marker({position: myLocation, map: map, title: 'The Office (a.k.a. The spare bedroom of my apartment).'});
+	  // Set The Map
+	var marker = new google.maps.Marker({position: myLocation, map: map, title: 'The Office (a.k.a. The spare bedroom of my apartment).'});
 
 	}
 

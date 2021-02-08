@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ListCategoriesInfo } from 'app/shared/interfaces/list-categories-info';
 import { BlogInfo } from 'app/shared/interfaces/blog-info';
+declare var $: any;
 
 @Component({
     selector: 'app-blog-showcase',
@@ -13,6 +14,8 @@ export class BlogShowcaseComponent implements OnInit {
     contents: string = 'contents';
 
     imgUrl = 'https://images.pexels.com/photos/3153207/pexels-photo-3153207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+
+    expandedBlog: BlogInfo = new BlogInfo();
 
     categories: ListCategoriesInfo[] = [
         { id: 1 , name: 'Tech' },
@@ -40,6 +43,7 @@ export class BlogShowcaseComponent implements OnInit {
             createdAtMonth: 'FEB',
             colSize: 'col-md-5',
             visible: true,
+            blogBody: 1,
         },
         {
             id: 2,
@@ -52,11 +56,12 @@ export class BlogShowcaseComponent implements OnInit {
             urlLink: 'http://localhost:4200/',
             faIcon: 'fas fa-newspaper',
             content: 'This is the main content of the blog for later use',
-            createdAtObj: new Date('2019-13-07'), 
+            createdAtObj: new Date('2019-08-02'), 
             createdAtDate: '13',
             createdAtMonth: 'JUL',
             colSize: 'col-md-5',
             visible: true,
+            blogBody: 2,
         },
         {
             id: 3,
@@ -69,11 +74,12 @@ export class BlogShowcaseComponent implements OnInit {
             urlLink: 'http://localhost:4200/',
             faIcon: 'fas fa-plane',
             content: 'This is the main content of the blog for later use',
-            createdAtObj: new Date('2019-15-05'), 
+            createdAtObj: new Date('2019-08-02'), 
             createdAtDate: '15',
             createdAtMonth: 'MAY',
             colSize: 'col-md-5',
             visible: true,
+            blogBody: 3,
         },
         {
             id: 4,
@@ -86,11 +92,12 @@ export class BlogShowcaseComponent implements OnInit {
             urlLink: 'http://localhost:4200/',
             faIcon: 'fas fa-chart-line',
             content: 'This is the main content of the blog for later use',
-            createdAtObj: new Date('2019-15-05'), 
+            createdAtObj: new Date('2019-08-02'), 
             createdAtDate: '22',
             createdAtMonth: 'SEP',
             colSize: 'col-md-5',
             visible: true,
+            blogBody: 4,
         },
         {
             id: 5,
@@ -103,11 +110,12 @@ export class BlogShowcaseComponent implements OnInit {
             urlLink: 'http://localhost:4200/',
             faIcon: 'fas fa-code',
             content: 'This is the main content of the blog for later use',
-            createdAtObj: new Date('2019-15-05'), 
+            createdAtObj: new Date('2019-08-02'), 
             createdAtDate: '10',
             createdAtMonth: 'DEC',
             colSize: 'col-md-5',
             visible: true,
+            blogBody: 5,
         },
         {
             id: 6,
@@ -120,11 +128,12 @@ export class BlogShowcaseComponent implements OnInit {
             urlLink: 'http://localhost:4200/',
             faIcon: 'fas fa-utensils',
             content: 'This is the main content of the blog for later use',
-            createdAtObj: new Date('2019-15-05'), 
+            createdAtObj: new Date('2019-08-02'), 
             createdAtDate: '01',
             createdAtMonth: 'OCT',
             colSize: 'col-md-5',
             visible: true,
+            blogBody: 6,
         },
 
     ]
@@ -133,11 +142,23 @@ export class BlogShowcaseComponent implements OnInit {
 
     }
 
-    filterList(categoryId: number) {
+    filterList( categoryId: number ) {
         
         var foundIndex = this.blogs.findIndex(x => x.category === categoryId);
         this.blogs[foundIndex].visible = !this.blogs[foundIndex].visible;
         
+    }
+
+    openBlog( categoryId: number ) {
+        this.expandedBlog = this.blogs.find(x => x.id === categoryId);
+        console.log(this.expandedBlog)
+        $('.cards-row').fadeOut("slow");
+        $('.individual-blog-container').fadeIn("slow");
+    }
+
+    closeBlog( ) {
+        $('.individual-blog-container').fadeOut("slow");
+        $('.cards-row').fadeIn("slow");
     }
 
 }

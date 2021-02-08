@@ -20,7 +20,7 @@ import { BtnHoverClassDirective } from './shared/directives/btn-hover-class.dire
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

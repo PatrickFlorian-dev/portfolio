@@ -466,4 +466,17 @@ ul , ol {
   }
 }
 
-  
+
+/* Media queries */
+
+@media only screen and (max-width: 600px) {
+  .previous-icon {
+    left: 3%;
+  }
+  .next-icon {
+    left: 94.4%;
+  }
+  .events-content {
+    right: 15px;
+  }
+}

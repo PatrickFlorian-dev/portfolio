@@ -7,19 +7,19 @@
               <h4 style="background-color: #fff;" class="text-center">Grab a copy of my resume or check out my GitHub repositories</h4>
           </div>
 
-          <div class="col-md-3 text-center">
+          <div class="col-md-3 col-sm-6 text-center">
             <a>
               <!-- <div class="black-overlay"></div> -->
               <figure id="resource-figure-1">
                 <div class="date"><img class="btm-img" src="./assets/img/icons/github-logo.png" alt="..."></div>
                 <figcaption> 
                   <h4 class="h4-card"> <span>Github</span></h4>
-                  <p class="card-overlay">Check out my public facing code on Github. For non techies, Git is mostly used for housing code we write, but it be used to manage any other type of file, such as Word documents or Final Cut projects. Think of it as a filing system for every draft of a document.</p>
+                  <p class="card-overlay">Check out my public facing code on Github. For non techies, Git is mostly used for housing code we write, but it be used to manage any other type of file, such as Word documents or Final Cut projects. Think of it as a filing system for every draft of a document. Or see my GitHub API below.</p>
                 </figcaption>
               </figure></a>
           </div>
 
-          <div class="col-md-3 text-center">
+          <div class="col-md-3 col-sm-6 text-center">
             <a>
               <!-- <div class="black-overlay"></div> -->
               <figure id="resource-figure-2">
@@ -31,7 +31,7 @@
               </figure></a>
           </div>
 
-          <div class="col-md-3 text-center">
+          <div class="col-md-3 col-sm-6 text-center">
             <a>
               <!-- <div class="black-overlay"></div> -->
               <figure id="resource-figure-3">
@@ -43,7 +43,7 @@
               </figure></a>
           </div>
 
-          <div class="col-md-3 text-center">
+          <div class="col-md-3 col-sm-6 text-center">
             <a>
               <!-- <div class="black-overlay"></div> -->
               <figure id="resource-figure-4">
@@ -56,5 +56,133 @@
           </div>
 
       </div>
+
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <h4 style="background-color: #fff;" class="text-center github-text-padding">This is a <span class="blue-text-highlight">LIVE GitHub API</span> that defaults to listing my public repositories. Feel free to change the username below to any username you want for the content to be dynamically changed!</h4>
+          <h4 style="background-color: #fff;" class="text-center">Please note this will only show public repositories not private ones. <span class="blue-text-highlight">Limit 10 latest repos.</span></h4>
+        </div>
+      </div>
+
+      <div class="row" style="background: #edf2f7;">
+
+        <div class="col-md-6">
+
+          <div class="git-items-loading" style="padding-top: 10px;" *ngIf="reposLoading">
+            <p style="color: rgba(9, 132, 227, 1)" class="text-center">Loading GitHub Repos , please wait ....</p>
+            <div class="sk-folding-cube">
+              <div class="sk-cube1 sk-cube"></div>
+              <div class="sk-cube2 sk-cube"></div>
+              <div class="sk-cube4 sk-cube"></div>
+              <div class="sk-cube3 sk-cube"></div>
+            </div>
+          </div>
+
+          <div class="main-git-repo-content" *ngIf="!reposLoading">
+
+            <div *ngIf="noResultsFound">
+              <p class="no-results-text">No results found for {{ gitUsername }}, please try again.</p>
+            </div>
+
+            <div class="git-input-name-cont" style="display: flex; background: #E5E9EE;">
+              
+              <label for="inp" class="inp">
+                <input type="text" id="inp" placeholder="&nbsp;" value="patrickflorian-dev" (input)="gitUsername = $event.target.value;">
+                <span class="label">Git Username</span>
+                <span class="focus-bg"></span>
+              </label>
+
+              <div class="git-submit-btn" (click)="updateRepos()">
+                <img src="./assets/img/icons/right-arrow-icon.jpg" class="git-submit-icon">
+              </div>
+
+            </div>
+          
+            <div *ngFor="let repo of repos; let i = index" [attr.data-index]="i">
+
+              <details class="accordion-expandable-cont" [ngStyle]="{'margin-top': i === 0  ? '100px' : '12px' }">
+
+                <summary>
+
+                  <div class="repo-index-badge">
+                    {{ i + 1 }} / {{ totalRepoCount }} 
+                  </div>
+
+                  <span class="summary-title"> <img src="./assets/img/icons/git-icon-1.jpg" class="git-main-icon"> &nbsp; {{ repo.repoName }}</span>
+                  <div class="summary-chevron-up">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </div>
+                </summary>
+              
+                <div class="summary-content"><span style="color: #0984e3;">ID:</span> {{ repo.gitId }} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Owner:</span> {{ repo.ownerName }} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Url:</span> {{ repo.repoUrl }} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Updated At:</span> {{ repo.updatedAt | date :'MMM/dd/yyyy @ h:mm:ss a z'}} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Psuhed At:</span> {{ repo.pushedAt | date :'MMM/dd/yyyy @ h:mm:ss a z'}} </div>
+                <div class="summary-content"><span style="color: #0984e3;">Created At:</span> {{ repo.createdAt | date :'MMM/dd/yyyy @ h:mm:ss a z'}} </div>
+
+                <div class="summary-chevron-down">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                </div>
+
+              </details>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+          
+          <!-- <ngx-prism
+            [language] = "language"
+            [hooks] = "hooks"
+            [code] = "content"
+            [interpolation] = "interpolate"
+          ></ngx-prism> -->
+
+          <p class="text-center">How to grab a copy of one of a repo locally</p>
+
+          <div class="code-editor-cont">
+
+            <div class="code-editor-topbar">
+              <div class="dot-cont" style="text-align:center">
+                <span class="dot d-1"></span>
+                <span class="dot d-2"></span>
+                <span class="dot d-3"></span>
+              </div>
+            </div>
+
+            <div class="code-editor-left-side-numbers-cont">
+              <p class="left-side-number">1</p>
+              <p class="left-side-number">2</p>
+              <p class="left-side-number">3</p>
+              <p class="left-side-number">4</p>
+              <p class="left-side-number">5</p>
+              <p class="left-side-number">6</p>
+              <p class="left-side-number">7</p>
+              <p class="left-side-number">8</p>
+              <p class="left-side-number">9</p>
+              <p class="left-side-number">10</p>
+              <p class="left-side-number">11</p>
+            </div>
+
+            <div class="code-container-text">
+              <p><span style="color:#74b9ff">cd</span> &nbsp; <span style="color:#FDD835">[ Path ]</span></p>
+              <p><span style="color:#a29bfe">mkdir</span> &nbsp; <span style="color:#2ecc71">–m777</span> &nbsp; <span style="color:#FDD835">[ Folder name ]</span> &nbsp; <span style="color: #8e8e8e;">// Mostly optional depending on the project, the -m777 is regarding read, write, execute permissions if you are on a unix based system</span></p>
+              <p><span style="color:#74b9ff">ls</span> &nbsp; <span style="color: #8e8e8e;">// Just to verify the contents you created</span></p>
+  
+              <p><span style="color:#e74c3c">git</span> &nbsp; <span style="color:#e67e22">clone</span> &nbsp; <span style="color:#ff9ff3">https://github.com/</span> <span style="color:#FDD835">[ The Repo You Want to Clone Locally ]</span></p>
+  
+              <p><span style="color: #8e8e8e;">// The project is now cloned, depending on the language some additonal steps will be needed</span></p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
   </div>
 </div>

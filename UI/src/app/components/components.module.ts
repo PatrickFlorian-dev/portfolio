@@ -1,3 +1,4 @@
+import { ExploreMoreComponent } from './explore-more/explore-more.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +14,7 @@ import { BtnHoverClassDirective } from 'app/shared/directives/btn-hover-class.di
 import { AboutMeComponent } from './about-me/about-me.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
 import { MySkillsComponent } from './my-skills/my-skills.component';
+// Leaflet is a piece of shit, use google maps instead
 // import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { BlogShowcaseComponent } from './blog-showcase/blog-showcase.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,6 +27,7 @@ import { MyResourcesComponent } from './my-resources/my-resources.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminDemoComponent } from './admin-demo/admin-demo.component';
 import { ChartsModule } from 'ng2-charts';
+import { PrismModule } from '@ngx-prism/core';
 
 const components = [
     PortfolioComponent,
@@ -39,6 +42,7 @@ const components = [
     NotFoundComponent,
     MyResourcesComponent,
     AdminDemoComponent,
+    ExploreMoreComponent,
 ]
 
 const directives = [
@@ -59,6 +63,7 @@ const directives = [
         ReactiveFormsModule,
         BrowserAnimationsModule,
         ChartsModule,
+        PrismModule,
     ],
     declarations: [
         directives,
