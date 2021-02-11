@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+declare var $: any;
 
 @Component({
     selector: 'app-components',
@@ -28,6 +29,7 @@ export class ComponentsComponent implements OnInit {
     }
 
     ngOnInit() {
+
         this.typewriterAnimation();
         let input_group_focus = document.getElementsByClassName('form-control');
         let input_group = document.getElementsByClassName('input-group');
@@ -39,6 +41,52 @@ export class ComponentsComponent implements OnInit {
                 input_group[i].classList.remove('input-group-focus');
             });
         }
+    }
+
+    fadeInTopCard( dot : string ) {
+
+      let cardElement: string;
+      let dotElement: string;
+      
+      switch (dot) {
+        case 'dot1':
+          cardElement = '#card-2';
+          dotElement = '.pulsating-circle';
+        break;
+        
+        default:
+          console.log(`Could not determine the dot hovered over.`);
+      }
+      
+      $(cardElement).fadeIn(1000).animate({
+        'bottom': '15%'
+        }, {duration: 'slow', queue: false}, function() {
+        // Animation complete.
+      });
+
+      $(dotElement).fadeOut();
+
+    }
+
+    fadeOutTopCard( dot : string ) {
+
+      // let cardElement: string;
+      
+      // switch (dot) {
+      //   case 'dot1':
+      //     cardElement = '#card-2';
+      //   break;
+        
+      //   default:
+      //     console.log(`Could not determine the dot hovered over.`);
+      // }
+
+      // $(cardElement).fadeOut(1000).animate({
+      //   'bottom': '15%'
+      //   }, {duration: 'slow', queue: false}, function() {
+      //   // Animation complete.
+      // });
+
     }
 
     typewriterAnimation() {

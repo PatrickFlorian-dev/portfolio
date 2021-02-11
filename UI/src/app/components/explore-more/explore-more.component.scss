@@ -10497,6 +10497,34 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+.round-circle-custom {
+    border-radius: 31%;
+    height: 160px;
+    width: 160px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -3px;
+    position: absolute;
+    left: 0px;
+}
+
+// MEDIA QUERIES
+
+@media(max-width: 500px) {
+    .round-circle-custom , #bottom-timeline-text {
+        display: none;
+    }
+    #page-top > header > div > div.masthead-heading.text-uppercase {
+        font-size: 2.8rem;
+    }
+    .ml-1 {
+        position: relative;
+        left: -2px;
+    }
+}
+
 // MAP
 
 .card {

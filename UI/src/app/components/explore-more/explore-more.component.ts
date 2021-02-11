@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 declare var $: any;
+import Swal from 'sweetalert2'
 
 @Component({
     selector: 'app-explore-more',
@@ -9,60 +10,114 @@ declare var $: any;
 
 export class ExploreMoreComponent implements OnInit {
 
+    today: number = Date.now();
+
     constructor() {}
 
     ngOnInit() {
-        (function ($) {
-            "use strict"; // Start of use strict
+
+    }
+
+    mobileMenu() {
         
-            // Smooth scrolling using jQuery easing
-            $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
-                if (
-                    location.pathname.replace(/^\//, "") ==
-                        this.pathname.replace(/^\//, "") &&
-                    location.hostname == this.hostname
-                ) {
-                    var target = $(this.hash);
-                    target = target.length
-                        ? target
-                        : $("[name=" + this.hash.slice(1) + "]");
-                    if (target.length) {
-                        $("html, body").animate(
-                            {
-                                scrollTop: target.offset().top - 72,
-                            },
-                            1000,
-                            "easeInOutExpo"
-                        );
-                        return false;
-                    }
-                }
-            });
-        
-            // Closes responsive menu when a scroll trigger link is clicked
-            $(".js-scroll-trigger").click(function () {
-                $(".navbar-collapse").collapse("hide");
-            });
-        
-            // Activate scrollspy to add active class to navbar items on scroll
-            $("body").scrollspy({
-                target: "#mainNav",
-                offset: 74,
-            });
-        
-            // Collapse Navbar
-            var navbarCollapse = function () {
-                if ($("#mainNav").offset().top > 100) {
-                    $("#mainNav").addClass("navbar-shrink");
-                } else {
-                    $("#mainNav").removeClass("navbar-shrink");
-                }
-            };
-            // Collapse now if page is not at top
-            navbarCollapse();
-            // Collapse the navbar when page is scrolled
-            $(window).scroll(navbarCollapse);
-        })();
+        Swal.fire({
+            title: 'Mobile Naviagtion',
+            // icon: 'info',
+            html: `
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scrollToSection('#interactive-map')">Explore</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scrollToSection('#gear-items')">Gear</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scrollToSection('#portfolio')">Stories</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" (click)="scrollToSection('#contact')">Contact</a></li>
+            </ul>
+            `,
+            confirmButtonText:
+            'Ok',
+            confirmButtonAriaLabel: 'Ok',
+            // showCloseButton: true,
+            // showCancelButton: true,
+            // focusConfirm: false,
+            // confirmButtonText:
+            //   '<i class="fa fa-thumbs-up"></i>',
+            // confirmButtonAriaLabel: 'Thumbs up, great!',
+            // cancelButtonText:
+            //   '<i class="fa fa-thumbs-down"></i>',
+            // cancelButtonAriaLabel: 'Close',
+        })
+
+    }
+
+    popAlert( gearType: string ) {
+
+        let title;
+        let description;
+
+        switch ( gearType ) {
+
+            case 'threads': 
+                title = '<h2>Recommended Threads: </h2> <br/>';
+                description = `
+                <p>For winter: <a href="https://www.carhartt.com/">Carhartt</a> provides excellent protection against the elements </p> <hr/>
+                <p>For Summer: <a href="https://www.rei.com/">Rei</a> offers tough yet comfortable summer gear for hiking</p> <hr/>
+                <p>For Spring & Fall <a href="https://www.backcountrygear.com/camping-and-hiking.html">Back country gear</a> is perfect for light jackets and pants </p> <hr/>
+                `;
+            break;
+
+            case 'accessories': 
+                title = '<h2>Recommended Acessories: </h2> <br/>';
+                description = `
+                <p><a href="https://www.amazon.com/Cool-Camping-Stuff/s?k=Cool+Camping+Stuff">Amazon Cool Camping Stuff</a> page NEVER ceases to surprise me, check it out </p> <hr/>
+                `;
+            break;
+
+            case 'hiking': 
+                title = '<h2>Recommended Hiking Gear: </h2> <br/>';
+                description = `
+                <p><a href="https://www.rei.com/product/122167/salomon-x-ultra-3-mid-gtx-hiking-boots-mens?cm_mmc=aff_AL-_-145262-_-180150-_-NA&avad=180150_c1fe49949">Solomon</a> easily makes the best and stylish hiking boots </p> <hr/>
+                `;
+            break;
+            
+            case 'tech': 
+                title = '<h2>Recommended Tech: </h2> <br/>';
+                description = `
+                <p><a href="https://makeadventurehappen.com/best-hiking-gadgets-reviews/">makeadventure.com </a> put together an awesome list for tech on your next adventure </p> <hr/>
+                `;
+            break;
+
+            case 'northface': 
+                title = '<h2>Recommended North Face: </h2> <br/>';
+                description = `
+                <p><a href="https://www.thenorthface.com/">The North Face</a> provides top tier clothing and hiking equipment that is guarenteed to last or your money back</p> <hr/>
+                `;
+            break;
+
+            case 'camping': 
+                title = '<h2>Recommended Camping Gear: </h2> <br/>';
+                description = `
+                <p><a href="https://www.switchbacktravel.com/best-sites-buy-outdoor-gear">Switchback Travel</a> provides a great list for where to find camping gear</p> <hr/>
+                `;
+            break;
+
+            default:
+                console.log('Location not found!')
+
+        }
+
+        Swal.fire({
+            title: title,
+            // icon: 'info',
+            html: description,
+            showCloseButton: true,
+            showCancelButton: false,
+            focusConfirm: false,
+            confirmButtonText:
+              '<i class="fa fa-thumbs-up"></i>',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            cancelButtonText:
+              '<i class="fa fa-thumbs-down"></i>',
+            cancelButtonAriaLabel: 'Thumbs down',
+        })
+
     }
 
     scrollToSection(idValue:string) {
@@ -143,7 +198,7 @@ export class ExploreMoreComponent implements OnInit {
         $("#card").animate({ opacity: 'toggle' }, 'fast');
         setTimeout(()=>{
             $( ".spinner" ).toggle();
-        }, 100);
+        }, 200);
 
         switch ( location ) {
             case 'california': 
@@ -151,7 +206,7 @@ export class ExploreMoreComponent implements OnInit {
                     $('#card-img-top').attr('src', californiaSrc);
                     $( "#card-title" ).text(californiaTitle);
                     $( "#card-desc" ).text(californiaDesc);
-                }, 200);
+                }, 300);
             break;
 
             case 'colorado': 
@@ -159,7 +214,7 @@ export class ExploreMoreComponent implements OnInit {
                     $('#card-img-top').attr('src', coloradoSrc);
                     $( "#card-title" ).text(coloradoTitle);
                     $( "#card-desc" ).text(coloradoDesc);
-                }, 200);
+                }, 300);
             break;
             
             case 'wyoming': 
@@ -167,7 +222,7 @@ export class ExploreMoreComponent implements OnInit {
                     $('#card-img-top').attr('src', wyomingSrc);
                     $( "#card-title" ).text(wyomingTitle);
                     $( "#card-desc" ).text(wyomingDesc);
-                }, 200);
+                }, 300);
             break;
 
             case 'niagra': 
@@ -175,7 +230,7 @@ export class ExploreMoreComponent implements OnInit {
                     $('#card-img-top').attr('src', niagraSrc);
                     $( "#card-title" ).text(niagraTitle);
                     $( "#card-desc" ).text(niagraDesc);
-                }, 200);
+                }, 300);
             break;
 
             case 'keywest': 
@@ -183,7 +238,7 @@ export class ExploreMoreComponent implements OnInit {
                     $('#card-img-top').attr('src', keywestSrc);
                     $( "#card-title" ).text(keywestTitle);
                     $( "#card-desc" ).text(keywestDesc);
-                }, 200);
+                }, 300);
             break;
 
             case 'rio': 
@@ -191,7 +246,7 @@ export class ExploreMoreComponent implements OnInit {
                     $('#card-img-top').attr('src', rioSrc);
                     $( "#card-title" ).text(rioTitle);
                     $( "#card-desc" ).text(rioDesc);
-                }, 200);
+                }, 300);
             break;
 
             case 'peru': 
@@ -202,7 +257,7 @@ export class ExploreMoreComponent implements OnInit {
                 }, 200);
             break;
 
-            case 'peru': 
+            case 'argentina': 
                 setTimeout(()=>{
                     $('#card-img-top').attr('src', argentinaSrc);
                     $( "#card-title" ).text(argentinaTitle);
