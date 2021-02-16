@@ -127,7 +127,148 @@
 
 #card-3 {
   position: absolute;
-  left: 65%;
+  left: 60%;
+  top: 18%;
+  width: 440px;
+  max-width: 440px;
+  height: 245px;
+  display: none;
+}
+
+#card-4 {
+  position: absolute;
+  left: 60%;
+  top: 54%;
+  display: none;
+  width: 440px;
+  max-width: 440px;
+  height: 245px;
+}
+
+#card-img-right-1 {
+  width: 195px;
+  height: 245px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+#card-img-right-2 {
+  width: 195px;
+  height: 245px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#card-img-right-1 {
+  width: 195px;
+  height: 245px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+#card-right-text-cont {
+  padding-left: 170px;
+  padding-top: 0px;
+  margin-top: -35px;
+}
+
+#card-right-1-text-cont {
+  position: relative;
+  left: -26px;
+  padding-top: 12px;
+  margin-top: -35px;
+}
+
+#card-img-right-1-title {
+  font-size: 19px;
+}
+
+#card-img-right-1-subtitle {
+  padding-right: 140px;
+}
+
+#play-icon-top-cont {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  display: none;
+}
+
+#mobile-card-img-top {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+#mobile-card-1 {
+  z-index: 9;
+  position: absolute;
+  top: 55px;
+  display: none;
+}
+
+#mobile-card-title {
+  padding-top: 110px;
+  text-align: center;
+}
+
+#mobile-card-image-bottom {
+  position: absolute;
+  width: 50%;
+  height: 156px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  left: 0;
+  bottom: 0;
+  border-bottom-left-radius: 15px;
+}
+
+#mobile-card-image-bottom-2 {
+  position: absolute;
+  width: 50%;
+  height: 156px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: 50% 50%;
+  object-position: 50% 50%;
+  right: 0;
+  bottom: 0;
+  border-bottom-right-radius: 15px;
+}
+
+.mobile-play-circle-icon {
+  padding-bottom: 138px;
+  font-size: 26px;
+  cursor: pointer;
+  left: 48%;
+  position: relative;
+  color: #0984e3;
+}
+
+.fa-play-pulse-icon {
+  z-index: 9;
+  top: -9px;
+  position: absolute;
+  font-size: 18px;
+  left: -8px;
+  color: #0984e3;
 }
 
 .card-img-top {
@@ -179,8 +320,14 @@
   padding-bottom: 12px;
   padding-left: 7px;
   padding-top: 7px;
-  border-top-right-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-top-right-radius: 11px;
+  border-bottom-left-radius: 11px;
+}
+
+#play-icon-top-cont-mobile {
+  top: 55%;
+  position: absolute;
+  display: none;
 }
 
 #card-div-bottom {
@@ -396,6 +543,45 @@ $sans: 'Open Sans', sans-serif;
   }
 }
 
+.pulsating-circle-4 {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 85%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 30px;
+  height: 30px;
+  z-index: -1;
+  
+  &:before {
+    content: '';
+    position: relative;
+    display: block;
+    width: 300%;
+    height: 300%;
+    box-sizing: border-box;
+    margin-left: -100%;
+    margin-top: -100%;
+    border-radius: 45px;
+    background-color: #01a4e9;
+    animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0; 
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 8px rgba(0,0,0,.3);
+    animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
+  }
+}
+
 @keyframes pulse-ring {
   0% {
     transform: scale(.33);
@@ -425,6 +611,26 @@ $sans: 'Open Sans', sans-serif;
 .section-dark {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
+
+#mobile-card-1 {
+  position: absolute;
+}
+
+// MEDIA QUERIES 
+
+@media screen and (max-width: 1125px), 
+       screen and (max-height: 840px) {
+  #front-page-cards-cont {
+    display: none;
+  }
+  #play-icon-top-cont-mobile {
+    display: inline;
+  }
+}
+
+// @media screen and (min-width: 480px) and (max-width: 960px) { 
+
+// }
 
 #stars {
   width: 1px;

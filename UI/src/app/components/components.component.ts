@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 declare var $: any;
+import Swal from 'sweetalert2'
 
 @Component({
     selector: 'app-components',
@@ -17,6 +18,10 @@ export class ComponentsComponent implements OnInit {
     focus2;
     date: {year: number, month: number};
     model: NgbDateStruct;
+
+    dot1Hovered : boolean = false;
+    dot2Hovered : boolean = false;
+    dot3Hovered : boolean = false;
 
     constructor( private renderer : Renderer) {}
     isWeekend(date: NgbDateStruct) {
@@ -52,6 +57,17 @@ export class ComponentsComponent implements OnInit {
         case 'dot1':
           cardElement = '#card-2';
           dotElement = '.pulsating-circle';
+          this.dot1Hovered = true;
+        break;
+        case 'dot2':
+          cardElement = '#card-3';
+          dotElement = '.pulsating-circle-2';
+          this.dot2Hovered = true;
+        break;
+        case 'dot3':
+          cardElement = '#card-4';
+          dotElement = '.pulsating-circle-3';
+          this.dot3Hovered = true;
         break;
         
         default:
@@ -59,33 +75,40 @@ export class ComponentsComponent implements OnInit {
       }
       
       $(cardElement).fadeIn(1000).animate({
-        'bottom': '15%'
+        'bottom': '5%'
         }, {duration: 'slow', queue: false}, function() {
         // Animation complete.
       });
 
       $(dotElement).fadeOut();
 
+      if ( this.dot1Hovered && this.dot2Hovered && this.dot3Hovered ) {
+        $("#play-icon-top-cont").fadeIn();
+      }
+
     }
 
-    fadeOutTopCard( dot : string ) {
+    fadeToggleElementBasic( elName: string ) {
+      $( elName ).fadeToggle( "slow", "linear" );
+    }
 
-      // let cardElement: string;
-      
-      // switch (dot) {
-      //   case 'dot1':
-      //     cardElement = '#card-2';
-      //   break;
-        
-      //   default:
-      //     console.log(`Could not determine the dot hovered over.`);
-      // }
+    showVideo( ) {
 
-      // $(cardElement).fadeOut(1000).animate({
-      //   'bottom': '15%'
-      //   }, {duration: 'slow', queue: false}, function() {
-      //   // Animation complete.
-      // });
+        Swal.fire({
+          title: '<strong>An audio note from me</strong>',
+          icon: 'info',
+          html:
+            '<iframe width="100%" height="315" src="https://www.youtube.com/embed/mw-WL9EnB3Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+          showCloseButton: true,
+          showCancelButton: false,
+          focusConfirm: false,
+          confirmButtonText:
+            '<i class="fa fa-thumbs-up"></i> Awesome!',
+          // confirmButtonAriaLabel: 'Thumbs up, great!',
+          // cancelButtonText:
+          //   '<i class="fa fa-thumbs-down"></i>',
+          // cancelButtonAriaLabel: 'Thumbs down'
+        })
 
     }
 
