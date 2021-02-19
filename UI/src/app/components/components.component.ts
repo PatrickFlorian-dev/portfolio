@@ -88,8 +88,9 @@ export class ComponentsComponent implements OnInit {
 
     }
 
-    fadeToggleElementBasic( elName: string ) {
+    fadeToggleElementBasic( elName: string , overlay: string ) {
       $( elName ).fadeToggle( "slow", "linear" );
+      $( overlay ).fadeToggle( "slow", "linear" );
     }
 
     showVideo( ) {

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioBtnsInfo } from 'app/shared/interfaces/portfolio-btns-info';
-import { PortfolioImgsInfo } from 'app/shared/interfaces/portfolio-imgs-info';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContent } from '../modal/modal.component';
 
@@ -14,7 +12,7 @@ export class PortfolioComponent implements OnInit {
 
     currentImageCategory: number = 1;
 
-    btns: PortfolioBtnsInfo[] = [
+    btns = [
         {btnID: 0, btnDisplayName: 'All', btnActiveState: true , imgCategory: 1},
         {btnID: 1, btnDisplayName: 'Career', btnActiveState: false , imgCategory: 2},
         {btnID: 2, btnDisplayName: 'Freelance', btnActiveState: false , imgCategory: 3},
@@ -24,7 +22,7 @@ export class PortfolioComponent implements OnInit {
     ];
 
     // TODO: map category names from api to data table
-    images: PortfolioImgsInfo[] = [
+    images = [
         { portfolioID: 0 , imgSrc: 'assets/img/bgs/tgh-bg-1.png' , modalImgOneLink: 'assets/img/bgs/tgh-bg-2.png' , modalImgTwoLink: 'assets/img/bgs/tgh-bg-3.png', imgTitle: 'Tampa General Hospital' , imgCategoryName: 'Career', imgCategory: 2, link: 'https://www.tgh.org/' , externalLink: true , show: true , imgDescription: `I've been with Tampa General now for about a little over two years and I absolutely love the challenge of working on and managing multiple (15+) websites. There is never a dull day and never have a lack of work. Not only is it a face paced environment but it also very challenging and I learn something new almost everyday!` },
         { portfolioID: 1 , imgSrc: 'assets/img/bgs/tbt-bg-1.png' , modalImgOneLink: 'assets/img/bgs/tbt-bg-2.png' , modalImgTwoLink: 'assets/img/bgs/tbt-bg-3.png', imgTitle: 'Tampa Bay Times' , imgCategoryName: 'Career', imgCategory: 2, link: 'https://www.tampabay.com/' , externalLink: true, show: true , imgDescription: `The Tampa Bay Times are a phenomenal newspaper publisher right on par with the New York Times. They already have a team of developers but whenever they ramp up and need some extra help they'll solicit me as a temporary independent contractor.` },
         { portfolioID: 2 , imgSrc: 'assets/img/bgs/blog-bg-1.png' , modalImgOneLink: 'assets/img/bgs/blog-bg-2.png' , modalImgTwoLink: 'assets/img/bgs/blog-bg-3.png', imgTitle: 'PBJ' , imgCategoryName: 'Freelance', imgCategory: 3, link: '/portfolio-blog' , externalLink: true, show: true , imgDescription: `In my free time I love writing articles and how-to's, so I created PBJ! Patrick's Blogs & Jams. A site where you can read up on some cool blogs and check out some new music.` },
@@ -46,7 +44,7 @@ export class PortfolioComponent implements OnInit {
         this.btns[btnID].btnActiveState = true;
     }
 
-    filterImages(btn: PortfolioBtnsInfo) {
+    filterImages(btn) {
         this.currentImageCategory = btn.imgCategory;
         this.filterImagesArray();
     }
@@ -63,7 +61,7 @@ export class PortfolioComponent implements OnInit {
         // TODO: Naviagate to all projects page once built
     }
 
-    openModal(img: PortfolioImgsInfo) {
+    openModal(img) {
         const modalRef = this.modalService.open(NgbdModalContent);
         modalRef.componentInstance.textOnly = false;
         modalRef.componentInstance.title = img.imgTitle;

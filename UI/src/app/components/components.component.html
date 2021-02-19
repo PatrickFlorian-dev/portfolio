@@ -73,17 +73,25 @@
 
         <div id="play-icon-top-cont" (click)="showVideo()">
           <div class="pulsating-circle-4"></div>
-          <i class="fas fa-play-circle fa-play-pulse-icon"></i>
+          <i class="fas fa-play-circle fa-play-pulse-icon-2"></i>
         </div>
 
       </div>
 
-      <div id="play-icon-top-cont-mobile" (click)="fadeToggleElementBasic('#mobile-card-1')">
+      <div id="play-icon-top-cont-mobile" (click)="fadeToggleElementBasic('#mobile-card-1', '#mobile-overlay')">
         <div class="pulsating-circle-4" ></div>
         <i class="fas fa-expand-alt fa-play-pulse-icon"></i>
       </div>
 
-      <div id="mobile-card-1" class="card-cont shadow2" (click)="fadeToggleElementBasic('#mobile-card-1')">
+      <div id="regular-overlay">
+
+      </div>
+
+      <div id="mobile-overlay" (click)="fadeToggleElementBasic('#mobile-card-1', '#mobile-overlay')">
+
+      </div>
+
+      <div id="mobile-card-1" class="card-cont shadow2" (click)="fadeToggleElementBasic('#mobile-card-1', '#mobile-overlay')">
         <img id="mobile-card-img-top" src="./assets/img/bgs/portfoliomesuit.png">
         <h2 id="mobile-card-title">Professional • Leader • Focused • Engineer</h2>
         <p style="text-align: center;">

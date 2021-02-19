@@ -138,7 +138,18 @@
 
   // GIF
 
-  .starting-gif {
+.starting-gif {
     position: relative;
     width: 100%;
-  }
+}
+
+.swal2-actions {
+    padding-bottom: 10px;
+    padding-top: 550px;
+}
+
+#btn-skills {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    width: 200px;
+}
