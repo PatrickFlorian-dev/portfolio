@@ -9,8 +9,8 @@ import { UserInfo } from '../interfaces/user-info';
 })
 export class AuthService {
 
-  // private REST_API_SERVER: string = 'https://pflorian.pythonanywhere.com';
-  private REST_API_SERVER: string = 'http://localhost:8000';
+  private REST_API_SERVER: string = 'https://pflorian.pythonanywhere.com';
+  // private REST_API_SERVER: string = 'http://localhost:8000';
 
   headers = new HttpHeaders({
     'Accept': 'application/json', 
