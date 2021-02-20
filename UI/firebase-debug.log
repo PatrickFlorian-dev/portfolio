@@ -1,0 +1,35 @@
+[debug] [2021-02-20T01:21:02.971Z] ----------------------------------------------------------------------
+[debug] [2021-02-20T01:21:02.973Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\patri\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-02-20T01:21:02.973Z] CLI Version:   9.4.0
+[debug] [2021-02-20T01:21:02.973Z] Platform:      win32
+[debug] [2021-02-20T01:21:02.973Z] Node Version:  v12.16.1
+[debug] [2021-02-20T01:21:02.974Z] Time:          Fri Feb 19 2021 20:21:02 GMT-0500 (Eastern Standard Time)
+[debug] [2021-02-20T01:21:02.974Z] ----------------------------------------------------------------------
+[debug] [2021-02-20T01:21:02.975Z] 
+[debug] [2021-02-20T01:21:02.984Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-20T01:21:02.985Z] > authorizing via signed-in user
+[debug] [2021-02-20T01:21:02.985Z] [iam] checking project patrickflorianportfoliowebsite for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-02-20T01:21:02.988Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-02-20T01:21:02.988Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-20T01:21:03.203Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sat, 20 Feb 2021 01:21:03 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-20T01:21:03.210Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/patrickflorianportfoliowebsite:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-02-20T01:21:03.383Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 20 Feb 2021 01:21:03 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=43","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-20T01:21:03.386Z] > refreshing access token with scopes: []
+[debug] [2021-02-20T01:21:03.386Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-20T01:21:03.532Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sat, 20 Feb 2021 01:21:03 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-20T01:21:03.542Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/patrickflorianportfoliowebsite [none]
+[debug] [2021-02-20T01:21:03.807Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/patrickflorianportfoliowebsite 200
+[debug] [2021-02-20T01:21:03.807Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/patrickflorianportfoliowebsite {"projectId":"patrickflorianportfoliowebsite","projectNumber":"612579984883","displayName":"patrickflorianportfoliowebsite","name":"projects/patrickflorianportfoliowebsite","resources":{"hostingSite":"patrickflorianportfoliowebsite"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'patrickflorianportfoliowebsite'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-02-20T01:21:03.824Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-02-20T01:21:03.824Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-20T01:21:03.961Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sat, 20 Feb 2021 01:21:03 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-20T01:21:03.969Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/patrickflorianportfoliowebsite/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}

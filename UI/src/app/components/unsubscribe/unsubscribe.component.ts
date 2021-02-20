@@ -18,6 +18,8 @@ export class UnsubscribeComponent implements OnInit {
 
     prodUrl: string = 'http://localhost:4200/';
 
+    data: any;
+
     constructor(
         private activatedRoute: ActivatedRoute,
         private authService: AuthService,
@@ -46,7 +48,7 @@ export class UnsubscribeComponent implements OnInit {
         this.authService.unsubscribe(user).subscribe(
             data => { 
 
-                if(data.success) {
+                if(data['success']) {
                     Swal.fire({
                         icon: 'success',
                         title: 'You have been unsubscribed and will be redirected to the homepage automatically in 10 seconds, enjoy!',

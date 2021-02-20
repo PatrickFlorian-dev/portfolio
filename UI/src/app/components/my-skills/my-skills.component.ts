@@ -291,7 +291,7 @@ export class MySkillsComponent implements OnInit {
     '      </li>'+
     '      <li class="chart__bar" data-skill="95">'+
     '        <span class="chart__label">'+
-    '          Acquia'+
+    '          Acquia • FireBase • GoDaddy • HostGator • AWS EC2 • Linux • IIS'+
     '        </span>'+
     '      </li>'+
     '      <li class="chart__bar" data-skill="95">'+
