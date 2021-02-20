@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { DataService } from '../services/data.service';
 import { ContactFormInfo } from '../interfaces/contact-form-info';
 declare var $: any;
+import Swal from 'sweetalert2'
 
 @Component({
     selector: 'app-footer',
@@ -95,31 +96,69 @@ export class FooterComponent implements OnInit {
 
                 this.subscribed = false;
     
-                // ADD IF LOGIC API CALL
-                $( "#subscribe-email" ).animate({
-                    width: '5%',
-                }, 0, function() {
-                    setTimeout(function(){
-                        $("#subscribe-email").hide();
-                        $("#subscribe-submit").css("cursor", "default");
-                        $("#subscribe-submit").val('Thank you for subscribing!');
-                    },500);
-                });
+                // // ADD IF LOGIC API CALL
+                // $( "#subscribe-email" ).animate({
+                //     width: '5%',
+                // }, 0, function() {
+                //     setTimeout(function(){
+                //         $("#subscribe-email").hide();
+                //         $("#subscribe-submit").css("cursor", "default");
+                //         $("#subscribe-submit").val('Thank you for subscribing!');
+                //     },500);
+                // });
 
-                $("#subscribe-submit").animate({
-                    width: '95%',
-                },
-                0, 'linear');
+                // $("#subscribe-submit").animate({
+                //     width: '95%',
+                // },
+                // 0, 'linear');
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thank you for subscribing!',
+                    showConfirmButton: false,
+                    timer: 5000,
+                    text: 'This message will automatically close after 5 seconds',
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText:
+                    '<i class="fa fa-thumbs-up"></i> Sweet!',
+                })
 
               } else {
     
-                this.subscribed = true;
-                $("#error-text").fadeIn();
-                document.getElementById("error-text-span").innerHTML = "You are already subscribed! To unsubscribe please click the unsubscribe link on the email you received.";
+                // this.subscribed = true;
+                // $("#error-text").fadeIn();
+                // document.getElementById("error-text-span").innerHTML = "You are already subscribed! To unsubscribe please click the unsubscribe link on the email you received.";
     
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Already Subscribed!',
+                    showConfirmButton: false,
+                    text: 'You are already subscribed, to unsubscribe please click the unsubscribe link on the email you were just sent.',
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText:
+                    'Roger That',
+                })
+
               }
             },
-            err => console.log(err),
+
+            err => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'API Call Failed',
+                    showConfirmButton: false,
+                    text: 'Api Call Failed please try again.',
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText:
+                    'Roger That',
+                })
+            },
             () => console.log('done loading'),
           );
 

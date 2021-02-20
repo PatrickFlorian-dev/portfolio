@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminDemoComponent } from './admin-demo/admin-demo.component';
 import { ChartsModule } from 'ng2-charts';
 import { PrismModule } from '@ngx-prism/core';
+import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 
 const components = [
     PortfolioComponent,
@@ -43,6 +44,7 @@ const components = [
     MyResourcesComponent,
     AdminDemoComponent,
     ExploreMoreComponent,
+    UnsubscribeComponent,
 ]
 
 const directives = [

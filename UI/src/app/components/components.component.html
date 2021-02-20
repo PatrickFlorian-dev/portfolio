@@ -1,5 +1,107 @@
 <div class="wrapper" id="top-section">
-    <div class="page-header section-dark" style="background-image: url('assets/img/bgs/meandbeans.jpg')">
+    <!-- <div class="page-header section-dark" style="background-image: url('assets/img/bgs/portfolioheaderdesktop.png')"> -->
+    <div class="page-header section-dark">
+
+      <!-- <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+      </video> -->
+
+      <div id="stars-cont">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+      </div>
+
+      <!-- <div class="card-cont shadow2" id="card-1">
+        <h2>Shadow with 2 properties</h2>
+      <p>box-shadow:
+        0  5px 10px rgba(154,160,185,0.05),
+        0 15px 40px rgba(166,173,201,0.2);</p>
+      </div> -->
+
+      <!-- RIGHT -->
+      <!-- <div class="card-cont shadow2" id="card-1">
+        <i class="fas fa-user-tie top-right-icon-2"></i>
+        <img id="card-img-top" class="card-img-top" src="./assets/img/bgs/portfoliomesuit.png">
+        <h2 class="card-title">Strong Business Skills</h2>
+      <p class="card-desc">As a former freelancer I know what makes a business tick and how to optimize their technical needs.</p>
+        <div id="card-div-bottom">
+          <p id="card-div-bottom-p">Work</p>
+        </div>
+      </div> -->
+
+      <!-- <div class="center-3d-btn-bg card-cont shadow2">
+      </div>
+      <div class="center-3d-btn"><a class="pushme"> <span class="inner-3d-btn">Learn More <i id="floating-fa-icon" class="fas fa-chevron-down"></i></span></a></div> -->
+
+      <div id="front-page-cards-cont">
+
+        <div id="pulsating-circles-container">
+          <div class="pulsating-circle" (mouseover)="fadeInTopCard('dot1')"></div>
+          <div class="pulsating-circle-2" (mouseover)="fadeInTopCard('dot2')"></div>
+          <div class="pulsating-circle-3" (mouseover)="fadeInTopCard('dot3')"></div>
+        </div>
+
+        <!-- LEFT -->
+        <div class="card-cont shadow2" id="card-2">
+          <i class="fas fa-user-tie top-right-icon"></i>
+          <img id="card-img-top" class="card-img-top" src="./assets/img/bgs/portfoliomesuit.png">
+          <h2 class="card-title">Professional • Leader • Focused</h2>
+        <p class="card-desc">With over 10 years of experience in software engineering and being the head of multiple major projects, you can always count on me to get the job and to get it done right.</p>
+          <div id="card-div-bottom">
+            <p id="card-div-bottom-p">Work</p>
+          </div>
+        </div>
+        
+        <div class="card-cont shadow2" id="card-3">
+          <i class="fas fa-route top-right-icon"></i>
+          <img id="card-img-right-1" class="card-img-right-1" src="./assets/img/bgs/mecanyon1.jpg">
+          <div id="card-right-text-cont">
+            <h2 id="card-img-right-1-title">Business saavy</h2>
+            <p>Having worked for various international companies and traveling the globe, I have a broad understanding of various businesses IT needs and web needs from around the world!.</p>
+          </div>
+        </div>
+
+        <div class="card-cont shadow2" id="card-4">
+          <i class="fas fa-code top-right-icon-2"></i>
+          <img id="card-img-right-2" class="card-img-right-1" src="./assets/img/bgs/mecompfinal.png">
+          <div id="card-right-1-text-cont">
+            <h2 id="card-img-right-1-title">Quality Code</h2>
+            <p id="card-img-right-1-subtitle">One thing I love is coding and I do it right alongside following industry standards and best practices. I am also an expert in the IT industry including non website related technology.</p>
+          </div>
+        </div>
+
+        <div id="play-icon-top-cont" (click)="showVideo()">
+          <div class="pulsating-circle-4"></div>
+          <i class="fas fa-play-circle fa-play-pulse-icon-2"></i>
+        </div>
+
+      </div>
+
+      <div id="play-icon-top-cont-mobile" (click)="fadeToggleElementBasic('#mobile-card-1', '#mobile-overlay')">
+        <div class="pulsating-circle-4" ></div>
+        <i class="fas fa-expand-alt fa-play-pulse-icon"></i>
+      </div>
+
+      <div id="regular-overlay">
+
+      </div>
+
+      <div id="mobile-overlay" (click)="fadeToggleElementBasic('#mobile-card-1', '#mobile-overlay')">
+
+      </div>
+
+      <div id="mobile-card-1" class="card-cont shadow2" (click)="fadeToggleElementBasic('#mobile-card-1', '#mobile-overlay')">
+        <img id="mobile-card-img-top" src="./assets/img/bgs/portfoliomesuit.png">
+        <h2 id="mobile-card-title">Professional • Leader • Focused • Engineer</h2>
+        <p style="text-align: center;">
+          With over 10 years of experience in software engineering and being the head of multiple major projects, you can always count on me to get the job and to get it done right.
+          From quality code to following best practices and industry standards, your websites and mobile apps will never look better! 
+        </p>
+        <i class="fas fa-play-circle mobile-play-circle-icon" (click)="showVideo()"></i>
+        <img id="mobile-card-image-bottom" src="./assets/img/bgs/mecanyon1.jpg">
+        <img id="mobile-card-image-bottom-2" src="./assets/img/bgs/mecompfinal.png">
+      </div>
 
         <h1 class="typewriter">I am
             
@@ -15,7 +117,7 @@
                 </div>
               </div>
         
-            </h1>
+          </h1>
         
         <!-- <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div> -->
 

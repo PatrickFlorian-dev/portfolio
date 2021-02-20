@@ -16,6 +16,7 @@ import { PasswordResetComponent } from './components/password-reset/password-res
 import { PortfolioPageBlogComponent } from './components/portfolio-page-blog/portfolio-page-blog.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminDemoComponent } from './components/admin-demo/admin-demo.component';
+import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
     { path: 'signup',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent,},
     { path: 'password-reset',   component: PasswordResetComponent,},
+    { path: 'unsubscribe',   component: UnsubscribeComponent,},
     { path: 'portfolio-blog',   component: PortfolioPageBlogComponent,},
     { path: 'explore-more',   component: ExploreMoreComponent,},
     { path: 'admin-demo',   component: AdminDemoComponent,},

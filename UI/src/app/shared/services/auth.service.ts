@@ -9,7 +9,8 @@ import { UserInfo } from '../interfaces/user-info';
 })
 export class AuthService {
 
-  private REST_API_SERVER = "http://localhost:8000";
+  private REST_API_SERVER: string = 'https://pflorian.pythonanywhere.com';
+  // private REST_API_SERVER: string = 'http://localhost:8000';
 
   headers = new HttpHeaders({
     'Accept': 'application/json', 
@@ -17,7 +18,22 @@ export class AuthService {
     'Content-Type': 'application/json',
   }) 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { 
+    
+    // switch (window.location.hostname) {
+
+    //   case 'localhost':
+    //     this.REST_API_SERVER = 'http://localhost:8000';
+    //     break;
+
+    //   default:
+    //     console.log('Could not determine host env, switching to local');
+    //     this.REST_API_SERVER = 'http://localhost:8000';
+    //     break;
+
+    // }
+
+  }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
@@ -57,6 +73,10 @@ export class AuthService {
 
   public sendPasswordResetEmail(user: UserInfo) {
     return this.httpClient.post(this.REST_API_SERVER + '/api/password-reset/', user ).pipe(retry(0), catchError(this.handleError));
+  }
+
+  public unsubscribe(user: UserInfo) {
+    return this.httpClient.post(this.REST_API_SERVER + '/api/unsubscribe/', user ).pipe(retry(0), catchError(this.handleError));
   }
 
   public checkPasswordResetToken(user: UserInfo) {

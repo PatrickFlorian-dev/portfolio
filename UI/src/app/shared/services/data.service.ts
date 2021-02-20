@@ -11,7 +11,8 @@ import { GitCredentailsInfo } from '../interfaces/git-credentials-info';
 })
 export class DataService {
 
-  private REST_API_SERVER = "http://localhost:8000";
+  // private REST_API_SERVER = "http://localhost:8000";
+  private REST_API_SERVER: string = 'https://pflorian.pythonanywhere.com';
 
   headers = new HttpHeaders({
     'Accept': 'application/json', 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SkillsButtonsInfo } from 'app/shared/interfaces/skills-buttons-info';
 import * as $ from 'jquery';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-my-skills',
@@ -15,7 +15,7 @@ export class MySkillsComponent implements OnInit {
     curSelectedBodyText: string = 'Pick a card, any card 🤠';
 
     // TODO: Change this to api call later
-    cardsToRender: SkillsButtonsInfo[] = [
+    cardsToRender = [
         {
             id: 1,
             title: 'HTML/HTML5',
@@ -122,7 +122,7 @@ export class MySkillsComponent implements OnInit {
         },
     ];
 
-    cardsToRenderXL: SkillsButtonsInfo[] = [
+    cardsToRenderXL = [
         {
             id: 1,
             title: 'Strategic Skills',
@@ -187,6 +187,414 @@ export class MySkillsComponent implements OnInit {
         
     }
 
+    modalHtml = 
+    '<div class="skills">'+
+    '  <div class="charts">'+
+    '    <div class="chart chart--dev">'+
+    '      <span class="chart__title">Development</span>'+
+    '      <ul class="chart--horiz">'+
+    '        <li class="chart__bar" data-skill="95">'+
+    '          <span class="chart__label">'+
+    '            HTML • HTML 5 • XHTML • XML'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="95">'+
+    '          <span class="chart__label">'+
+    '            CSS • CSS3 • LESS • SCSS'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="95">'+
+    '          <span class="chart__label">'+
+    '            JavaScript • Typescript • jQuery'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="95">'+
+    '          <span class="chart__label">'+
+    '            Angular 2 / React'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="90">'+
+    '          <span class="chart__label">'+
+    '            C • C+'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="90">'+
+    '          <span class="chart__label">'+
+    '            ASP NET ( MVC ) • Web API • ASP NET CORE'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="90">'+
+    '          <span class="chart__label">'+
+    '            SQL • SQLite • NoSql • PostGre • MongoDB'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="90">'+
+    '          <span class="chart__label">'+
+    '            PHP'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="90">'+
+    '          <span class="chart__label">'+
+    '            Laravel • Symfony • Yii 2 • Codeigniter'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="95">'+
+    '          <span class="chart__label">'+
+    '            Node JS • Express • Koa'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="80">'+
+    '          <span class="chart__label">'+
+    '            Python'+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="80">'+
+    '          <span class="chart__label">'+
+    '            Django • Django REST API '+
+    '          </span>'+
+    '        </li>'+
+    '        <li class="chart__bar" data-skill="60">'+
+    '          <span class="chart__label">'+
+    '            Ruby On Rails'+
+    '          </span>'+
+    '        </li>'+
+    '      </ul>'+
+    '    </div>'+
+    '    '+
+    '    <div class="chart chart--prod">'+
+    `      <span class="chart__title">Non Development & Rest API's & CRM's / CMS's</span>`+
+    '      <ul class="chart--horiz">'+
+    '      <li class="chart__bar" data-skill="95">'+
+    '        <span class="chart__label">'+
+    '          Drupal • Wordpress • Wix '+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="95">'+
+    '        <span class="chart__label">'+
+    '          Git • Github • Bitbucket • Sourcetree'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="95">'+
+    '        <span class="chart__label">'+
+    '          Docker • Heroku'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="95">'+
+    '        <span class="chart__label">'+
+    '          Azure Cloud Services • IIS'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="95">'+
+    '        <span class="chart__label">'+
+    '          AWS Services ( EC2 • S3, etc )'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="95">'+
+    '        <span class="chart__label">'+
+    '          Acquia • FireBase • GoDaddy • HostGator • AWS EC2 • Linux • IIS'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="95">'+
+    '        <span class="chart__label">'+
+    '          Salesforce'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="95">'+
+    '        <span class="chart__label">'+
+    '          Sharepoint'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="90">'+
+    '        <span class="chart__label">'+
+    '          Microsoft Office (Macros • MS Office API) • Microsoft Graph'+
+    '        </span>'+
+    '      </li>'+
+    '    </ul>'+
+    '    </div>'+
+    '    '+
+    '    <div class="chart chart--design">'+
+    '      <span class="chart__title">Design and other skills</span>'+
+    '      <ul class="chart--horiz">'+
+    '      <li class="chart__bar" data-skill="95">'+
+    '        <span class="chart__label">'+
+    '          UI/UX Design • Website planning / wireframing'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="90">'+
+    '        <span class="chart__label">'+
+    '          Project management • Documentation'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="80">'+
+    '        <span class="chart__label">'+
+    '          Photoshop'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="65">'+
+    '        <span class="chart__label">'+
+    '          Illustrator'+
+    '        </span>'+
+    '      </li>'+
+    '      <li class="chart__bar" data-skill="50">'+
+    '        <span class="chart__label">'+
+    '          Auto Cad • Blender'+
+    '        </span>'+
+    '      </li>'+
+    '    </ul>'+
+    '    </div>'+
+    '  </div>'+
+    '</div>'+
+    '<style>'+
+    '.skills {'+
+    '  width: 80%;'+
+    '  max-width: 960px;'+
+    '  height: 720px;'+
+    '  margin: auto;'+
+    '  position: relative;'+
+    '}'+
+    ''+
+    '.lines {'+
+    '  height: 100%;'+
+    '  position: relative;'+
+    '}'+
+    '.lines .line {'+
+    '  height: inherit;'+
+    '  width: 2px;'+
+    '  position: absolute;'+
+    '  background: rgba(238, 238, 238, 0.6);'+
+    '}'+
+    '.lines .line.l--0 {'+
+    '  left: 0;'+
+    '}'+
+    '.lines .line.l--25 {'+
+    '  left: 25%;'+
+    '}'+
+    '.lines .line.l--50 {'+
+    '  left: 50%;'+
+    '}'+
+    '.lines .line.l--75 {'+
+    '  left: 75%;'+
+    '}'+
+    '.lines .line.l--100 {'+
+    '  left: calc(100% - 1px);'+
+    '}'+
+    '.lines .line .line__label {'+
+    '  display: block;'+
+    '  width: 100px;'+
+    '  text-align: center;'+
+    '  position: absolute;'+
+    '  bottom: -20px;'+
+    '  right: -50px;'+
+    '}'+
+    '.lines .line .line__label.title {'+
+    '  text-transform: uppercase;'+
+    '  font-weight: bold;'+
+    '}'+
+    ''+
+    '.charts {'+
+    '  width: 100%;'+
+    '  height: 100%;'+
+    '  position: absolute;'+
+    '  top: 0;'+
+    '  left: 0;'+
+    '  z-index: 10;'+
+    '}'+
+    ''+
+    '.chart {'+
+    '  margin: 30px 0 0;'+
+    '}'+
+    '.chart:first-child {'+
+    '  margin: 0;'+
+    '}'+
+    ''+
+    '.chart__title {'+
+    '  display: block;'+
+    '  margin: 0 0 10px;'+
+    '  font-weight: bold;'+
+    '  opacity: 0;'+
+    '  animation: 1s anim-lightspeed-in ease forwards;'+
+    '}'+
+    '.chart--prod .chart__title {'+
+    '  animation-delay: 3s;'+
+    '}'+
+    '.chart--design .chart__title {'+
+    '  animation-delay: 4.2s;'+
+    '}'+
+    ''+
+    '.chart--horiz {'+
+    '  overflow: hidden;'+
+    '}'+
+    ''+
+    '.chart__bar {'+
+    '  height: 30px;'+
+    '  margin-bottom: 10px;'+
+    '  background: linear-gradient(to left, #48dbfb, #2e86de);'+
+    '  border-top-right-radius: 4px;'+
+    '  border-bottom-right-radius: 4px;'+
+    '  opacity: 0;'+
+    '  animation: 1s anim-lightspeed-in ease forwards;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(13) {'+
+    '  animation-delay: 3.1s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(12) {'+
+    '  animation-delay: 2.9s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(11) {'+
+    '  animation-delay: 2.7s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(10) {'+
+    '  animation-delay: 2.5s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(9) {'+
+    '  animation-delay: 2.3s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(8) {'+
+    '  animation-delay: 2.1s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(7) {'+
+    '  animation-delay: 1.9s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(6) {'+
+    '  animation-delay: 1.7s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(5) {'+
+    '  animation-delay: 1.5s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(4) {'+
+    '  animation-delay: 1.3s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(3) {'+
+    '  animation-delay: 1.1s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(2) {'+
+    '  animation-delay: 0.9s;'+
+    '}'+
+    '.chart--dev .chart__bar:nth-of-type(1) {'+
+    '  animation-delay: 0.7s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(11) {'+
+    '  animation-delay: 5.7s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(10) {'+
+    '  animation-delay: 5.5s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(9) {'+
+    '  animation-delay: 5.3s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(8) {'+
+    '  animation-delay: 5.1s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(7) {'+
+    '  animation-delay: 4.9s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(6) {'+
+    '  animation-delay: 4.7s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(5) {'+
+    '  animation-delay: 4.5s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(4) {'+
+    '  animation-delay: 4.3s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(3) {'+
+    '  animation-delay: 4.1s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(2) {'+
+    '  animation-delay: 3.9s;'+
+    '}'+
+    '.chart--prod .chart__bar:nth-of-type(1) {'+
+    '  animation-delay: 3.7s;'+
+    '}'+
+    '.chart--design .chart__bar:nth-of-type(3) {'+
+    '  animation-delay: 6.3s;'+
+    '}'+
+    '.chart--design .chart__bar:nth-of-type(2) {'+
+    '  animation-delay: 6.1s;'+
+    '}'+
+    '.chart--design .chart__bar:nth-of-type(1) {'+
+    '  animation-delay: 5.9s;'+
+    '}'+
+    '.chart__bar[data-skill="35"] {'+
+    '  width: 35%;'+
+    '}'+
+    '.chart__bar[data-skill="40"] {'+
+    '  width: 40%;'+
+    '}'+
+    '.chart__bar[data-skill="45"] {'+
+    '  width: 45%;'+
+    '}'+
+    '.chart__bar[data-skill="50"] {'+
+    '  width: 50%;'+
+    '}'+
+    '.chart__bar[data-skill="55"] {'+
+    '  width: 55%;'+
+    '}'+
+    '.chart__bar[data-skill="60"] {'+
+    '  width: 60%;'+
+    '}'+
+    '.chart__bar[data-skill="65"] {'+
+    '  width: 65%;'+
+    '}'+
+    '.chart__bar[data-skill="70"] {'+
+    '  width: 70%;'+
+    '}'+
+    '.chart__bar[data-skill="75"] {'+
+    '  width: 75%;'+
+    '}'+
+    '.chart__bar[data-skill="80"] {'+
+    '  width: 80%;'+
+    '}'+
+    '.chart__bar[data-skill="85"] {'+
+    '  width: 85%;'+
+    '}'+
+    '.chart__bar[data-skill="90"] {'+
+    '  width: 90%;'+
+    '}'+
+    '.chart__bar[data-skill="95"] {'+
+    '  width: 95%;'+
+    '}'+
+    '.chart__label {'+
+    '  padding-left: 10px;'+
+    '  line-height: 30px;'+
+    '  color: white;'+
+    '}'+
+    '@keyframes anim-lightspeed-in {'+
+    '  0% {'+
+    '    transform: translateX(-200%);'+
+    '    opacity: 1;'+
+    '  }'+
+    '  100% {'+
+    '    transform: translateX(0);'+
+    '    opacity: 1;'+
+    '  }'+
+    '}'+
+    '.swal2-actions {' +
+    'padding-bottom: 10px;' +
+    ' padding-top: 454px;' +
+    '}' +
+    '</style>';
+
+    showSkillsListModal( ) {
+
+        Swal.fire({
+            title: '<strong>HTML <u>example</u></strong>',
+            icon: 'info',
+            html: this.modalHtml
+              ,
+            showCloseButton: true,
+            showCancelButton: false,
+            focusConfirm: false,
+            confirmButtonText:
+              '<i class="fa fa-thumbs-up"></i> Great!',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            cancelButtonText:
+              '<i class="fa fa-thumbs-down"></i>',
+            cancelButtonAriaLabel: 'Thumbs down'
+        })
+
+    }
+
     /*
     *
     *
@@ -194,7 +602,7 @@ export class MySkillsComponent implements OnInit {
     * together but wanted to fit in as much code as I can :)
     * 
     * */
-    changePercentage(card:SkillsButtonsInfo) {
+    changePercentage(card) {
 
         // This changes everything
         "use strict";
