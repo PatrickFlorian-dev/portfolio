@@ -127,7 +127,8 @@ export class NavbarComponent implements OnInit {
     }
 
     closeMobileMenu() {
-        $('#navbarToggler').removeClass('show');
+        $('.navbar-toggler').click();
+        // $('#navbarToggler').removeClass('show');
     }
 
     logout() {
