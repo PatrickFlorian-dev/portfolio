@@ -47,6 +47,14 @@
 
 // Parralax BGS
 
+@media only screen and (max-width:749px) {
+  .parallax {
+    // background-attachment: inherit;
+    background-attachment: scroll !important;
+    background-position: center center !important;
+  }
+}
+
 .parallax {
 
   position: relative;

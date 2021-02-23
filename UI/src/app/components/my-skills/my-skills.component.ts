@@ -105,7 +105,7 @@ export class MySkillsComponent implements OnInit {
             prctAmtBar: '95%',
             xl: false,
             active: false,
-            descText: `I just have to say I LOVE LOVE LOVE 😍 Angular 2. About 70% of my websites I build utilize Angular 2 with the other 30% being about half React and half a mix of Vue and Vanilla JS mixed in with some Jquery. Angular has become second nature to me and I plan to spread the joys of Angular to other's who aren't using it. `
+            descText: `I just have to say I LOVE LOVE LOVE 😍 Angular 2. About 70% of my websites I build utilize Angular 2 with the other 30% being about half React and half a mix of Vue. Angular has become second nature to me and I plan to spread the joys of Angular to other's who aren't using it. `
         },
         {
             id: 8,
@@ -155,12 +155,12 @@ export class MySkillsComponent implements OnInit {
             id: 3,
             title: 'Communication',
             subTitle: 'Teamwork, Conveying Ideas, Active Listening',
-            subTitle2: '85%',
+            subTitle2: '95%',
             icon: 'fas fa-comment-alt',
             color: 'elec-blue',
             prctAmt: 85,
             prctRatingTxt: 'Amazing',
-            prctAmtBar: '85%',
+            prctAmtBar: '95%',
             xl: true,
             active: false,
             descText: `You've probably heard the expression "You hear what I say but you are not listening". Truer words have never been spoken and that is especialy important working in teams. But that's only a part of it, you also have to know how to properly convey your thoughts and ideas accordingly.`
@@ -169,12 +169,12 @@ export class MySkillsComponent implements OnInit {
             id: 4,
             title: 'Business Development',
             subTitle: 'Project Management, Startups, Marketing',
-            subTitle2: '70%',
+            subTitle2: '80%',
             icon: 'fab fa-black-tie',
             color: 'elec-blue',
             prctAmt: 70,
             prctRatingTxt: 'Experienced',
-            prctAmtBar: '70%',
+            prctAmtBar: '80%',
             xl: true,
             active: false,
             descText: `One thing I was never thought in school was how things in the real world work. Like business taxes, ADA compliancy, HIPPA Compliancy, and W3 standards to name a few. Just seeing how small and larger businesses operate has thought me so much.`
@@ -571,7 +571,7 @@ export class MySkillsComponent implements OnInit {
     '}'+
     '.swal2-actions {' +
     'padding-bottom: 10px;' +
-    ' padding-top: 454px;' +
+    ' padding-top: 480px;' +
     '}' +
     '</style>';
 
@@ -641,7 +641,17 @@ export class MySkillsComponent implements OnInit {
         this.curSelectedBodyText = card.descText;
 
         $(".editor-indicator").show();
+        
+        this.scrollToSection("#skill-desc-text-body");
 
+    }
+
+    scrollToSection(idValue:string) {
+        let section = <HTMLElement> document.querySelector(idValue);
+
+        section.scrollIntoView({
+            behavior: 'smooth',
+        });
     }
 
 }
